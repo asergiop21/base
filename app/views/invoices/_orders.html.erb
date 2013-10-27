@@ -1,0 +1,19 @@
+<fieldset class="fields">
+  <table>
+          <tr>
+                  <td> <%= f.input( :name, input_html: { 
+                        data: {'autocomplete-field' => true,
+                               'autocomplete-for' => '#invoice_orders_#{id}_articles_id',
+                               'autocomplete-url' => articles_path(format: :json)
+                } 
+                  }) %></td>
+          <td> <%= f.input :articles_id, as: :hidden%></td>
+          <td> <%= f.input :quantity, :input_html => {:class => "input-small quantity"}  %></td>
+          <td> <%= f.input :unit_price, :input_html => {:class => "input-small"}  %></td>
+          <td>        <%= f.input :price_total , :input_html => {:class => "input-small price_subtotal"} %></td>
+        
+        <%= f.hidden_field :_destroy %>
+        <td><%= link_to "remove", '#', class: "remove_fields_orders" %></td>
+</tr>
+  </table>
+</fieldset>

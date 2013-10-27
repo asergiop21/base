@@ -1,0 +1,29 @@
+<%= simple_form_for(@user) do |f| %>
+  <%= f.error_notification %>
+<div class="container">
+        <div class="span12">
+            <div class="span6">
+              <%= f.input :email, :autofocus => true %>
+              <%= f.input :username %>
+              <%= f.input :name %>
+              <%= f.input :lastname %>
+              <%= f.input :address %>
+              <%= f.input :cuit %>
+              <%= f.input :dni %>
+            </div>
+            <div class ="span5">
+              <%= f.label :lenguaje %>
+                <ul>
+                  <li><%= link_to_unless_current "English", locale: "en" %></li>
+                  <li><%= link_to_unless_current "spanish", locale: "es" %></li>
+              </ul>
+              <%= f.input :role_id do    %>
+              <%= f.select :role_id, Role.order("role").map {|l|[l.role, l.id]}, prompt: "Elija un rol"   %>
+              <% end %>
+              <%= f.input :password %>
+              <%= f.input :password_confirmation%>
+              <%= f.input :enabled %>
+            </div>
+        <div class="span12"><%= f.button :submit %></div>
+</div>
+<% end %>

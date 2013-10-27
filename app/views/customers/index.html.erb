@@ -1,0 +1,63 @@
+<div class="row" >
+     <div class="span12">
+         <% if flash[:error] %>
+             <li class="alert alert-error"><%= flash[:error]  %></li>
+         <% end %>
+         <% if notice %>
+             <li class="alert alert-success"><%= notice  %></li>
+         <% end %>
+      </div>
+    <div class="span3 side">
+         <%= simple_form_for '', method: 'get' do |f| %>
+            <div class="search">
+              <%= f.input( :q, label: 'customers', input_html: { 
+                          data: {'autocomplete-field' => true,
+                                  'autocomplete-for' => '#_customer_id',
+                                  'autocomplete-url' => customers_path(format: :json)
+                                } 
+                              }) %>
+              <%= f.input :customer_id, as: :hidden%>
+       <%= f.select :removed, ["",['Baja', true],['Alta', false]] %>
+            </div>
+          <% end %> 
+  </div>
+  <div class="span8 section">
+
+    <div class="title">
+        <h2><%= t "customers.listing.title" %></h2>
+    </div>
+<div  class="data">
+<% if @customers %>
+    <table class="table">
+      <tr>
+        <th><%= Customer.human_attribute_name(:lastname)   %></th>
+        <th><%= Customer.human_attribute_name(:name)   %></th>
+        <th><%= Customer.human_attribute_name(:address) %></th>
+        <th><%= Customer.human_attribute_name(:neighborhood) %></th>
+        <th><%= Customer.human_attribute_name(:description) %></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    <% @customers.each do |customer| %>
+      <tr>
+        <td><%= customer.lastname %></td>
+        <td><%= customer.name %></td>
+        <td><%= customer.address %></td>
+        <td><%= customer.neighborhood %></td>
+        <td><%= customer.description %></td>
+        <td><%= link_to t('labels.show'), customer %></td>
+        <td><%= link_to t('labels.edit'), edit_customer_path(customer) %></td>
+        <td><%= link_to "Remitos", customer_invoices_path(customer) %></td>
+        <td><% link_to t('labels.destroy'), customer, method: :delete, data: { confirm: t('labels.are_you_sure') } %></td>
+      </tr>
+    <% end %>
+  </table>
+  <% end %>
+</div>
+<% ##if can? :new, @customers %>
+  <%= link_to t('view.customers.new_customer'), new_customer_path %>
+  <% #end %>
+</div>

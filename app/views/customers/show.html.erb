@@ -1,0 +1,87 @@
+<% if flash[:error] %>
+  <li class="alert alert-error"><%= flash[:error]  %></li>
+  <% end %>
+<% if notice %>
+  <li class="alert alert-success"><%= notice  %></li>
+  <% end %>
+<div class="Container span12">
+<p>
+  <b>Name:</b>
+  <%= @customer.name %>
+</p>
+
+<p>
+  <b>Lastnmae:</b>
+  <%= @customer.try(:lastname) %>
+</p>
+
+<p>
+  <b>Address:</b>
+  <%= @customer.address %>
+</p>
+
+<p>
+  <b>Neighborhood:</b>
+  <%= @customer.neighborhood %>
+</p>
+
+<p>
+  <b>Reference direction:</b>
+  <%= @customer.reference_direction %>
+</p>
+
+<p>
+  <b>Location:</b>
+  <%= @customer.location.name %>
+</p>
+<p>
+  <b>Email:</b>
+  <%= @customer.email %>
+</p>
+
+<p>
+  <b>Dni:</b>
+  <%= @customer.dni %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @customer.description %>
+</p>
+
+<p>
+  <b>Cuit:</b>
+  <%= @customer.cuit %>
+</p>
+
+<p>
+  <b>Birthday:</b>
+  <%= @customer.date_of_birth %>
+</p>
+
+<p>
+  <b>Removed:</b>
+  <%= @customer.removed? %>
+</p>
+
+<p>
+  <b>Bar code:</b>
+  <%= @customer.bar_code %>
+</p>
+
+<p>
+  <b>Category:</b>
+  <%= @customer.category %>
+</p>
+
+<p>
+  <b>Phone:</b>
+  <% @customer.phones.each do |u| %>
+<%= u.phone_number %>
+<% end %>
+</p>
+
+<%= link_to 'Edit', edit_customer_path(@customer) %> |
+<%= link_to 'Back', customers_path %>
+
+</div>

@@ -1,0 +1,14 @@
+<%= simple_form_for(@article) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :name %>
+    <%= f.input :price_cost %>
+    <%= f.input :percentaje %>
+    <%= f.input :price_total %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
