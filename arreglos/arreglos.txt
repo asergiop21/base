@@ -1,0 +1,7 @@
+* agregar en articulos en el campo quantity default 0
+* Diseño de Factura
+* Hacer modulo stock
+* cambiar todo el menu a español
+* mostrar pagos de remitos en el index de remito
+
+

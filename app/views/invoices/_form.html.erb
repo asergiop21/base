@@ -1,7 +1,7 @@
 <%= simple_form_for [@customer, @invoice] do |f| %>
         <%= f.error_notification %>
         <div class="row-fluid"> 
-        <div class="span8 section ">
+          <div class="span12 section ">
 
                 <%= f.fields_for :orders, method: 'get' do |ph| %>
                         <%=render 'orders', f: ph  %>
@@ -11,7 +11,12 @@
                 <div class ="total">
                         <%=f.input :price_total %>
                  </div>
-                <div class="form-actions">
+ 
+                <%= f.fields_for :payments, method: 'get' do |pay| %>
+                        <%= render 'payments', f: pay %>
+                        <%= link_to_add_fields 'add', f , :payments %>
+                 <% end %>
+                 <div class="form-actions">
                         <%= f.button :submit %>
                 </div>
 

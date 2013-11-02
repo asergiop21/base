@@ -8,13 +8,14 @@ scope :con_nombre, ->(nombre){where("LOWER(lastname) LIKE ?", "%#{nombre}%".down
 scope :con_id, ->(id){ where('id = ?', "#{id}")}
 scope :removed, ->(removed){ where('removed = ?', "#{removed}")}
   #Atributos
-  attr_accessible :address, :bar_code, :date_of_birth, :category, :cuit, :description, :dni, :email, :lastname, :name, :neighborhood, :reference_direction, :removed, :phones_attributes, :location_id,  :user_id, :invoice
+  attr_accessible :address, :bar_code, :date_of_birth, :category, :cuit, :description, :dni, :email, :lastname, :name, :neighborhood, :reference_direction, :removed, :phones_attributes, :location_id,  :user_id, :invoice, :payments_attributes
 
   #Relaciones
   has_many :phones, :dependent => :destroy
   has_many :loans
   has_many :ips
   has_many :invoices
+  has_many :payments
   belongs_to :user
   belongs_to :location
   has_many :accounts_receivable
@@ -35,14 +36,16 @@ scope :removed, ->(removed){ where('removed = ?', "#{removed}")}
 #accepts_nested_attributes_for :phones, :reject_if => lambda {|a| a[:phone_number].blank? }, allow_destroy: true
 
  accepts_nested_attributes_for :phones, reject_if: :reject_phones, :allow_destroy => true
+ accepts_nested_attributes_for :payments
 
 
  def self.search (q=nil)
      self.connection.execute(sanitize_sql(["SELECT * FROM customers"]))
  end
 
-
-private
+ 
+ 
+ private
  def reject_phones(attribute)
 
        if phones.count > PHONES_COUNT_MIN 
@@ -50,5 +53,8 @@ private
           attribute[:phone_number].blank?
       end
  end
+
+
+
 
 end

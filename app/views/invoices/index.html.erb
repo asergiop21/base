@@ -1,11 +1,11 @@
-<h1>Listing invoices</h1>
+<h3>Listado de Remitos</h3>
 
+<h4>Clientes: <%= @customer.name + ",  " +  @customer.lastname %></h4>
 <table class="table">
   <tr>
     <th>Remito</th>
     <th>Price total</th>
-    <th></th>
-    <th></th>
+    <th>Pagado</th>
     <th></th>
   </tr>
 
@@ -13,12 +13,20 @@
   <tr>
     <td><%= invoice.id %></td>
     <td><%= invoice.price_total %></td>
-    <td><%= link_to "Edit", edit_customer_invoice_path(invoice.customer_id, invoice) %></td>
+    <td><%=  Invoice.sum_pay(invoice.id) %></td>
+    <td><%= link_to "Editar", edit_customer_invoice_path(invoice.customer_id, invoice) %></td>
 
   </tr>
 <% end %>
-</table>
+
+        <tr>
+                  <td></td>
+                  <td><b><%= number_to_currency(@amount) %></b></td>
+                  <td><b><%= number_to_currency(@payments) %></b></td>
+                  <td><b><%= number_to_currency(@total) %></b></td>
+          </tr>
+  </table>
 
 <br />
 
-<%= link_to 'New Invoice', new_customer_invoice_path() %>
+<%= link_to 'Nuevo Remito', new_customer_invoice_path() %>

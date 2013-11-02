@@ -2,7 +2,10 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.all
+
+         # @articles = Article.all
+          @articles = Article.con_nombre(params[:q]) if params[:q].present?
+          @articles = Article.con_id(params[:article_id]) if params[:article_id].present?
 
     respond_to do |format|
       format.html # index.html.erb

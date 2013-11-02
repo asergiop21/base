@@ -1,4 +1,6 @@
 GestionBase::Application.routes.draw do
+
+
   resources :articles
   resources :orders
   scope ":locale", locale: /#{I18n.available_locales.join("|")}/ do
@@ -11,7 +13,10 @@ GestionBase::Application.routes.draw do
     resources :suppliers
     resources :locations
     resources :customers do 
-            resources :invoices
+
+            resources :invoices do
+                get "payments/index"
+           end
     end
     devise_for :users
     resources :users

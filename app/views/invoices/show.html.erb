@@ -8,6 +8,10 @@
 <p>
   <b>Price total:</b>
   <%= @invoice.price_total %>
-</p>
+  
+    <%= link_to "back", customer_invoices_path(@customer.id) %>
+  
+  
+  </p>
 
 

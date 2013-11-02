@@ -6,17 +6,26 @@ before_filter :load_customers
                 
     @invoices = @customer.invoices.all
     @articles = Article.con_nombre(params[:q]) if params[:q].present?
+    @payments = 0
+    @invoices.each do |e|
+            @payments  += Payment.where('invoice_id = ?', e.id).sum('amount')
+    end
+
+    @amount = Invoice.total_amount
+    @total = @amount - @payments
 
     respond_to do |format|
+
       format.html # index.html.erb
       format.json { render json: @invoices }
     end
+
   end
 
   # GET /invoices/1
   # GET /invoices/1.json
   def show
-    @invoice = Invoice.find(params[:id])
+    @invoice = @customer.invoices.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -29,9 +38,8 @@ before_filter :load_customers
   def new
  
     @invoice = @customer.invoices.new
-    
-
     1.times {@invoice.orders.build}
+    1.times {@invoice.payments.build}
 
     respond_to do |format|
       format.html # new.html.erb
@@ -48,7 +56,10 @@ before_filter :load_customers
   # POST /invoices.json
   def create
     @articles = Article.con_nombre(params[:q]) if params[:q].present?
-          @invoice = @customer.invoices.new(params[:invoice])
+    @invoice = @customer.invoices.new(params[:invoice])
+    @id = @invoice.orders(params[:articles_id])
+    @quantity = Article.quantity_order(@id)
+
 
     respond_to do |format|
       if @invoice.save
