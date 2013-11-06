@@ -4,7 +4,6 @@
   <tr>
     <th><%= Supplier.human_attribute_name(:name)%></th>
     <th><%= Supplier.human_attribute_name(:address)%></th>
-    <th><%= Supplier.human_attribute_name(:locality)%></th>
     <th></th>
     <th></th>
     <th></th>
@@ -12,9 +11,8 @@
 
 <% @suppliers.each do |supplier| %>
   <tr>
-    <td><%= supplier.name %></td>
+   <td><%= supplier.name %></td>
     <td><%= supplier.address %></td>
-    <td><%= supplier.location.name + " - " + supplier.location.province %></td>
     <td><%= link_to t('labels.show'), supplier %></td>
     <td><%= link_to t('labels.edit'), edit_supplier_path(supplier) %></td>
     <td><%= link_to t('labels.destroy'), supplier, method: :delete, data: { confirm: t('labels.are_you_sure') } %></td>

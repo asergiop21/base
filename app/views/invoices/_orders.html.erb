@@ -13,7 +13,7 @@
           <td> <%= f.input :price_total , :input_html => {:class => "input-small price_subtotal"} %></td>
         
         <%= f.hidden_field :_destroy %>
-        <td><%= link_to "remove", '#', class: "remove_fields_orders" %></td>
+        <td><%= button_to "remove", '#', class: "remove_fields_orders btn btn-danger" %></td>
 </tr>
   </table>
 </fieldset>

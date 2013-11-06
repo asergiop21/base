@@ -53,10 +53,21 @@ input.autocomplete({
           
           var field = this.id;
           var input = $(this).val();
+          
+          if (input == 0)
+  {
+  
+           $(this).val(0);
+           input = 0;
+
+  }
+
           var id = field.split("_");
           var price_subtotal = '#invoice_orders_attributes_' + id[3] + '_price_total';
           var price = $('#invoice_orders_attributes_' + id[3] + '_unit_price').val();
           var price_x_quantity = parseFloat(input) * parseFloat(price);
+             
+
 
             $(price_subtotal).val(price_x_quantity);
          
@@ -70,5 +81,29 @@ input.autocomplete({
           $('#invoice_price_total').val(suma_una);
 
   });
+
+
+$(document).on('keydown', 'input, select, textarea', function(e) {
+  var a = this.id 
+        var self = $(this),
+     form = self.parents('form:eq(0)'),
+     focusable,
+     next;
+   
+    if (e.keyCode == 13) {
+       
+
+        focusable = form.find('input,a,textarea').filter(':visible').not(".remove_fields_orders");
+            next = focusable.eq(focusable.index(this)+1);
+        if (next.length) {
+                        next.focus();
+                        next.select();
+                    } else {
+                                form.submit();
+                            }
+            return false;
+        }
+});
+
 
 })

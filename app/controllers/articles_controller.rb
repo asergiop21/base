@@ -1,7 +1,9 @@
 class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
-  def index
+
+before_filter :authenticate_user!, :except => [:some_action_without_auth]
+        def index
 
          # @articles = Article.all
           @articles = Article.con_nombre(params[:q]) if params[:q].present?

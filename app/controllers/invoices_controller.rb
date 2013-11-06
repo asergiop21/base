@@ -8,7 +8,7 @@ before_filter :load_customers
     @articles = Article.con_nombre(params[:q]) if params[:q].present?
     @payments = 0
     @invoices.each do |e|
-            @payments  += Payment.where('invoice_id = ?', e.id).sum('amount')
+            @payments  += Payment.where('invoice_id = ?', e.id).sum(&:amount)
     end
 
     @amount = Invoice.total_amount
