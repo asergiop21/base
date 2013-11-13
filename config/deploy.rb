@@ -30,7 +30,19 @@ end
       run "cd #{current_path}; rake db:seed RAILS_ENV=#{rails_env}"
       run "cd #{deploy_to}/current && bundle install vendor/gems"
 end
+desc "Create Production Database"
+task :create do
+        puts "\n\n=== Creating the Production Database! ===\n\n"
+        run "cd #{current_path}; rake db:create RAILS_ENV=production"
+        system "cap deploy:set_permissions"
 end
+
+
+
+
+end
+
+
 
 
 # if you want to clean up old releases on each deploy uncomment this:
