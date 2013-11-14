@@ -29,7 +29,7 @@ end
 gem 'pry', group: [:development]
 
 # Deploy with Capistrano
- gem 'capistrano'
+ gem 'capistrano', '~>3.0.0'
  gem 'passenger'
  gem 'i18n', "~>0.6.4"
 gem 'thin'
