@@ -29,7 +29,9 @@ end
 gem 'pry', group: [:development]
 
 # Deploy with Capistrano
- gem 'capistrano', group: [:development]
+group :development do
+ gem 'capistrano',"~>2.15.5"
+end
  gem 'passenger'
  gem 'i18n', "~>0.6.4"
 gem 'thin'
