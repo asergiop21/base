@@ -1,5 +1,5 @@
 require 'bundler/capistrano'
-set :application, "base"
+set :application, "base_gestion"
 set :repository,  "git@github.com:asergiop21/base.git" #https://github.com/asergiop21/base.git"
 server "10.0.100.52", :web, :app, :db, primary: true
 set :deploy_to, '/home/alejandro/base'
@@ -41,13 +41,7 @@ task :migrate do
         run "cd #{current_path}; rake db:migrate RAILS_ENV=production"
         system "cap deploy:set_permissions"
 end
-
-
-
 end
-
-
-
 
 # if you want to clean up old releases on each deploy uncomment this:
 # after "deploy:restart", "deploy:cleanup"
