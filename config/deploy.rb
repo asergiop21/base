@@ -6,10 +6,10 @@ set :deploy_to, '/home/alejandro/base'
 #set :deploy_to, '/home/sergio/proyecto_base'
 set :scm, :git # You can set :scm explicitly or Capistrano will make an intelligent guess based on known version control directory names
 set :user, 'alejandro'
-set :deploy_via, :remote_cache
+#set :deploy_via, :remote_cache
 set :use_sudo, false
 set :branch, 'master'
-#set :deploy_via, :copy
+set :deploy_via, :copy
 default_run_options[:pty] = true
 ssh_options[:forward_agent] = true
 
