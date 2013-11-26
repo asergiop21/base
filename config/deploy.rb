@@ -1,6 +1,6 @@
 require 'bundler/capistrano'
 set :application, "base"
-set :repository,  "https://github.com/asergiop21/base.git"
+set :repository,  "git@github.com:asergiop21/base.git" #https://github.com/asergiop21/base.git"
 server "10.0.100.52", :web, :app, :db, primary: true
 set :deploy_to, '/home/alejandro/base'
 #set :deploy_to, '/home/sergio/proyecto_base'
