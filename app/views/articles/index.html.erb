@@ -40,12 +40,8 @@
 <table class="table">
   <tr>
     <th>Name</th>
-    <th>Price cost</th>
-    <th>Percentaje</th>
     <th>Price total</th>
     <th>Cantidad</th>
-    <th>Proveedor </th>
-    <th>codigo Proveedor </th>
     <th></th>
     <th></th>
     <th></th>
@@ -54,17 +50,10 @@
 <% @articles.each do |article| %>
   <tr>
     <td><%= article.name %></td>
-    <td><%= article.price_cost %></td>
-    <td><%= article.percentaje %></td>
     <td><%= number_to_currency(article.price_total) %></td>
     <td><%= article.quantity %></td>
-    <td><%= article.supplier_id %></td>
-    <td><%= article.articles_code_supplier %></td>
-
-
-    <td><%= link_to 'Show', article %></td>
-    <td><%= link_to 'Edit', edit_article_path(article) %></td>
-    <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Ver', article %></td>
+    <td><%= link_to 'Editar', edit_article_path(article) %></td>
   </tr>
 <% end %>
 </table>

@@ -1,7 +1,9 @@
 class InvoicesController < ApplicationController
   # GET /invoices
   # GET /invoices.json
-before_filter :load_customers
+
+        before_filter :authenticate_user!, :except => [:some_action_without_auth]
+        before_filter :load_customers
         def index
                 
     @invoices = @customer.invoices.all
@@ -27,9 +29,17 @@ before_filter :load_customers
   def show
     @invoice = @customer.invoices.find(params[:id])
 
+
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @invoice }
+     ## format.json { render json: @invoice }
+    
+      format.pdf do
+              pdf = InvoicePdf.new(@invoice)
+              send_data pdf.render, filename: "order_#{@invoice.id}.pdf",
+                                    type: "application/pdf",
+                                    disposition: "inline" 
+      end
     end
   end
 

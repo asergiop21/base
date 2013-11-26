@@ -4,7 +4,10 @@
       default: '%d/%m/%Y'
       short: '%d de %Y'
       long: '%d de %B de %Y'
-
+    order:
+      - :day
+      - :month
+      - :year
     month_names:
       - ~
       - Ene

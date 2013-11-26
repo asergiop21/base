@@ -2,32 +2,42 @@
         <%= f.error_notification %>
 
         <div class="form-inputs">
-
-                <div class="span12">
-                        <div class="span5">
-                                <%= f.label :Nombre %>
-                                <%= f.text_field :name %>
-                                <%= f.input :price_cost, label: "Precio de Costo" %>
-                                <%= f.input :percentaje, label: "Porcentaje" %>
-                                <%= f.input :price_total, label: "Precio total" %>
-                                <%= f.input :quantity, label: "Cantidad" %>
-                        </div>       
-                        <div class = "span6">
-                                <%= f.input :barcode, label: "Codigo de Barra" %>
-                                <%= f.input :articles_code_supplier, label: "Codigo Articulo Proveedor" %>
-                                <%= f.label "Proovedor" %>
-                                <%= f.collection_select :supplier_id, Supplier.order(:name), :id, :name %>
-                                o crea un
-                                <%= f.text_field :new_supplier  %><br>
-                                <%= f.label "Categoria" %>
-                                <%= f.collection_select :category_id, Category.order(:name), :id, :name %>
-                                o crea una
-                                <%= f.text_field :new_category  %>
+                <div class="section_complete">
+                        <div class="span12">
+                                <div class="span5">
+                                        <%= f.input :name, label: "Nombre" %>
+                                        <%= f.input :price_cost, label: "Precio de Costo" %>
+                                        <%= f.input :percentaje, label: "Porcentaje", input_html: {value: "0.00"} %>
+                                        <%= f.input :price_total, label: "Precio total", :readonly => true %>
+                                        <% if params[:action] == "new" %>
+                                        <%=f.label :quantity,"Cantidad"  %>
+                                        <%= f.text_field :quantity %>
+                                        <% end %>
+                                       <% if params[:action]== "edit" %>
+                                               <%= f.label :quantity, "Cantidad Actual" %>
+                                               <%= f.text_field :quantity, :readonly => true %>
+                                               <%= f.label :new_quantity, "Cantidad nueva" %>
+                                               <%= f.text_field :new_quantity  %>
+                                          <% end %>
+                                </div>       
+                                <div class = "span6">
+                                        <%= f.input :barcode, label: "Codigo de Barra" %>
+                                        <%= f.input :articles_code_supplier, label: "Codigo Articulo Proveedor" %>
+                                        <%= f.label "Proovedor" %>
+                                        <%= f.collection_select :supplier_id, Supplier.order(:name), :id, :name %>
+                                        o crea un
+                                        <%= f.text_field :new_supplier  %><br>
+                                        <%= f.label "Categoria" %>
+                                        <%= f.collection_select :category_id, Category.order(:name), :id, :name %>
+                                        o crea una
+                                        <%= f.text_field :new_category  %>
+                                </div>
                         </div>
                 </div>
         </div>
-</div>
-<div class="form-actions">
-        <%= f.button :submit %>
+        <div class="form-actions">
+                <%= f.button :submit %>
+        </div>
+
 </div>
 <% end %>

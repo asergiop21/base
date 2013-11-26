@@ -13,7 +13,6 @@
   <tr>
     <td><%= make.name %></td>
     <td><%= make.comment %></td>
-    <td><%= link_to t('view.model.new_model'), new_make_model_path(make.id) %></td>
     <td><%= link_to t('labels.show'), make %></td>
     <td><%= link_to t('labels.edit'), edit_make_path(make) %></td>
     <td><%= link_to t('labels.destroy'), make, method: :delete, data: { confirm: t('labels.are_you_sure') } %></td>

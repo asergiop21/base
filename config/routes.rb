@@ -7,9 +7,7 @@ GestionBase::Application.routes.draw do
   resources :categories
   resources :equipment
  # get "new_equipment" => "equipment#new", :as => "new_equipment"
-  resources :makes do
-    resources :models
-  end
+    resources :makes
     resources :suppliers
     resources :locations
     resources :customers do 

@@ -1,14 +1,9 @@
-<fieldset class="pagos">
+<fieldset>
     <table>
         <tr>
-             <td><%=f.input :description  %></td>
-             <td><%=f.input :amount  %></td>
+                <td><%=f.input :created_at,  value: DateTime.now, as: :string, :format=> :default, readonly: :true  %></td>
+                <td><%=f.input :amount, :label =>'Pagos'  %></td>
 
         </tr>
     </table>
-  
-
-
-
-
 </fieldset>

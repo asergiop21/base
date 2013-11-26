@@ -8,7 +8,6 @@
     <%= f.input :lastname,   :required=> true, :hint => 'no special characteres' %>
     <%= f.input :address,  :required=> true %>
     <%= f.input :neighborhood%>
-    <%= f.input :reference_direction%>
     <%= f.input :email,  placeholder: 'user@domain.com'%>
     <%= f.input :dni%>
     <div class="fields">
@@ -21,14 +20,11 @@
 
   <div class="span5">
    <%= f.input :location_id do %>
-     <%= f.select :location_id,  Location.order("name").map {|l|[l.name + " -  " + l.departament, l.id]}, prompt: t('view.customers.prompt_location') %>
+           <%= f.collection_select :location_id,  Location.order(:name), :id, :name %>
+           o Crear una <%=f.text_field :new_location  %>
    <% end  %>
    <%= f.input :description, :input_html => {:rows => 5}%>
     <%= f.input :cuit%>
-    <%= f.input :date_of_birth, start_year: Date.today.year - 90, order: [:day, :month, :year], :input_html =>{:width => '100px', :class => 'span2'} %>
-
-    <%=f.label :category,  label: "Categoria"  %>
-    <%= f.select :category, Customer::CATEGORY%><br>
    </div>
 </div>
 </div>

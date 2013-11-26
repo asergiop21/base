@@ -60,8 +60,18 @@ $(document).ready(function(){
         var price_subtotal = '#invoice_orders_attributes_' + id[3] + '_price_total';
         var price = $('#invoice_orders_attributes_' + id[3] + '_unit_price').val();
         var quantity_stock = $('#invoice_orders_attributes_' + id[3] + '_quantity_stock').val();
-        var price_x_quantity = parseFloat(input) * parseFloat(price);
+alert(quantity_stock);
+        if ( parseFloat(input) > parseFloat(quantity_stock) )
+        {
+                input = quantity_stock
+                $(this).css({'background': 'red'})
+                $(this).val(quantity_stock);
+        }else{
 
+                $(this).css({'background': '#FFF'})
+        }
+
+        var price_x_quantity = parseFloat(input) * parseFloat(price);
         $(price_subtotal).val(price_x_quantity);
 
         var prr = $('#invoice_price_total').val();
@@ -69,21 +79,11 @@ $(document).ready(function(){
         {
                 prr = 0.00;
         }
-        if ( quantity_stock < input)
-        {
-            alert('stock demas');
-        }else
-        {
-          alert('stock menos');
-        }
-
-
 
         suma_una = parseFloat(prr) + parseFloat(price_x_quantity) ;
         $('#invoice_price_total').val(suma_una);
 
         });
-
 
         $(document).on('keydown', 'input, select, textarea', function(e) {
                 var a = this.id 
@@ -93,8 +93,6 @@ $(document).ready(function(){
                 next;
 
         if (e.keyCode == 13) {
-
-
                 focusable = form.find('input,a,textarea').filter(':visible').not(".remove_fields_orders");
                 next = focusable.eq(focusable.index(this)+1);
                 if (next.length) {
@@ -106,6 +104,5 @@ $(document).ready(function(){
                 return false;
         }
         });
-
 
 })

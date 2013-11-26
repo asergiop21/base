@@ -15,7 +15,7 @@
     <td><%= invoice.price_total %></td>
     <td><%=  Invoice.sum_pay(invoice.id) %></td>
     <td><%= link_to "Editar", edit_customer_invoice_path(invoice.customer_id, invoice) %></td>
-
+    <td><%= link_to "Imprimir", customer_invoice_path(invoice.customer_id, invoice, format: "pdf") %></td>
   </tr>
 <% end %>
 

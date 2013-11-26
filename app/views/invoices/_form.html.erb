@@ -1,25 +1,41 @@
 <%= simple_form_for [@customer, @invoice] do |f| %>
         <%= f.error_notification %>
-        <div class="row-fluid"> 
-                <div class="section">
-                        <div class="container-fluid">
-                                <%= f.fields_for :orders, method: 'get' do |ph| %>
-                                        <%=render 'orders', f: ph  %>
-                                        <%= link_to_add_fields 'add', f , :orders %>
-                                <% end %>
-                                <div class ="total">
-                                        <%=f.input :price_total %>
-                                </div>
+        <div> 
+                <div class="side">
 
-                                <%= f.fields_for :payments, method: 'get' do |pay| %>
-                                        <%= render 'payments', f: pay %>
-                                        <%= link_to_add_fields 'add', f , :payments %>
-                                <% end %>
-                                <div class="form-actions">
-                                        <%= f.button :submit %>
+                        <h4> Cliente: <%= @customer.name + ", " + @customer.lastname %></h4>
+                                
+                        </div>
+                                
+                        <div class="section">
+                                <div class="container-fluid">
+                                        <%= f.fields_for :orders, method: 'get' do |ph| %>
+                                                <table class="table">
+                                                        <tr>
+                                                                <th>Articulo</th>
+                                                                <th>Cantidad</th>
+                                                                <th>Precio Unit</th>
+                                                                <th>Precio Total</th>
+                                                        </tr>
+                                                </table>
+                                                <%=render 'orders', f: ph  %>
+                                                <%= link_to_add_fields 'add', f , :orders %>
+                                        <% end %>
+                                        <div class ="total_1">
+                                                <%=f.input :price_total, :input_html=> {class: "input-small"} %>
+                                        </div>
+                                        <br>
+                                        <div class="span12">
+                                        <%= f.fields_for :payments, method: 'get' do |pay| %>
+                                                <%= render 'payments', f: pay %>
+                                        <% end %>
+                                                <%= link_to_add_fields 'add', f , :payments %>
                                 </div>
+                                        <div class="form-actions">
+                                                <%= f.button :submit %>
+                                        </div>
 
+                                </div>
                         </div>
                 </div>
-        </div>
-<% end %>
+        <% end %>
