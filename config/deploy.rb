@@ -10,8 +10,8 @@ set :user, 'alejandro'
 set :use_sudo, false
 set :branch, 'master'
 set :deploy_via, :copy
-default_run_options[:pty] = true
-ssh_options[:forward_agent] = true
+#default_run_options[:pty] = true
+#ssh_options[:forward_agent] = true
 
 role :web, 'base.com'                          # Your HTTP server, Apache/etc
 role :app, 'base.com'                          # This may be the same as your `Web` server
