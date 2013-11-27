@@ -1,5 +1,5 @@
 require 'bundler/capistrano'
-set :application, "base_gestion"
+set :application, "base_gestion.com"
 set :repository,  "git@github.com:asergiop21/base.git" #https://github.com/asergiop21/base.git"
 server "10.0.100.52", :web, :app, :db, primary: true
 set :deploy_to, '/home/alejandro/base_g'
@@ -10,8 +10,8 @@ set :deploy_via, :remote_cache
 set :use_sudo, false
 set :branch, 'master'
 #set :deploy_via, :copy
-#default_run_options[:pty] = true
-#ssh_options[:forward_agent] = true
+default_run_options[:pty] = true
+ssh_options[:forward_agent] = true
 role :web, 'base_gestion.com'                          # Your HTTP server, Apache/etc
 role :app, 'base_gestion.com'                          # This may be the same as your `Web` server
 role :db, 'base_gestion.com', :primary => true # This is where Rails migrations will run
