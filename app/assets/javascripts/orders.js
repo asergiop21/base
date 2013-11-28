@@ -46,21 +46,26 @@ $(document).ready(function(){
                         }
                 }).removeAttr('data-autocomplete-field'); });
 
-        $(document).on('blur','.quantity', function(event){
+        $(document).on('blur', '.quantity , .discount', function(event){
 
                 var field = this.id;
-                var input = $(this).val();
+                var id = field.split("_");
+                var input = $('#invoice_orders_attributes_'+ id[3]+ '_quantity').val();    //$(this).val();
                 if (input == 0)
         {
                 $(this).val(0);
                 input = 0;
         }
 
-        var id = field.split("_");
         var price_subtotal = '#invoice_orders_attributes_' + id[3] + '_price_total';
         var price = $('#invoice_orders_attributes_' + id[3] + '_unit_price').val();
         var quantity_stock = $('#invoice_orders_attributes_' + id[3] + '_quantity_stock').val();
-alert(quantity_stock);
+        var descuento = $('#invoice_orders_attributes_' + id[3] + '_discount').val();
+        
+     
+        if (descuento == 0 || descuento == ""){
+            descuento = 0
+        }
         if ( parseFloat(input) > parseFloat(quantity_stock) )
         {
                 input = quantity_stock
@@ -72,18 +77,28 @@ alert(quantity_stock);
         }
 
         var price_x_quantity = parseFloat(input) * parseFloat(price);
-        $(price_subtotal).val(price_x_quantity);
+        var price_con_descuento =  price_x_quantity - ((price_x_quantity * descuento ) /100)
+        $(price_subtotal).val(price_con_descuento);
 
         var prr = $('#invoice_price_total').val();
         if (prr == 0)
         {
                 prr = 0.00;
         }
+valor = 0;
+         $(document).find('.price_subtotal').each(function(){
+          re = $(this).val();
+          alert(re);
+          valor += parseFloat(re);
+         alert(valor);
+         });
 
-        suma_una = parseFloat(prr) + parseFloat(price_x_quantity) ;
-        $('#invoice_price_total').val(suma_una);
+        $('#invoice_price_total').val(valor.toFixed(2));
+
+
 
         });
+
 
         $(document).on('keydown', 'input, select, textarea', function(e) {
                 var a = this.id 
@@ -104,5 +119,8 @@ alert(quantity_stock);
                 return false;
         }
         });
+
+    
+
 
 })

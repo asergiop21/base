@@ -10,19 +10,19 @@
                         <div class="section">
                                 <div class="container-fluid">
                                         <%= f.fields_for :orders, method: 'get' do |ph| %>
-                                                <table class="table">
+                                                <table class="table span7">
                                                         <tr>
-                                                                <th>Articulo</th>
-                                                                <th>Cantidad</th>
-                                                                <th>Precio Unit</th>
-                                                                <th>Descuento</th>
-                                                                <th>Precio Total</th>
+                                                                <th class="span3">Articulo</th>
+                                                                <th class="span2">Cantidad</th>
+                                                                <th class="span2">Precio Unit</th>
+                                                                <th class="span2">Descuento</th>
+                                                                <th class ="span2">Precio Total</th>
                                                         </tr>
                                                 </table>
                                                 <%=render 'orders', f: ph  %>
                                                 <%= link_to_add_fields 'add', f , :orders %>
                                         <% end %>
-                                        <div class ="total_1">
+                                        <div class ="total">
                                                 <%=f.input :price_total, :input_html=> {class: "input-small"} %>
                                         </div>
                                         <br>
