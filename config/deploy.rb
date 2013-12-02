@@ -1,11 +1,11 @@
 require 'bundler/capistrano'
-set :application, "base_gestion.com"
+set :application, "base.com"
 set :repository,  "git@github.com:asergiop21/base.git" #https://github.com/asergiop21/base.git"
 #server "10.0.100.52", :web, :app, :db, primary: true
-set :deploy_to, '/home/alejandro/base_nueva'
+set :deploy_to, '/home/sergio/proyecto_base'
 #set :deploy_to, '/home/sergio/proyecto_base'
 set :scm, :git # You can set :scm explicitly or Capistrano will make an intelligent guess based on known version control directory names
-set :user, 'alejandro'
+set :user, 'sergio'
 set :deploy_via, :remote_cache
 set :use_sudo, false
 set :branch, 'master'
