@@ -8,8 +8,7 @@
     <%= f.input :lastname,   :required=> true, :hint => 'no special characteres' %>
     <%= f.input :address,  :required=> true %>
     <%= f.input :neighborhood%>
-    <%= f.input :email,  placeholder: 'user@domain.com'%>
-    <%= f.input :dni%>
+
     <div class="fields">
     <%= f.simple_fields_for :phones do |ph| %>
        <%=render 'phones', f: ph  %>
@@ -19,11 +18,13 @@
   </div>
 
   <div class="span5">
-   <%= f.input :location_id do %>
-           <%= f.collection_select :location_id,  Location.order(:name), :id, :name %>
-           o Crear una <%=f.text_field :new_location  %>
+    <%= f.input :email,  placeholder: 'user@domain.com'%>
+    <%= f.input :dni%>
+          <%= f.input :location_id do %>
+           <%= f.collection_select :location_id,  Location.order(:name), :id, :name, class: "span3" %>
+           o Crear una <%=f.text_field :new_location , class: "span3" %>
    <% end  %>
-   <%= f.input :description, :input_html => {:rows => 5}%>
+   <%= f.input :description, :input_html => {:rows => 3}%>
     <%= f.input :cuit%>
    </div>
 </div>

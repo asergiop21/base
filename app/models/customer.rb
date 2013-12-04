@@ -27,12 +27,12 @@ before_save :create_location
   has_many :accounts_receivable
 
   #Validaciones
-  validates :name, :lastname, :address,  :location_id,   presence: true
+  validates :name, :lastname, :address,    presence: true
   validates :name, uniqueness: {scope: :lastname}, allow_nil: true, allow_blank: true
   validates :name, :lastname, :address,   :email, length: {maximum: 255}, allow_nil: true, allow_blank: true 
   validates :dni, length: {is: 8}, numericality: true, allow_blank: true
   validates :cuit, length: {is: 13}, allow_nil: true, allow_blank: true
-  validates :email,   
+  validates :email,  allow_nil: true, allow_blank: true, 
             :uniqueness => true,   
             :format => { :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i }
 #  validates_date :date_of_birth, :before => lambda { 18.years.ago }
@@ -64,6 +64,6 @@ before_save :create_location
  end
 
 
-
+  
 
 end

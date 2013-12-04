@@ -35,8 +35,6 @@ class Article < ActiveRecord::Base
 
         def update_quantity
                 self.quantity += new_quantity.to_f
+
         end
-
-
-
-end
+        end
