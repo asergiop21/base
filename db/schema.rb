@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131127201738) do
+ActiveRecord::Schema.define(:version => 20131206181917) do
 
   create_table "articles", :force => true do |t|
     t.string   "name"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(:version => 20131127201738) do
     t.string   "articles_code_supplier"
     t.integer  "supplier_id"
     t.integer  "category_id"
+    t.integer  "make_id"
   end
 
   create_table "categories", :force => true do |t|
@@ -166,6 +167,7 @@ ActiveRecord::Schema.define(:version => 20131127201738) do
     t.string   "cuit"
     t.string   "dni"
     t.boolean  "enabled"
+    t.string   "role"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

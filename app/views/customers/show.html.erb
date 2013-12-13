@@ -6,32 +6,22 @@
   <% end %>
 <div class="Container span12">
 <p>
-  <b>Name:</b>
+  <b>Nombre:</b>
   <%= @customer.name %>
 </p>
 
 <p>
-  <b>Lastnmae:</b>
+  <b>apellido:</b>
   <%= @customer.try(:lastname) %>
 </p>
 
 <p>
-  <b>Address:</b>
+  <b>Direccion</b>
   <%= @customer.address %>
 </p>
 
 <p>
-  <b>Neighborhood:</b>
-  <%= @customer.neighborhood %>
-</p>
-
-<p>
-  <b>Reference direction:</b>
-  <%= @customer.reference_direction %>
-</p>
-
-<p>
-  <b>Location:</b>
+  <b>Localidad:</b>
   <%= @customer.location.name %>
 </p>
 <p>
@@ -45,7 +35,7 @@
 </p>
 
 <p>
-  <b>Description:</b>
+  <b>Descripcion:</b>
   <%= @customer.description %>
 </p>
 
@@ -55,29 +45,9 @@
 </p>
 
 <p>
-  <b>Birthday:</b>
-  <%= @customer.date_of_birth %>
-</p>
-
-<p>
-  <b>Removed:</b>
-  <%= @customer.removed? %>
-</p>
-
-<p>
-  <b>Bar code:</b>
-  <%= @customer.bar_code %>
-</p>
-
-<p>
-  <b>Category:</b>
-  <%= @customer.category %>
-</p>
-
-<p>
-  <b>Phone:</b>
+  <b>Telefono</b>
   <% @customer.phones.each do |u| %>
-<%= u.phone_number %>
+<%= u.phone_number %> - 
 <% end %>
 </p>
 

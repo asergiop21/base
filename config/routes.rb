@@ -11,7 +11,6 @@ GestionBase::Application.routes.draw do
     resources :suppliers
     resources :locations
     resources :customers do 
-
             resources :invoices do
                 get "payments/index"
            end

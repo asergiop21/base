@@ -11,20 +11,25 @@
                                         <%= f.input :price_cost, label: "Precio de Costo" %>
                                         <%= f.input :percentaje, label: "Porcentaje", input_html: {value: "0.00"} %>
                                         <%= f.input :price_total, label: "Precio total", :readonly => true %>
-                                        <% if params[:action] == "new" %>
+                                        <% if params[:action] == "new" || params[:action]=="create" %>
                                         <%=f.label :quantity,"Cantidad"  %>
-                                        <%= f.text_field :quantity %>
+                                        <%= f.input :quantity, label: false %>
                                         <% end %>
-                                       <% if params[:action]== "edit" %>
+                                        <% if params[:action]== "edit" || params[:action] == "update" %>
                                                <%= f.label :quantity, "Cantidad Actual" %>
                                                <%= f.text_field :quantity, :readonly => true %>
                                                <%= f.label :new_quantity, "Cantidad nueva" %>
-                                               <%= f.text_field :new_quantity  %>
+                                               <%= f.input :new_quantity, label: false  %>
                                           <% end %>
                                 </div>       
                                 <div class = "span6">
                                         <%= f.input :barcode, label: "Codigo de Barra" %>
                                         <%= f.input :articles_code_supplier, label: "Codigo Articulo Proveedor" %>
+                                        <%= f.label "Marca" %>
+                                        <%= f.collection_select :make_id, Make.order(:name), :id, :name %>
+                                        o crea un
+                                        <%= f.text_field :new_make  %><br>
+                                       
                                         <%= f.label "Proovedor" %>
                                         <%= f.collection_select :supplier_id, Supplier.order(:name), :id, :name %>
                                         o crea un

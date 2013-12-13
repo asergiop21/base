@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
 
+  ROLE = %w[admin invitado]
+
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
@@ -7,7 +9,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   # Setup accessible (or protected) attributes for your model
 
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :username,:lastname, :name, :username, :role_ids, :role_id, :current_password, :address, :cuit, :dni, :enabled
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :username,:lastname, :name, :username, :role_ids, :role_id, :current_password, :address, :cuit, :dni, :enabled, :role
 
   attr_accessor :current_password 
  

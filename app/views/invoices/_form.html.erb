@@ -4,39 +4,40 @@
                 <div class="side">
 
                         <h4> Cliente: <%= @customer.name + ", " + @customer.lastname %></h4>
-                                
-                        </div>
-                                
-                        <div class="section">
-                                <div class="container-fluid">
+                </div>
+                <div class="section">
+                        <div class="container-fluid">
+                                        <tr>
+                                                <th>Articulos</th>
+                                                <th>Cantidad</th>
+                                                <th>Precio Unit</th>
+                                                <th>Descuento</th>
+                                                <th>Precio Total</th>
+                                        </tr>
                                         <%= f.fields_for :orders, method: 'get' do |ph| %>
-                                                <table class="table span7">
-                                                        <tr>
-                                                                <th class="span3">Articulo</th>
-                                                                <th class="span2">Cantidad</th>
-                                                                <th class="span2">Precio Unit</th>
-                                                                <th class="span2">Descuento</th>
-                                                                <th class ="span2">Precio Total</th>
-                                                        </tr>
-                                                </table>
                                                 <%=render 'orders', f: ph  %>
-                                                <%= link_to_add_fields 'add', f , :orders %>
-                                        <% end %>
-                                        <div class ="total">
-                                                <%=f.input :price_total, :input_html=> {class: "input-small"} %>
-                                        </div>
-                                        <br>
-                                        <div class="span12">
+                                                <% end %>
+
+
+<tr>
+        <td>     <%= link_to_add_fields 'add', f , :orders %></td>
+
+</tr>
+
+                                <div class ="total">
+                                        <%=f.input :price_total, :input_html=> {class: "input-small"} %>
+                                </div>
+                                <br>
+                                <div class="span12">
                                         <%= f.fields_for :payments, method: 'get' do |pay| %>
                                                 <%= render 'payments', f: pay %>
                                         <% end %>
-                                                <%= link_to_add_fields 'add', f , :payments %>
+                                        <%= link_to_add_fields 'add', f , :payments %>
                                 </div>
-                                        <div class="form-actions">
-                                                <%= f.button :submit %>
-                                        </div>
-
+                                <div class="form-actions">
+                                        <%= f.button :submit %>
                                 </div>
                         </div>
                 </div>
-        <% end %>
+        </div>
+<% end %>

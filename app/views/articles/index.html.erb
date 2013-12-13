@@ -35,9 +35,9 @@
 <% if @articles %>
 <table class="table">
   <tr>
-    <th>Name</th>
-    <th>Price total</th>
-    <th>Cantidad</th>
+    <th class="center">Nombre</th>
+    <th class="label label-info span2i center">Precio Publico</th>
+    <th class="center">Stock</th>
     <th></th>
     <th></th>
     <th></th>
@@ -45,11 +45,11 @@
 
 <% @articles.each do |article| %>
   <tr>
-    <td><%= article.name %></td>
-    <td><%= number_to_currency(article.price_total) %></td>
-    <td><%= article.quantity %></td>
-    <td><%= link_to 'Ver', article %></td>
-    <td><%= link_to 'Editar', edit_article_path(article) %></td>
+    <td class="span4"><%= article.name %></td>
+    <td class="label label-info span2 center"><%= number_to_currency(article.price_total) %></td>
+    <td class="center span2"><%= article.quantity %></td>
+    <td class="span1"><%= link_to 'Ver', article %></td>
+    <td class="span1"><%= link_to 'Editar', edit_article_path(article) %></td>
   </tr>
 <% end %>
 </table>

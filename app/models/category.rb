@@ -3,5 +3,5 @@ class Category < ActiveRecord::Base
 
   #Relacion
   has_many :model
-  has_many :article
+  has_many :articles
 end

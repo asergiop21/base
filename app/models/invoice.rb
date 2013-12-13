@@ -21,5 +21,4 @@ def self.sum_pay(id)
 end
 
 
-
 end

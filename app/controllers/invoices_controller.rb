@@ -13,7 +13,7 @@ class InvoicesController < ApplicationController
             @payments  += Payment.where('invoice_id = ?', e.id).sum(&:amount)
     end
 
-    @amount = Invoice.total_amount
+    @amount = @customer.invoices.total_amount
     @total = @amount - @payments
 
     respond_to do |format|
@@ -28,8 +28,6 @@ class InvoicesController < ApplicationController
   # GET /invoices/1.json
   def show
     @invoice = @customer.invoices.find(params[:id])
-
-
     respond_to do |format|
       format.html # show.html.erb
      ## format.json { render json: @invoice }

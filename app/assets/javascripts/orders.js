@@ -88,9 +88,7 @@ $(document).ready(function(){
 valor = 0;
          $(document).find('.price_subtotal').each(function(){
           re = $(this).val();
-          alert(re);
           valor += parseFloat(re);
-         alert(valor);
          });
 
         $('#invoice_price_total').val(valor.toFixed(2));
