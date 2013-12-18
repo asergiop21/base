@@ -15,6 +15,7 @@
  *= require customers
  *= require invoices
  *= require articles
+ *= require pagination
  *= require footer
  *= require jquery/ui-custom
  *= require_tree .

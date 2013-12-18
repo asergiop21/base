@@ -62,4 +62,6 @@
       update: 'Actualizar %{model}'
       submit: 'Guardar %{model}'
 
-  
+  will_paginate:
+     previous_label: 'Anterior'
+     next_label: 'Siguiente'

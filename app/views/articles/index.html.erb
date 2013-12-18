@@ -26,14 +26,11 @@
         <h2>Listado de Articulos</h2>
     </div>
 
-<div class="row">
-        <div class="span12">
-                
-        </div>
-</div>
-
 <% if @articles %>
-<table class="table">
+        
+       <%= will_paginate @articles %>
+ 
+       <table class="table">
   <tr>
     <th class="center">Nombre</th>
     <th class="label label-info span2i center">Precio Publico</th>
@@ -56,5 +53,6 @@
 <% end %>
 <br />
 <%= link_to 'Nuevo Articulo', new_article_path %>
+
 
 </div>

@@ -1,13 +1,14 @@
 class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
-
+require 'will_paginate/array'
 before_filter :authenticate_user!, :except => [:some_action_without_auth]
         def index
-
-         # @articles = Article.all
           @articles = Article.con_nombre(params[:q]) if params[:q].present?
           @articles = Article.con_id(params[:article_id]) if params[:article_id].present?
+          @articles = Article.all if !params[:q].present? and !params[:article_id].present?
+         # @articles = Article.all      
+          @articles = @articles.paginate(page: params[:page], per_page: 10)
 
     respond_to do |format|
       format.html # index.html.erb
