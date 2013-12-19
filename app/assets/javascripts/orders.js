@@ -2,17 +2,21 @@ $(document).ready(function(){
 
         $(document).on('click','.remove_fields_orders', function(event){
                 $(this).prev('input[type=hidden]').val('1')
-                var price_remove = $(this).closest('fieldset').find('input.price_subtotal').val();
+                var price_remove = $(this).closest('table').find('input.price_subtotal').val();
+
         var price_total = $('#invoice_price_total').val();
+        
         if (price_total > 0)
         {
                 var valor = parseFloat(price_total) - parseFloat(price_remove);
         }
         price_total = $('#invoice_price_total').val(valor);
-        $(this).closest('fieldset').hide()
+        $(this).closest('table').hide()
                 event.preventDefault();
         });
 
+        
+        
         $('div.section ').on('focus', '[data-autocomplete-for]', function(){
                 var input = $(this);
                 input.autocomplete({
@@ -61,7 +65,6 @@ $(document).ready(function(){
         var price = $('#invoice_orders_attributes_' + id[3] + '_unit_price').val();
         var quantity_stock = $('#invoice_orders_attributes_' + id[3] + '_quantity_stock').val();
         var descuento = $('#invoice_orders_attributes_' + id[3] + '_discount').val();
-        
      
         if (descuento == 0 || descuento == ""){
             descuento = 0
@@ -77,7 +80,8 @@ $(document).ready(function(){
         }
 
         var price_x_quantity = parseFloat(input) * parseFloat(price);
-        var price_con_descuento =  price_x_quantity - ((price_x_quantity * descuento ) /100)
+        
+        var price_con_descuento =  (price_x_quantity - ((price_x_quantity * descuento ) /100)).toFixed(2);
         $(price_subtotal).val(price_con_descuento);
 
         var prr = $('#invoice_price_total').val();
@@ -92,11 +96,7 @@ valor = 0;
          });
 
         $('#invoice_price_total').val(valor.toFixed(2));
-
-
-
         });
-
 
         $(document).on('keydown', 'input, select, textarea', function(e) {
                 var a = this.id 
@@ -117,8 +117,4 @@ valor = 0;
                 return false;
         }
         });
-
-    
-
-
 })
