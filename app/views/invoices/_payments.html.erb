@@ -6,6 +6,8 @@
                          <% end %>
                 <td><%=f.input :amount, :label =>'Pagos'  %></td>
 
+          <td><%= f.hidden_field :_destroy %></td>
+          <td><%= button_to "Eliminar", '#', class: "remove_fields_payment btn btn-danger" %></td>
         </tr>
     </table>
 </fieldset>

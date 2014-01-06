@@ -20,7 +20,6 @@ input.autocomplete({
   select: function(event, ui) {
   input.val(ui.item.label);
 $(input.data('autocomplete-for')).val(ui.item.item.id);
-
   }
 }).removeAttr('data-autocomplete-field'); });
 });

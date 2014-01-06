@@ -18,5 +18,6 @@
 //= require tickets
 //= require equipment
 //= require orders
+//= require payments
 //= require articles
 
