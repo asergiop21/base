@@ -56,9 +56,7 @@ before_save :create_location
  
  private
  def reject_phones(attribute)
-
        if phones.count > PHONES_COUNT_MIN 
-            puts "hola" 
           attribute[:phone_number].blank?
       end
  end

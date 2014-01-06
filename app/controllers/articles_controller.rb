@@ -3,7 +3,9 @@ class ArticlesController < ApplicationController
   # GET /articles.json
 require 'will_paginate/array'
 before_filter :authenticate_user!, :except => [:some_action_without_auth]
-        def index
+
+load_and_authorize_resource  
+def index
           @articles = Article.con_nombre(params[:q]) if params[:q].present?
           @articles = Article.con_id(params[:article_id]) if params[:article_id].present?
           @articles = Article.all if !params[:q].present? and !params[:article_id].present?
@@ -31,8 +33,10 @@ before_filter :authenticate_user!, :except => [:some_action_without_auth]
   # GET /articles/new.json
   def new
     @article = Article.new
-
-    respond_to do |format|
+  
+      @article[:percentaje] = 0.00
+    
+     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @article }
     end

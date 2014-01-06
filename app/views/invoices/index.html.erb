@@ -6,6 +6,7 @@
     <th>Remito</th>
     <th>Price total</th>
     <th>Pagado</th>
+    <th>Cuenta corriente</th>
     <th></th>
   </tr>
 
@@ -14,6 +15,7 @@
     <td><%= invoice.id %></td>
     <td><%= invoice.price_total %></td>
     <td><%=  Invoice.sum_pay(invoice.id) %></td>
+    <td><%=  invoice.current_account ? 'Si' : 'No' %></td>
     <td><%= link_to "Editar", edit_customer_invoice_path(invoice.customer_id, invoice) %></td>
     <td><%= link_to "Imprimir", customer_invoice_path(invoice.customer_id, invoice, format: "pdf") %></td>
   </tr>
@@ -23,7 +25,11 @@
                   <td></td>
                   <td><b><%= number_to_currency(@amount) %></b></td>
                   <td><b><%= number_to_currency(@payments) %></b></td>
+                  <% if @total < 0 %>
+                          <td class="alert alert-error"><b><%= number_to_currency(@total) %></b></td>
+                  <% else %>
                   <td><b><%= number_to_currency(@total) %></b></td>
+                  <% end %>
           </tr>
   </table>
 

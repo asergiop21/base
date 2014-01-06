@@ -14,7 +14,7 @@ class InvoicesController < ApplicationController
     end
 
     @amount = @customer.invoices.total_amount
-    @total = @amount - @payments
+    @total = @payments - @amount
 
     respond_to do |format|
 
@@ -33,7 +33,7 @@ class InvoicesController < ApplicationController
      ## format.json { render json: @invoice }
     
       format.pdf do
-              pdf = InvoicePdf.new(@invoice)
+              pdf = InvoicePdf.new(@invoice , current_user)
               send_data pdf.render, filename: "order_#{@invoice.id}.pdf",
                                     type: "application/pdf",
                                     disposition: "inline" 
@@ -87,7 +87,7 @@ class InvoicesController < ApplicationController
 
     respond_to do |format|
       if @invoice.update_attributes(params[:invoice])
-        format.html { redirect_to [@customer, @invoice], notice: 'Invoice was successfully updated.' }
+        format.html { redirect_to  customer_invoices_path(@customer), notice: 'Invoice was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -112,6 +112,4 @@ class InvoicesController < ApplicationController
   def load_customers
           @customer = Customer.find(params[:customer_id])
   end
-
-
 end

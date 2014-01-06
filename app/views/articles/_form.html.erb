@@ -9,7 +9,7 @@
                                 <div class="span5">
                                         <%= f.input :name, label: "Nombre" %>
                                         <%= f.input :price_cost, label: "Precio de Costo" %>
-                                        <%= f.input :percentaje, label: "Porcentaje", input_html: {value: "0.00"} %>
+                                        <%= f.input :percentaje, label: "Porcentaje"  %>
                                         <%= f.input :price_total, label: "Precio total", :readonly => true %>
                                         <% if params[:action] == "new" || params[:action]=="create" %>
                                         <%=f.label :quantity,"Cantidad"  %>

@@ -45,8 +45,12 @@
     <td class="span4"><%= article.name %></td>
     <td class="label label-info span2 center"><%= number_to_currency(article.price_total) %></td>
     <td class="center span2"><%= article.quantity %></td>
-    <td class="span1"><%= link_to 'Ver', article %></td>
-    <td class="span1"><%= link_to 'Editar', edit_article_path(article) %></td>
+   <% if can? :show, @articles %>
+           <td class="span1"><%= link_to 'Ver', article %></td>
+           <td class="span1"><%= link_to 'Editar', edit_article_path(article) %></td>
+   <% end %>
+
+
   </tr>
 <% end %>
 </table>

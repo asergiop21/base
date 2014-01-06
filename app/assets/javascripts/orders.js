@@ -1,21 +1,20 @@
 $(document).ready(function(){
-
         $(document).on('click','.remove_fields_orders', function(event){
-                $(this).prev('input[type=hidden]').val('1')
-                var price_remove = $(this).closest('table').find('input.price_subtotal').val();
-
-        var price_total = $('#invoice_price_total').val();
-        
-        if (price_total > 0)
-        {
-                var valor = parseFloat(price_total) - parseFloat(price_remove);
-        }
-        price_total = $('#invoice_price_total').val(valor);
-        $(this).closest('table').hide()
+                        
+                        $(this).closest('tr').find('input[type=hidden]').val('1');
+                var price_remove = $(this).closest('tr').find('input.price_subtotal').val();
+       
+                var price_total = $('#invoice_price_total').val();
+                
+                if (price_total > 0)
+                {
+                                var valor = parseFloat(price_total) - parseFloat(price_remove);
+                                valor = valor.toFixed(2);
+                        }
+                price_total = $('#invoice_price_total').val(valor);
+                $(this).closest('tr').hide()
                 event.preventDefault();
-        });
-
-        
+                });
         
         $('div.section ').on('focus', '[data-autocomplete-for]', function(){
                 var input = $(this);
@@ -54,7 +53,7 @@ $(document).ready(function(){
 
                 var field = this.id;
                 var id = field.split("_");
-                var input = $('#invoice_orders_attributes_'+ id[3]+ '_quantity').val();    //$(this).val();
+                var input = $('#invoice_orders_attributes_'+ id[3]+ '_quantity').val();
                 if (input == 0)
         {
                 $(this).val(0);
@@ -80,8 +79,9 @@ $(document).ready(function(){
         }
 
         var price_x_quantity = parseFloat(input) * parseFloat(price);
-        
+       
         var price_con_descuento =  (price_x_quantity - ((price_x_quantity * descuento ) /100)).toFixed(2);
+        
         $(price_subtotal).val(price_con_descuento);
 
         var prr = $('#invoice_price_total').val();
