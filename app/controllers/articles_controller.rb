@@ -1,7 +1,8 @@
 class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
-require 'will_paginate/array'
+require 'will_paginate'
+require 'will_paginate/collection'
 before_filter :authenticate_user!, :except => [:some_action_without_auth]
 
 load_and_authorize_resource  
