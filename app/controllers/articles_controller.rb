@@ -1,8 +1,8 @@
 class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
-require 'will_paginate'
-require 'will_paginate/collection'
+#require 'will_paginate'
+#require 'will_paginate/collection'
 before_filter :authenticate_user!, :except => [:some_action_without_auth]
 
 load_and_authorize_resource  
@@ -11,7 +11,7 @@ def index
           @articles = Article.con_id(params[:article_id]) if params[:article_id].present?
           @articles = Article.all if !params[:q].present? and !params[:article_id].present?
          # @articles = Article.all      
-          @articles = @articles.paginate(page: params[:page], per_page: 10)
+ #         @articles = @articles.paginate(page: params[:page], per_page: 10)
 
     respond_to do |format|
       format.html # index.html.erb
