@@ -26,7 +26,7 @@ $(document).ready(function(){
                                         success: function(data) {
                                                 response(
                                                         $.map(data, function(item) {
-                                                                return { label: item.name , item: item};
+                                                                return { label: item.name  , item: item};
                                                         })
                                                         );
                                         },

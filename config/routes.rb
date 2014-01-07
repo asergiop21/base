@@ -1,6 +1,5 @@
 GestionBase::Application.routes.draw do
 
-
   resources :articles
   resources :orders
   scope ":locale", locale: /#{I18n.available_locales.join("|")}/ do

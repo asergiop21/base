@@ -27,6 +27,7 @@ class OrdersController < ApplicationController
   def new
     @order = Order.new
     @articles = Article.con_nombre(params[:q]) if params[:q].present?
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @order }
@@ -36,6 +37,7 @@ class OrdersController < ApplicationController
   # GET /orders/1/edit
   def edit
     @order = Order.find(params[:id])
+
   end
 
   # POST /orders

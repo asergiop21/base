@@ -1,5 +1,5 @@
 class Article < ActiveRecord::Base
-        scope :con_nombre, ->(nombre){where("LOWER(name) LIKE ?", "%#{nombre}%".downcase)}
+        scope :con_nombre,   ->(nombre){where("LOWER(name) LIKE ?", "%#{nombre}%".downcase)}
         scope :con_id, ->(id){ where('id = ?', "#{id}")}
 
         attr_accessible :name, :percentaje, :price_cost, :price_total, :make_id, :new_category, :category_id, :quantity, :barcode, :articles_code_supplier, :supplier_id, :new_supplier, :new_quantity, :new_make
