@@ -26,12 +26,14 @@ $(document).ready(function(){
                                         success: function(data) {
                                                 response(
                                                         $.map(data, function(item) {
-                                                                return { label: item.name  , item: item};
+                                                                return { label: item.barcode  + " " + item.name   , item: item};
                                                         })
                                                         );
                                         },
                                 });
                         },
+
+                       autoFocus: true,
 
                         select: function(event, ui) {
                                 input.val(ui.item.label);

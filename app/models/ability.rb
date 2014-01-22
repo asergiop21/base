@@ -3,17 +3,17 @@ class Ability
 
   def initialize(user)
 
-#@user = user
-   #if @user.role == "Admin"
+@user = user
+   if @user.role == "Admin"
      can :manage, :all
      #cannot :manage, Location
      #cannot :manage, Role
 
     # can :manage, Customer
     # cannot :manage, User
-#   else
- #    can :index, Article
-  # end 
+   else
+     can :index, Article
+   end 
     
     # Define abilities for the passed in user here. For example:
     #

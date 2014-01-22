@@ -10,7 +10,7 @@ gem 'devise', '~>2.1'
 gem 'cancan'
 #Formularios
 gem 'simple_form'
-#gem 'will_paginate', '~> 3.0'
+gem 'will_paginate', '~> 3.0'
 #otros
 gem 'whenever'
 gem 'ancestry'

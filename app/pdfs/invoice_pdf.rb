@@ -9,6 +9,7 @@ class InvoicePdf < Prawn::Document
           text "Presupuesto \##{@invoice.id}"
             line_items
           print_user
+          total
   end
 
 
@@ -28,26 +29,28 @@ class InvoicePdf < Prawn::Document
 
 
   def line_item_rows
-          [["Producto", "Cantidad", "Price"]] +
+          [["Cantidad", "Producto", "Precio Unit", "Precio Total"]] +
                   @invoice.orders.map do |item|
-                  [item.name, item.quantity, item.price_total]
+                  [item.quantity, item.name, item.unit_price, item.price_total]
           end
   end
 
 
   def line_item_rows_without_price
-          [["Producto", "Cantidad"]] +
+          [["Cantidad", "Producto"]] +
                   @invoice.orders.map do |item|
-                  [item.name, item.quantity]
+                  [item.quantity, item.name]
           end
   end
 
   
   def print_user
-
           text "Usuario: " + @user.name
   end
 
+  def total
+          text "Total a pagar: " +  @invoice.price_total.to_s
+  end
 
 
 end

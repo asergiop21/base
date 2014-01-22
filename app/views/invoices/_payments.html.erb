@@ -2,12 +2,14 @@
     <table>
             <tr>
                  <%if params[:action] != 'new'  %>
-                         <td><%=f.input :created_at,  value: DateTime.now, as: :string, :format=> :default, readonly: :true  %></td>
+                         <td><%= f.text_field :created_at, as: :date,  readonly: :true  %></td>
                          <% end %>
-                <td><%=f.input :amount, :label =>'Pagos'  %></td>
+                <td><%=f.text_field :amount, :label =>'Pagos'  %></td>
 
+       <%if current_user.role == 'Admin' %>
           <td><%= f.hidden_field :_destroy %></td>
           <td><%= button_to "Eliminar", '#', class: "remove_fields_payment btn btn-danger" %></td>
-        </tr>
+  <% end %>
+  </tr>
     </table>
 </fieldset>

@@ -14,11 +14,14 @@
                     
               <%= f.input :cuit %>
               <%= f.input :dni %>
-                    
-              <%= f.select :role, User::ROLE  %>
+
+            <% if @user.role == "Admin" %>       
+                    <%= f.select :role, User::ROLE  %>
+                    <%= f.input :enabled, label: "Habilitar" %>
+              <% end %>
               <%= f.input :password %>
               <%= f.input :password_confirmation%>
-              <%= f.input :enabled %>
+
             </div>
         <div class="span12"><%= f.button :submit %></div>
 </div>

@@ -12,6 +12,7 @@ GestionBase::Application.routes.draw do
     resources :customers do 
             resources :invoices do
                 get "payments/index"
+                match "cancelar" => "invoices#cancelar_invoice"
            end
     end
     devise_for :users

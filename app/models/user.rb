@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
 
-  ROLE = %w[admin invitado]
+  ROLE = %w[Admin Invitado]
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,

@@ -7,13 +7,15 @@ class InvoicesController < ApplicationController
         def index
                 
     @invoices = @customer.invoices.all
-    @articles = Article.con_nombre(params[:q]) if params[:q].present?
+    @articles = Article.con_nombre_barcode(params[:q]) if params[:q].present?
     @payments = 0
     @invoices.each do |e|
+            if e.cancelar_invoice == false
             @payments  += Payment.where('invoice_id = ?', e.id).sum(&:amount)
+          end
     end
 
-    @amount = @customer.invoices.total_amount
+    @amount = @customer.invoices.total_amount 
     @total = @payments - @amount
 
     respond_to do |format|
@@ -107,6 +109,22 @@ class InvoicesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def cancelar_invoice
+
+          @invoice  =   Invoice.find(params[:invoice_id])
+
+    respond_to do |format|
+      if @invoice.update_attribute("cancelar_invoice",  true )
+        format.html { redirect_to  customer_invoices_path(@customer), notice: 'Invoice was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @invoice.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   private
 
   def load_customers

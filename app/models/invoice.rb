@@ -1,6 +1,6 @@
 class Invoice < ActiveRecord::Base
  
-        attr_accessible :customer_id, :price_total, :orders_attributes, :payments_attributes, :current_account
+        attr_accessible :customer_id, :price_total, :orders_attributes, :payments_attributes, :current_account, :cancelar_invoice
 
 
  has_many  :orders
@@ -11,9 +11,9 @@ class Invoice < ActiveRecord::Base
 
  accepts_nested_attributes_for :payments, allow_destroy: true
 
-
 def self.total_amount
-        sum('price_total')
+      
+        sum('price_total', :conditions => ['cancelar_invoice = ?', false])
 end
 
 def self.sum_pay(id)
