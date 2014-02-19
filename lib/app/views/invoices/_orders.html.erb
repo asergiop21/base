@@ -1,0 +1,21 @@
+<tbody class="table">
+<tr>
+                <td class="span3"> <%= f.input( :name, label: false, input_html: { 
+                        data: {'autocomplete-field' => true,
+                               'autocomplete-for' => '#invoice_orders_#{id}_articles_id',
+                               'autocomplete-url' => articles_path(format: :json)
+                } 
+                }) %>
+        <%= f.input :articles_id, as: :hidden, label: false%>
+        <%= f.input :quantity_stock, as: :hidden , label: false%></td>
+<td class="span2"> <%= f.input :quantity, label: false, :input_html => {:class => "input-small quantity"}  %> </td>
+<td class="span2"> <%= f.input :unit_price, label: false, :input_html => {:class => "input-small"}  %></td>
+
+          <td class="span2"> <%= f.input :discount, label: false, :input_html => {:class => "input-small discount "} %></td>
+          <td class="span2"> <%= f.input :price_total, label: false, :input_html => {:class => "input-small price_subtotal"} %></td>
+       <%if current_user.role == 'Admin' %>
+          <td><%= f.hidden_field :_destroy %></td>
+          <td><%= button_to "Eliminar", '#', class: "remove_fields_orders btn btn-danger" %></td>
+  <% end %>
+  </tr>
+  </tbody>

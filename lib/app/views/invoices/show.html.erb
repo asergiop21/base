@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Customer:</b>
+  <%= @invoice.customer_id %>
+</p>
+
+<p>
+  <b>Price total:</b>
+  <%= @invoice.price_total %>
+  
+    <%= link_to "back", customer_invoices_path(@customer.id) %>
+  
+  
+  </p>
+
+

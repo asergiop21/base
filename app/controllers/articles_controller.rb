@@ -93,4 +93,10 @@ def index
       format.json { head :no_content }
     end
   end
+
+  def import
+          Article.import(params[:file])
+          redirect_to root_url, notice: "productos Importados"
+  end
+
 end

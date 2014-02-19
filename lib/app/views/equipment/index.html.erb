@@ -1,0 +1,58 @@
+<div class="row">
+  <div class="span12">
+    <% if flash[:error] %>
+      <li class="alert alert-error"><%= flash[:error]  %></li>
+    <% end %>
+    <% if notice %>
+      <li class="alert alert-success"><%= notice  %></li>
+    <% end %>
+  </div>
+  <div class="span3 side">
+          <%= simple_form_for '', method: 'get' do |f| %>
+          <div class="search">
+            <%= f.input(:q, label: 'Mac', input_html: { 
+              data: { 
+                      'autocomplete-field-mac' => true,
+                      'autocomplete-for' => '#_equipment_id',
+                      'autocomplete-url' => equipment_index_path(format: :json)
+ }}) %>
+            <%= f.input :equipment_id, as: :hidden%>
+            <%=f.select :status , Equipment::STATUS, include_blank: true %>
+          </div>
+    <% end %> 
+  </div>
+  <div class="span8 section">
+        <div class="title">
+            <h1><%= t('equipment.listing.title') %></h1>
+        </div>
+        <div class="data">
+         <table class="table">
+          <tr>
+            <th><%= Equipment.human_attribute_name('mac') %></th>
+            <th><%= Equipment.human_attribute_name('status') %></th>
+            <th><%= Equipment.human_attribute_name('comment') %></th>
+            <th><%= Equipment.human_attribute_name('model') %></th>
+            <th><%= Equipment.human_attribute_name('supplier') %></th>
+            <th><%= t('attributes.created_at') %></th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+
+        <% @equipments.each do |equipment| %>
+          <tr>
+            <td><%= equipment.mac %></td>
+            <td><%= equipment.status %></td>
+            <td><%= equipment.comment %></td>
+            <td><%= equipment.model.name %></td>
+            <td><%= equipment.supplier.name %></td>
+            <td><%= l equipment.created_at, format: :minimal %></td>
+            <td><%= link_to t('labels.show'), equipment %></td>
+            <td><%= link_to t('labels.edit'), edit_equipment_path(equipment) %></td>
+            <td><%= link_to t('labels.destroy'), equipment, method: :delete, data: { confirm: t('labels.are_you_sure') } %></td>
+          </tr>
+        <% end %>
+        </table>
+    </div>
+<%= link_to t('view.equipment.new_equipment'), new_equipment_path %>
+</div>

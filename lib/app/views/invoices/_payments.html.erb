@@ -1,0 +1,15 @@
+<fieldset class="pull-right total_1">
+    <table>
+            <tr>
+                 <%if params[:action] != 'new'  %>
+                         <td><%= f.text_field :created_at, as: :date,  readonly: :true  %></td>
+                         <% end %>
+                <td><%=f.text_field :amount, :label =>'Pagos'  %></td>
+
+       <%if current_user.role == 'Admin' %>
+          <td><%= f.hidden_field :_destroy %></td>
+          <td><%= button_to "Eliminar", '#', class: "remove_fields_payment btn btn-danger" %></td>
+  <% end %>
+  </tr>
+    </table>
+</fieldset>

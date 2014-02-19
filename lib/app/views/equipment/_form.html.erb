@@ -1,0 +1,23 @@
+<%= simple_form_for(@equipment) do |f| %>
+  <%= f.error_notification %>
+    <%= f.hidden_field :status %>
+  <div class="form-inputs">
+    
+    <%= f.input :mac %>
+     <%if @equipment.status != 'INSTALADO' %>
+        <% if params[:action] != 'new' && params[:action] != 'create'  %>
+          <%=f.select :status , Equipment::STATUS %>
+        <% end %>
+    <% end %>
+    <%= f.input :comment, :input_html => {:rows => 5}%>
+    <%= f.input :model do %>
+    <%= f.select :model_id,  Model.order('name').map {|l|[l.make.name + " -  "+ l.name, l.id]}, prompt: t('view.model.select_model') %>
+        <% end  %>
+    <%= f.input :supplier do %>
+    <%= f.select :supplier_id,  Supplier.order('name').map {|l|[l.name, l.id]}, prompt: t('view.suppliers.select_supplier') %>
+    <% end  %>
+  </div>
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

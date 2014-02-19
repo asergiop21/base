@@ -42,4 +42,30 @@ class Article < ActiveRecord::Base
         def update_quantity
                 self.quantity += new_quantity.to_f
         end
+
+        def self.import(file)
+                #CSV.foreach('/home/sergio/Escritorio/arti.csv', headers: true, :encoding => 'ISO-8859-1') do |row|
+                
+                  spreadsheet = open_spreadsheet(file)
+                  header = spreadsheet.row(1)
+                  (2..spreadsheet.last_row).each do |i|
+                     row = Hash[[ header, spreadsheet.row(i)].transpose]
+                       #CSV.foreach(file.path, headers: true, :encoding => 'ISO-8859-1') do |row|
+                       article = find_by_articles_code_supplier(row["articles_code_supplier"]) || new
+                       article.attributes = row.to_hash.slice(*accessible_attributes)
+                       article.save!
+                  end
+        end
+
+
+      def self.open_spreadsheet(file)
+              case File.extname(file.original_filename)
+              when ".csv" then Csv.new(file.path, nil, :ignore)
+              when ".xls" then Roo::Excel.new(file.path, nil, :ignore)
+              when ".xlsx" then Roo::Excelx.new(file.path, nil, :ignore)
+              else raise "Tipo de archivo desconocido: #{file.orignal_filename}"
+              end
+      end
+
+
 end

@@ -98,6 +98,7 @@
     errors:
       messages:
         blank: 'No puede quedar en blanco'
+        record_invalid: 'mensaje mal'
       models:
         customer:
           attributes:

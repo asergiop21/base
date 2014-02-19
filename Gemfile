@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.12'
 gem 'validates_timeliness'
 gem 'jquery-rails', '~>2.1.4'
+gem 'roo'
 #Base de Datos
 gem 'pg'
 #Authentication y Permisos

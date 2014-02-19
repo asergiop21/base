@@ -1,6 +1,10 @@
 GestionBase::Application.routes.draw do
 
-  resources :articles
+  resources :articles do
+   collection {post :import} 
+   
+   #match "articles_import" => "articles#import"
+  end
   resources :orders
   scope ":locale", locale: /#{I18n.available_locales.join("|")}/ do
   resources :categories
@@ -20,6 +24,7 @@ GestionBase::Application.routes.draw do
     match '*path', to: redirect("/#{I18n.default_locale}/%{path}")
     match '', to: redirect("/#{I18n.default_locale}")
     match "models" => "models#index"
+
 end
 # match "users" => "users#index"
   # The priority is based upon order of creation:
