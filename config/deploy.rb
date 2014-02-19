@@ -1,5 +1,5 @@
 require 'bundler/capistrano'
-set :application, "base_gestion.com"
+set :application, "montecaseros.com"
 #set :application, "base.com"
 set :repository,  "git@github.com:asergiop21/base.git" #https://github.com/asergiop21/base.git"
 #server "10.0.100.52", :web, :app, :db, primary: true
@@ -40,7 +40,7 @@ end
 desc "Migrate Production Database"
 task :migrate do
         puts "\n\n=== Migrating the Production Database! ===\n\n"
-        run "cd #{current_path}; rake db:migrate RAILS_ENV=production"
+        run "cd #{current_path}; bundle exec rake db:migrate RAILS_ENV=production"
         system "cap deploy:set_permissions"
 end
 end
