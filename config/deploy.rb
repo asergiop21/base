@@ -1,5 +1,5 @@
 require 'bundler/capistrano'
-set :application, "montecaseros.com"
+set :application, "base_gestion.com"
 #set :application, "base.com"
 set :repository,  "git@github.com:asergiop21/base.git" #https://github.com/asergiop21/base.git"
 #server "10.0.100.52", :web, :app, :db, primary: true
@@ -14,9 +14,9 @@ set :branch, 'master'
 #set :deploy_via, :copy
 default_run_options[:pty] = true
 ssh_options[:forward_agent] = true
-role :web, 'base_gestion.com'                          # Your HTTP server, Apache/etc
-role :app, 'base_gestion.com'                          # This may be the same as your `Web` server
-role :db, 'base_gestion.com', :primary => true # This is where Rails migrations will run
+role :web, 'montecaseros.com'                          # Your HTTP server, Apache/etc
+role :app, 'montecaseros.com'                          # This may be the same as your `Web` server
+role :db, 'montecaseros.com', :primary => true # This is where Rails migrations will run
 #role :db,  "your slave db-server here"
 
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
@@ -28,7 +28,7 @@ namespace :deploy do
 end
     desc "reload the database with seed data"
     task :seed do
-      run "cd #{current_path}; bundle exec rake db:seed RAILS_ENV=#{rails_env}"
+      run "cd #{current_path}; rake db:seed RAILS_ENV=#{rails_env}"
       run "cd #{deploy_to}/current && bundle install vendor/gems"
 end
 desc "Create Production Database"
@@ -40,7 +40,7 @@ end
 desc "Migrate Production Database"
 task :migrate do
         puts "\n\n=== Migrating the Production Database! ===\n\n"
-        run "cd #{current_path}; bundle exec rake db:migrate RAILS_ENV=production"
+        run "cd #{current_path}; rake db:migrate RAILS_ENV=production"
         system "cap deploy:set_permissions"
 end
 end
