@@ -51,11 +51,10 @@ $(document).ready(function(){
                 }).removeAttr('data-autocomplete-field'); });
 
         $(document).on('blur', '.quantity , .discount', function(event){
-
                 var field = this.id;
                 var id = field.split("_");
                 var input = $('#invoice_orders_attributes_'+ id[3]+ '_quantity').val();
-                if (input == 0)
+          if (input == 0)
         {
                 $(this).val(0);
                 input = 0;
@@ -80,7 +79,6 @@ $(document).ready(function(){
         }
 
         var price_x_quantity = parseFloat(input) * parseFloat(price);
-       
         var price_con_descuento =  (price_x_quantity - ((price_x_quantity * descuento ) /100)).toFixed(2);
         
         $(price_subtotal).val(price_con_descuento);
@@ -92,8 +90,12 @@ $(document).ready(function(){
         }
 valor = 0;
          $(document).find('.price_subtotal').each(function(){
+          
           re = $(this).val();
-          valor += parseFloat(re);
+          if (!isNaN(re)){
+                  valor += parseFloat(re);
+          }
+
          });
 
         $('#invoice_price_total').val(valor.toFixed(2));
