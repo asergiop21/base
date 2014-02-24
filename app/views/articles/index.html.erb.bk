@@ -8,7 +8,7 @@
          <% end %>
       </div>
     <div class="span3 side articulo">
-         <%= simple_form_for '', method: 'get' do |f| %>
+         <%= simple_form_for articles_path, method: 'get' do |f| %>
             <div class="search">
               <%= f.input( :q, label: 'Articulos', input_html: { 
                           data: {'autocomplete-field' => true,
@@ -18,6 +18,9 @@
                               }) %>
               <%= f.input :article_id, as: :hidden%>
             </div>
+<div class="search">
+       <%= f.collection_select :supplier_id, Supplier.order(:name), :id, :name , include_blank: true%>
+</div>
 
     <% end %> 
 
