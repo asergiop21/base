@@ -1,8 +1,8 @@
 class Article < ActiveRecord::Base
-        scope :con_nombre_barcode,   ->(nombre){where("LOWER(name) LIKE ? or barcode LIKE ?", "%#{nombre}%".downcase, "%#{nombre}%")  }
+        scope :con_nombre_barcode, ->(nombre){where("LOWER(name) LIKE ? or barcode = ?", "%#{nombre}%".downcase, "%#{nombre}%")  }
         scope :con_nombre,   ->(nombre){where("LOWER(name) LIKE ?", "%#{nombre}%".downcase)  }
         scope :con_id, ->(id){ where('id = ?', "#{id}")}
-        scope :proveedor, ->(supplier_id){where('supplier_id = ?', "#{supplier_id}")}
+      #  scope :proveedor, ->(supplier_id){where('supplier_id = ?', "#{supplier_id}")}
 
         attr_accessible :name, :percentaje, :price_cost, :price_total, :make_id, :new_category, :category_id, :quantity, :barcode, :articles_code_supplier, :supplier_id, :new_supplier, :new_quantity, :new_make
 
@@ -60,12 +60,20 @@ class Article < ActiveRecord::Base
 
       def self.open_spreadsheet(file)
               case File.extname(file.original_filename)
-              when ".csv" then Csv.new(file.path, nil, :ignore)
+              when ".csv" then Roo::Csv.new(file.path, nil, :ignore)
               when ".xls" then Roo::Excel.new(file.path, nil, :ignore)
               when ".xlsx" then Roo::Excelx.new(file.path, nil, :ignore)
-              else raise "Tipo de archivo desconocido: #{file.orignal_filename}"
+              else raise "Tipo de archivo desconocido: #{file.original_filename}"
               end
       end
 
+    def self.to_csv(options = {})
+            CSV.generate(options) do |csv|
+                    csv << column_names
+                    all.each do |article|
+                    csv << article.attributes.values_at(*column_names)
+                    end
+    end
 
+end
 end

@@ -14,9 +14,9 @@ set :branch, 'master'
 #set :deploy_via, :copy
 default_run_options[:pty] = true
 ssh_options[:forward_agent] = true
-role :web, 'montecaseros.com'                          # Your HTTP server, Apache/etc
-role :app, 'montecaseros.com'                          # This may be the same as your `Web` server
-role :db, 'montecaseros.com', :primary => true # This is where Rails migrations will run
+role :web, 'base_sergio.com'                          # Your HTTP server, Apache/etc
+role :app, 'base_sergio.com'                          # This may be the same as your `Web` server
+role :db, 'base_sergio.com', :primary => true # This is where Rails migrations will run
 #role :db,  "your slave db-server here"
 
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
