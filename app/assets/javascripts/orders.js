@@ -51,6 +51,7 @@ $(document).ready(function(){
                 }).removeAttr('data-autocomplete-field'); });
 
         $(document).on('blur', '.quantity , .discount', function(event){
+
                 var field = this.id;
                 var id = field.split("_");
                 var input = $('#invoice_orders_attributes_'+ id[3]+ '_quantity').val();
@@ -61,6 +62,7 @@ $(document).ready(function(){
         }
 
         var price_subtotal = '#invoice_orders_attributes_' + id[3] + '_price_total';
+
         var price = $('#invoice_orders_attributes_' + id[3] + '_unit_price').val();
         var quantity_stock = $('#invoice_orders_attributes_' + id[3] + '_quantity_stock').val();
         var descuento = $('#invoice_orders_attributes_' + id[3] + '_discount').val();
@@ -68,7 +70,7 @@ $(document).ready(function(){
         if (descuento == 0 || descuento == ""){
             descuento = 0
         }
-        if ( parseFloat(input) > parseFloat(quantity_stock) )
+/*        if ( parseFloat(input) > parseFloat(quantity_stock) )
         {
                 input = quantity_stock
                 $(this).css({'background': 'red'})
@@ -77,7 +79,7 @@ $(document).ready(function(){
 
                 $(this).css({'background': '#FFF'})
         }
-
+*/
         var price_x_quantity = parseFloat(input) * parseFloat(price);
         var price_con_descuento =  (price_x_quantity - ((price_x_quantity * descuento ) /100)).toFixed(2);
         
