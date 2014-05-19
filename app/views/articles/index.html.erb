@@ -21,7 +21,7 @@
 
     <% end %> 
 
-<%= form_for import_articles_path, multipart: true do %>
+<%= form_tag import_articles_path, multipart: true do %>
   <div class="search span4">
           <%= file_field_tag :file, class: "import" %>
           <div>
@@ -33,7 +33,8 @@
 <div class="search">
 Descargar:
   <%= link_to "CSV", articles_path(format: "csv")  %>|
-  <%= link_to "XLS", articles_path(format: "xls")  %>
+  <%= link_to "XLS", articles_path(format: "xls")  %>| 
+  <%= link_to "Ejemplo", example_articles_path(format: "xls")  %>| 
 </div>
 
   </div>

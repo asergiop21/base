@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(:version => 20140217185712) do
     t.datetime "updated_at",          :null => false
   end
 
-  create_table "equipment", :force => true do |t|
+  create_table "equipments", :force => true do |t|
     t.string   "mac"
     t.text     "comment"
     t.integer  "user_id"
@@ -70,11 +70,11 @@ ActiveRecord::Schema.define(:version => 20140217185712) do
 
   create_table "invoices", :force => true do |t|
     t.integer  "customer_id"
-    t.decimal  "price_total",      :precision => 8, :scale => 2
-    t.datetime "created_at",                                                        :null => false
-    t.datetime "updated_at",                                                        :null => false
-    t.boolean  "current_account",                                :default => false
-    t.boolean  "cancelar_invoice",                               :default => false
+    t.decimal  "price_total"
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
+    t.boolean  "current_account",  :default => false
+    t.boolean  "cancelar_invoice", :default => false
   end
 
   create_table "locations", :force => true do |t|

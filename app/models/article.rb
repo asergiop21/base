@@ -52,6 +52,11 @@ class Article < ActiveRecord::Base
                      row = Hash[[ header, spreadsheet.row(i)].transpose]
                        #CSV.foreach(file.path, headers: true, :encoding => 'ISO-8859-1') do |row|
                        article = find_by_articles_code_supplier(row["articles_code_supplier"]) || new
+			@quantity = row["quantity"]
+			if (@quantity == "  " || @quantity == nil)
+				row["quantity"] = 0		
+			end
+				pry
                        article.attributes = row.to_hash.slice(*accessible_attributes)
                        article.save!
                   end

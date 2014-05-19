@@ -2,8 +2,7 @@ GestionBase::Application.routes.draw do
 
   resources :articles do
    collection {post :import} 
-   
-   #match "articles_import" => "articles#import"
+   collection {get :example} 
   end
   resources :orders
   scope ":locale", locale: /#{I18n.available_locales.join("|")}/ do

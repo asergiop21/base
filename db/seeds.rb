@@ -12,7 +12,8 @@ user = User.create!(
   lastname: 'Administrator',
   username: 'admin',
   email: 'admin@ispweb.com',
-#  language: 'es',
+  role: 'Admin'
+  #  language: 'es',
   password: 'admin1',
   password_confirmation: 'admin1',
  # admin: true,

@@ -24,7 +24,7 @@ def index
   # GET /articles/1
   # GET /articles/1.json
   def show
-    @article = Article.find(params[:id])
+	  @article = Article.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -95,8 +95,15 @@ def index
   end
 
   def import
-          Article.import(params[:file])
+	  Article.import(params[:file])
           redirect_to root_url, notice: "productos Importados"
   end
+
+ def example
+    	@example = Article.limit(10)
+	 respond_to do |format|
+	format.xls #{ send_data  @article_exampl.to_csv(col_sep: "\t") }
+    end
+ end
 
 end

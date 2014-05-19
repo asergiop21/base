@@ -114,6 +114,9 @@
       customer: 'Clientes'
       location: 'Localidades'
       invoice: 'Remito'
+      supplier: 'Proveedor'
+      make: 'Marca'
+      make: 'Categoria'
     attributes:
       customer:
         name: 'Nombre'
@@ -123,7 +126,6 @@
         reference_direction: 'Dirección de referencia'
         email: 'email'
         dni: 'dni'
-        location_id: 'Localidad'
         plans_id: 'Planes'
         description: 'Descripcion'
         cuit: 'cuit '
@@ -161,6 +163,7 @@
         start_time: 'Tiempo Inicial'
         end_time: 'Tiempo Final'
       supplier:
+        location_id: 'Localidad'
         name: 'Nombre'
         address: 'Dirección'
         locality: 'Localidad'
