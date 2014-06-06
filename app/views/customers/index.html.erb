@@ -24,12 +24,13 @@
         <% end %> 
 </div>
 <div class="span8 section">
-
         <div class="title">
                 <h2><%= t "customers.listing.title" %></h2>
         </div>
         <div  class="data">
-                <% if @customers %>
+
+<%= will_paginate @customers %>
+					 <% if @customers %>
                         <table class="table">
                                 <tr>
                                         <th><%= Customer.human_attribute_name(:lastname)   %></th>

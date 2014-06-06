@@ -56,6 +56,7 @@ class Article < ActiveRecord::Base
 			if (@quantity == "  " || @quantity == nil)
 				row["quantity"] = 0		
 			end
+				pry
                        article.attributes = row.to_hash.slice(*accessible_attributes)
                        article.save!
                   end

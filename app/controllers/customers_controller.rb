@@ -1,12 +1,15 @@
 class CustomersController < ApplicationController
   # GET /customers
   # GET /customers.json
-before_filter :authenticate_user!, :except => [:some_action_without_auth]
-load_and_authorize_resource :only =>[:show]
 
+		  require 'will_paginate/array'
+		  before_filter :authenticate_user!, :except => [:some_action_without_auth]
+load_and_authorize_resource :only =>[:show]
 def index
+  @customers = Customer.all
    @customers = Customer.con_nombre(params[:q]) if params[:q].present?
    @customers = Customer.con_id(params[:customer_id]) if params[:customer_id].present?
+  @customers = @customers.paginate(page: params[:page], per_page: 10)
 
   respond_to do |format|
       format.html # show.html.erb

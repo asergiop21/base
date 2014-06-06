@@ -1,8 +1,8 @@
 require 'bundler/capistrano'
-set :application, "montecaseros.com"
+set :application, "base_gestion.com"
 set :repository,  "git@github.com:asergiop21/base.git" #https://github.com/asergiop21/base.git"
 #server "10.0.100.52", :web, :app, :db, primary: true
-set :deploy_to, '/home/alejandro/base_gestion_prod'
+set :deploy_to, '/home/alejandro/base_nueva'
 #set :deploy_to, '/home/sergio/proyecto_base'
 set :scm, :git # You can set :scm explicitly or Capistrano will make an intelligent guess based on known version control directory names
 set :user, 'alejandro'
@@ -12,9 +12,9 @@ set :branch, 'master'
 #set :deploy_via, :copy
 default_run_options[:pty] = true
 ssh_options[:forward_agent] = true
-role :web, 'montecaseros.com'                          # Your HTTP server, Apache/etc
-role :app, 'montecaseros.com'                          # This may be the same as your `Web` server
-role :db, 'montecaseros.com', :primary => true # This is where Rails migrations will run
+role :web, 'base_gestion.com'                          # Your HTTP server, Apache/etc
+role :app, 'base_gestion.com'                          # This may be the same as your `Web` server
+role :db, 'base_gestion.com', :primary => true # This is where Rails migrations will run
 #role :db,  "your slave db-server here"
 
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
