@@ -90,6 +90,9 @@
   devise:
         sign_in: 'Iniciar Sesion'
 
+  articles:
+
+                
   attributes:
     created_at: 'Creado'
     update_at: 'Actualizado'
@@ -117,6 +120,7 @@
       supplier: 'Proveedor'
       make: 'Marca'
       make: 'Categoria'
+      article: 'Articulo'
     attributes:
       customer:
         name: 'Nombre'

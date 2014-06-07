@@ -1,51 +1,49 @@
 <%= simple_form_for(@article) do |f| %>
-        <%= f.error_notification %>
+    <%= f.error_notification %>
 <div class="container">
-        <div class="form-inputs">
-   <div class="row-fluid">
-           
+    <div class="form-inputs">
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="span5">
+                    <%= f.input :name, label: "Nombre" %>
+                    <%= f.input :price_cost, label: "Precio de Costo", as: :string  %>
+                    <%= f.input :percentaje, label: "Porcentaje", as: :string  %>
+                    <%= f.input :price_total, label: "Precio total", :readonly => true , as: :string%>
+                    <% if params[:action] == "new" || params[:action]=="create" %>
+                        <%=f.label :quantity,"Cantidad"  %>
+                    <%= f.input :quantity, label: false %>
+                <% end %>
+                    <% if params[:action]== "edit" || params[:action] == "update" %>
+                        <%= f.label :quantity, "Cantidad Actual" %>
+                    <%= f.text_field :quantity, :readonly => true %>
+                    <%= f.label :new_quantity, "Cantidad nueva" %>
+                    <%= f.input :new_quantity, label: false  %>
+                <% end %>
+                </div>       
+                <div class = "span6">
+                    <%= f.input :barcode, label: "Codigo de Barra" %>
+                    <%= f.input :articles_code_supplier, label: "Codigo Articulo Proveedor" %>
+                    <%= f.label "Marca" %>
+                    <%= f.collection_select :make_id, Make.order(:name), :id, :name %>
+                    o crea un
+                    <%= f.text_field :new_make  %><br>
 
-                <div class="span12">
-                                <div class="span5">
-                                        <%= f.input :name, label: "Nombre" %>
-                                        <%= f.input :price_cost, label: "Precio de Costo" %>
-                                        <%= f.input :percentaje, label: "Porcentaje"  %>
-                                        <%= f.input :price_total, label: "Precio total", :readonly => true %>
-                                        <% if params[:action] == "new" || params[:action]=="create" %>
-                                        <%=f.label :quantity,"Cantidad"  %>
-                                        <%= f.input :quantity, label: false %>
-                                        <% end %>
-                                        <% if params[:action]== "edit" || params[:action] == "update" %>
-                                               <%= f.label :quantity, "Cantidad Actual" %>
-                                               <%= f.text_field :quantity, :readonly => true %>
-                                               <%= f.label :new_quantity, "Cantidad nueva" %>
-                                               <%= f.input :new_quantity, label: false  %>
-                                          <% end %>
-                                </div>       
-                                <div class = "span6">
-                                        <%= f.input :barcode, label: "Codigo de Barra" %>
-                                        <%= f.input :articles_code_supplier, label: "Codigo Articulo Proveedor" %>
-                                        <%= f.label "Marca" %>
-                                        <%= f.collection_select :make_id, Make.order(:name), :id, :name %>
-                                        o crea un
-                                        <%= f.text_field :new_make  %><br>
-                                       
-                                        <%= f.label "Proovedor" %>
-                                        <%= f.collection_select :supplier_id, Supplier.order(:name), :id, :name %>
-                                        o crea un
-                                        <%= f.text_field :new_supplier  %><br>
-                                        <%= f.label "Categoria" %>
-                                        <%= f.collection_select :category_id, Category.order(:name), :id, :name %>
-                                        o crea una
-                                        <%= f.text_field :new_category  %>
-                                </div>
+                    <%= f.label "Proovedor" %>
+                    <%= f.collection_select :supplier_id, Supplier.order(:name), :id, :name %>
+                    o crea un
+                    <%= f.text_field :new_supplier  %><br>
+                    <%= f.label "Categoria" %>
+                    <%= f.collection_select :category_id, Category.order(:name), :id, :name %>
+                    o crea una
+                    <%= f.text_field :new_category  %>
                 </div>
+            </div>
         </div>
         <div class="form-actions">
-                <%= f.button :submit %>
+            <%= f.submit class: 'btn btn-primary'  %>
         </div>
 
+    </div>
 </div>
-   </div>
 </div>
 <% end %>

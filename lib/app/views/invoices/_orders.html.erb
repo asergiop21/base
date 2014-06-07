@@ -7,7 +7,7 @@
                 } 
                 }) %>
         <%= f.input :articles_id, as: :hidden, label: false%>
-        <%= f.input :quantity_stock, as: :hidden , label: false%></td>
+        <%= f.input :quantity_stock, as: :hidden , label: false, as: :string%></td>
 <td class="span2"> <%= f.input :quantity, label: false, :input_html => {:class => "input-small quantity"}  %> </td>
 <td class="span2"> <%= f.input :unit_price, label: false, :input_html => {:class => "input-small"}  %></td>
 
