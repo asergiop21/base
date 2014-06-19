@@ -18,7 +18,6 @@ $(document).ready(function(){
         
         $('div.section ').on('keypress', '[data-autocomplete-for]', function(){
                 var input = $(this);
-
                 input.autocomplete({
                         source: function(request, response) {
                                 $.ajax({
@@ -34,6 +33,7 @@ $(document).ready(function(){
                                 });
                         },
                         autoFocus: true,
+                        maxItemsToShow: 20,
                         select: function(event, ui) {
                                 input.val(ui.item.label);
                                 // alert (ui.item.item.price_total);
@@ -42,8 +42,6 @@ $(document).ready(function(){
                                 var field_article_id = '#invoice_orders_attributes_' + id[3] + '_articles_id';
                                 var field_unit_price = '#invoice_orders_attributes_' + id[3] + '_unit_price';
                                 var quantity_stock = '#invoice_orders_attributes_' + id[3] + '_quantity_stock';
-
-
                                 $(field_article_id).val(ui.item.item.id);
                                 $(field_unit_price).val(ui.item.item.price_total);
                                 $(quantity_stock).val(ui.item.item.quantity);
