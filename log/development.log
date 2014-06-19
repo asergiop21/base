@@ -49324,3 +49324,2419 @@ Served asset /articles.js - 304 Not Modified (0ms)
 
 Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-19 00:53:16 -0300
 Served asset /application.js - 304 Not Modified (3ms)
+
+
+Started GET "/articles?locale=es" for 127.0.0.1 at 2014-06-19 01:10:15 -0300
+Processing by ArticlesController#index as HTML
+  Parameters: {"locale"=>"es"}
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+ERROR: compiling _app_views_articles_index_html_erb__345982386_96368300 RAISED /home/sergio/base/app/views/articles/index.html.erb:68: syntax error, unexpected ':', expecting ')'
+...article.supplier.name.nil? "" : article.supplier.name );@out...
+...                               ^
+Function body:           def _app_views_articles_index_html_erb__345982386_96368300(local_assigns, output_buffer)
+            _old_virtual_path, @virtual_path = @virtual_path, "articles/index";_old_output_buffer = @output_buffer;;@output_buffer = output_buffer || ActionView::OutputBuffer.new;@output_buffer.safe_concat('<div class="row" >
+     <div class="span12">
+');          if flash[:error] 
+@output_buffer.safe_concat('             <li class="alert alert-error">');@output_buffer.append= ( flash[:error]  );@output_buffer.safe_concat('</li>
+');          end 
+          if notice 
+@output_buffer.safe_concat('             <li class="alert alert-success">');@output_buffer.append= ( notice  );@output_buffer.safe_concat('</li>
+');          end 
+@output_buffer.safe_concat('      </div>
+    <div class="span3 side articulo">
+         ');@output_buffer.append=  simple_form_for '', method: 'get' do |f| @output_buffer.safe_concat('
+');@output_buffer.safe_concat('            <div class="search">
+              ');@output_buffer.append= ( f.input( :q, label: 'Articulos', input_html: { 
+                          data: {'autocomplete-field' => true,
+                                  'autocomplete-for' => '#_article_id',
+                                  'autocomplete-url' => articles_path(format: :json)
+                                } 
+                              }) );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('              ');@output_buffer.append= ( f.input :article_id, as: :hidden);@output_buffer.safe_concat('
+');@output_buffer.safe_concat('            </div>
+
+');     end  
+@output_buffer.safe_concat('
+');@output_buffer.append=  form_tag import_articles_path, multipart: true do @output_buffer.safe_concat('
+');@output_buffer.safe_concat('  <div class="search span4">
+          ');@output_buffer.append= ( file_field_tag :file, class: "import" );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('          <div>
+              ');@output_buffer.append= ( submit_tag "Import Archivo", class: "btn btn-primary" );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('          </div>
+
+</div>
+');     end 
+@output_buffer.safe_concat('<div class="search">
+Descargar:
+  ');@output_buffer.append= ( link_to "CSV", articles_path(format: "csv")  );@output_buffer.safe_concat('|
+  ');@output_buffer.append= ( link_to "XLS", articles_path(format: "xls")  );@output_buffer.safe_concat('| 
+  ');@output_buffer.append= ( link_to "Ejemplo", example_articles_path(format: "xls")  );@output_buffer.safe_concat('| 
+</div>
+
+  </div>
+
+    
+
+
+  <div class="span8 section">
+    <div class="title">
+        <h2>Listado de Articulos</h2>
+    </div>
+');@output_buffer.append= ( will_paginate @articles );@output_buffer.safe_concat('
+'); if @articles 
+@output_buffer.safe_concat(' 
+       <table class="table">
+  <tr>
+    <th class="center">Cod</th>
+    <th class="center">Nombre</th>
+    <th class="center">Proveedor</th>
+    <th class="label label-info span2i center">Precio Publico</th>
+    <th class="center">Stock</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+'); @articles.each do |article| 
+@output_buffer.safe_concat('  <tr>
+    <td class="span4">');@output_buffer.append= ( article.barcode );@output_buffer.safe_concat('</td>
+    <td class="span4">');@output_buffer.append= ( article.name );@output_buffer.safe_concat('</td>
+    <td class="span4">');@output_buffer.append= ( article.supplier.name.nil? "" : article.supplier.name );@output_buffer.safe_concat('</td>
+    <td class="label label-info span2 center">');@output_buffer.append= ( number_to_currency(article.price_total) );@output_buffer.safe_concat('</td>
+    <td class="center span2">');@output_buffer.append= ( article.quantity );@output_buffer.safe_concat('</td>
+');     if can? :show, @articles 
+@output_buffer.safe_concat('       <td class="span1">');@output_buffer.append= ( link_to 'Ver', article );@output_buffer.safe_concat('</td>
+    <td class="span1">');@output_buffer.append= ( link_to 'Editar', edit_article_path(article) );@output_buffer.safe_concat('</td>
+');  end 
+  end 
+@output_buffer.safe_concat(' </tr>
+</table>
+'); end 
+@output_buffer.safe_concat('
+<br />
+');@output_buffer.append= ( link_to 'Nuevo Articulo', new_article_path );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('</div>
+
+
+
+
+
+
+
+
+');@output_buffer.to_s
+          ensure
+            @virtual_path, @output_buffer = _old_virtual_path, _old_output_buffer
+          end
+
+Backtrace: /home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_view/template.rb:297:in `module_eval'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_view/template.rb:297:in `compile'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_view/template.rb:244:in `block in compile!'
+<internal:prelude>:10:in `synchronize'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_view/template.rb:232:in `compile!'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_view/template.rb:144:in `block in render'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/activesupport-3.2.12/lib/active_support/notifications.rb:125:in `instrument'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_view/template.rb:143:in `render'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_view/renderer/template_renderer.rb:47:in `block (2 levels) in render_template'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_view/renderer/abstract_renderer.rb:38:in `block in instrument'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/activesupport-3.2.12/lib/active_support/notifications.rb:123:in `block in instrument'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/activesupport-3.2.12/lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/activesupport-3.2.12/lib/active_support/notifications.rb:123:in `instrument'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_view/renderer/abstract_renderer.rb:38:in `instrument'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_view/renderer/template_renderer.rb:46:in `block in render_template'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_view/renderer/template_renderer.rb:54:in `render_with_layout'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_view/renderer/template_renderer.rb:45:in `render_template'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_view/renderer/template_renderer.rb:18:in `render'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_view/renderer/renderer.rb:36:in `render_template'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_view/renderer/renderer.rb:17:in `render'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/abstract_controller/rendering.rb:110:in `_render_template'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_controller/metal/streaming.rb:225:in `_render_template'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/abstract_controller/rendering.rb:103:in `render_to_body'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_controller/metal/renderers.rb:28:in `render_to_body'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_controller/metal/compatibility.rb:50:in `render_to_body'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/abstract_controller/rendering.rb:88:in `render'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_controller/metal/rendering.rb:16:in `render'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_controller/metal/instrumentation.rb:40:in `block (2 levels) in render'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/activesupport-3.2.12/lib/active_support/core_ext/benchmark.rb:5:in `block in ms'
+/home/sergio/.rvm/rubies/ruby-1.9.3-p547/lib/ruby/1.9.1/benchmark.rb:295:in `realtime'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/activesupport-3.2.12/lib/active_support/core_ext/benchmark.rb:5:in `ms'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_controller/metal/instrumentation.rb:40:in `block in render'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_controller/metal/instrumentation.rb:83:in `cleanup_view_runtime'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/activerecord-3.2.12/lib/active_record/railties/controller_runtime.rb:24:in `cleanup_view_runtime'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_controller/metal/instrumentation.rb:39:in `render'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_controller/metal/mime_responds.rb:196:in `respond_to'
+/home/sergio/base/app/controllers/articles_controller.rb:15:in `index'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/abstract_controller/base.rb:167:in `process_action'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_controller/metal/rendering.rb:10:in `process_action'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/abstract_controller/callbacks.rb:18:in `block in process_action'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:447:in `_run__652186612__process_action__819132284__callbacks'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:405:in `__run_callback'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:385:in `_run_process_action_callbacks'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:81:in `run_callbacks'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/abstract_controller/callbacks.rb:17:in `process_action'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_controller/metal/rescue.rb:29:in `process_action'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_controller/metal/instrumentation.rb:30:in `block in process_action'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/activesupport-3.2.12/lib/active_support/notifications.rb:123:in `block in instrument'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/activesupport-3.2.12/lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/activesupport-3.2.12/lib/active_support/notifications.rb:123:in `instrument'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_controller/metal/params_wrapper.rb:207:in `process_action'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/activerecord-3.2.12/lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/abstract_controller/base.rb:121:in `process'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/abstract_controller/rendering.rb:45:in `process'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_controller/metal.rb:203:in `dispatch'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_controller/metal.rb:246:in `block in action'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_dispatch/routing/route_set.rb:73:in `call'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_dispatch/routing/route_set.rb:73:in `dispatch'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_dispatch/routing/route_set.rb:36:in `call'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/journey-1.0.4/lib/journey/router.rb:68:in `block in call'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/journey-1.0.4/lib/journey/router.rb:56:in `each'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/journey-1.0.4/lib/journey/router.rb:56:in `call'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_dispatch/routing/route_set.rb:601:in `call'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/warden-1.2.3/lib/warden/manager.rb:35:in `block in call'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/warden-1.2.3/lib/warden/manager.rb:34:in `catch'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/warden-1.2.3/lib/warden/manager.rb:34:in `call'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/rack-1.4.5/lib/rack/etag.rb:23:in `call'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/rack-1.4.5/lib/rack/conditionalget.rb:25:in `call'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_dispatch/middleware/head.rb:14:in `call'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_dispatch/middleware/flash.rb:242:in `call'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/rack-1.4.5/lib/rack/session/abstract/id.rb:210:in `context'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/rack-1.4.5/lib/rack/session/abstract/id.rb:205:in `call'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_dispatch/middleware/cookies.rb:341:in `call'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/activerecord-3.2.12/lib/active_record/query_cache.rb:64:in `call'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract/connection_pool.rb:479:in `call'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:405:in `_run__1063800723__call__706577500__callbacks'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:405:in `__run_callback'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:81:in `run_callbacks'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_dispatch/middleware/reloader.rb:65:in `call'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/railties-3.2.12/lib/rails/rack/logger.rb:32:in `call_app'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/railties-3.2.12/lib/rails/rack/logger.rb:16:in `block in call'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/activesupport-3.2.12/lib/active_support/tagged_logging.rb:22:in `tagged'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/railties-3.2.12/lib/rails/rack/logger.rb:16:in `call'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_dispatch/middleware/request_id.rb:22:in `call'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/rack-1.4.5/lib/rack/methodoverride.rb:21:in `call'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/rack-1.4.5/lib/rack/runtime.rb:17:in `call'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/activesupport-3.2.12/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/rack-1.4.5/lib/rack/lock.rb:15:in `call'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_dispatch/middleware/static.rb:62:in `call'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/railties-3.2.12/lib/rails/engine.rb:479:in `call'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/railties-3.2.12/lib/rails/application.rb:223:in `call'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/rack-1.4.5/lib/rack/content_length.rb:14:in `call'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/railties-3.2.12/lib/rails/rack/log_tailer.rb:17:in `call'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/thin-1.6.1/lib/thin/connection.rb:82:in `block in pre_process'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/thin-1.6.1/lib/thin/connection.rb:80:in `catch'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/thin-1.6.1/lib/thin/connection.rb:80:in `pre_process'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/thin-1.6.1/lib/thin/connection.rb:55:in `process'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/thin-1.6.1/lib/thin/connection.rb:41:in `receive_data'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/eventmachine-1.0.3/lib/eventmachine.rb:187:in `run_machine'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/eventmachine-1.0.3/lib/eventmachine.rb:187:in `run'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/thin-1.6.1/lib/thin/backends/base.rb:73:in `start'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/thin-1.6.1/lib/thin/server.rb:162:in `start'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/rack-1.4.5/lib/rack/handler/thin.rb:13:in `run'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/rack-1.4.5/lib/rack/server.rb:268:in `start'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/railties-3.2.12/lib/rails/commands/server.rb:70:in `start'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/railties-3.2.12/lib/rails/commands.rb:55:in `block in <top (required)>'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/railties-3.2.12/lib/rails/commands.rb:50:in `tap'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/railties-3.2.12/lib/rails/commands.rb:50:in `<top (required)>'
+script/rails:6:in `require'
+script/rails:6:in `<main>'
+  Rendered articles/index.html.erb within layouts/application (1.8ms)
+Completed 500 Internal Server Error in 90ms
+
+ActionView::Template::Error (/home/sergio/base/app/views/articles/index.html.erb:68: syntax error, unexpected ':', expecting ')'
+...article.supplier.name.nil? "" : article.supplier.name );@out...
+...                               ^):
+    65:   <tr>
+    66:     <td class="span4"><%= article.barcode %></td>
+    67:     <td class="span4"><%= article.name %></td>
+    68:     <td class="span4"><%= article.supplier.name.nil? "" : article.supplier.name %></td>
+    69:     <td class="label label-info span2 center"><%= number_to_currency(article.price_total) %></td>
+    70:     <td class="center span2"><%= article.quantity %></td>
+    71:     <% if can? :show, @articles %>
+  app/controllers/articles_controller.rb:15:in `index'
+
+
+  Rendered /home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/_trace.erb (3.3ms)
+  Rendered /home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.5ms)
+  Rendered /home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (18.7ms)
+
+
+Started GET "/articles?locale=es" for 127.0.0.1 at 2014-06-19 01:10:17 -0300
+Processing by ArticlesController#index as HTML
+  Parameters: {"locale"=>"es"}
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+ERROR: compiling _app_views_articles_index_html_erb__345982386_96368300 RAISED /home/sergio/base/app/views/articles/index.html.erb:68: syntax error, unexpected ':', expecting ')'
+...article.supplier.name.nil? "" : article.supplier.name );@out...
+...                               ^
+Function body:           def _app_views_articles_index_html_erb__345982386_96368300(local_assigns, output_buffer)
+            _old_virtual_path, @virtual_path = @virtual_path, "articles/index";_old_output_buffer = @output_buffer;;@output_buffer = output_buffer || ActionView::OutputBuffer.new;@output_buffer.safe_concat('<div class="row" >
+     <div class="span12">
+');          if flash[:error] 
+@output_buffer.safe_concat('             <li class="alert alert-error">');@output_buffer.append= ( flash[:error]  );@output_buffer.safe_concat('</li>
+');          end 
+          if notice 
+@output_buffer.safe_concat('             <li class="alert alert-success">');@output_buffer.append= ( notice  );@output_buffer.safe_concat('</li>
+');          end 
+@output_buffer.safe_concat('      </div>
+    <div class="span3 side articulo">
+         ');@output_buffer.append=  simple_form_for '', method: 'get' do |f| @output_buffer.safe_concat('
+');@output_buffer.safe_concat('            <div class="search">
+              ');@output_buffer.append= ( f.input( :q, label: 'Articulos', input_html: { 
+                          data: {'autocomplete-field' => true,
+                                  'autocomplete-for' => '#_article_id',
+                                  'autocomplete-url' => articles_path(format: :json)
+                                } 
+                              }) );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('              ');@output_buffer.append= ( f.input :article_id, as: :hidden);@output_buffer.safe_concat('
+');@output_buffer.safe_concat('            </div>
+
+');     end  
+@output_buffer.safe_concat('
+');@output_buffer.append=  form_tag import_articles_path, multipart: true do @output_buffer.safe_concat('
+');@output_buffer.safe_concat('  <div class="search span4">
+          ');@output_buffer.append= ( file_field_tag :file, class: "import" );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('          <div>
+              ');@output_buffer.append= ( submit_tag "Import Archivo", class: "btn btn-primary" );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('          </div>
+
+</div>
+');     end 
+@output_buffer.safe_concat('<div class="search">
+Descargar:
+  ');@output_buffer.append= ( link_to "CSV", articles_path(format: "csv")  );@output_buffer.safe_concat('|
+  ');@output_buffer.append= ( link_to "XLS", articles_path(format: "xls")  );@output_buffer.safe_concat('| 
+  ');@output_buffer.append= ( link_to "Ejemplo", example_articles_path(format: "xls")  );@output_buffer.safe_concat('| 
+</div>
+
+  </div>
+
+    
+
+
+  <div class="span8 section">
+    <div class="title">
+        <h2>Listado de Articulos</h2>
+    </div>
+');@output_buffer.append= ( will_paginate @articles );@output_buffer.safe_concat('
+'); if @articles 
+@output_buffer.safe_concat(' 
+       <table class="table">
+  <tr>
+    <th class="center">Cod</th>
+    <th class="center">Nombre</th>
+    <th class="center">Proveedor</th>
+    <th class="label label-info span2i center">Precio Publico</th>
+    <th class="center">Stock</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+'); @articles.each do |article| 
+@output_buffer.safe_concat('  <tr>
+    <td class="span4">');@output_buffer.append= ( article.barcode );@output_buffer.safe_concat('</td>
+    <td class="span4">');@output_buffer.append= ( article.name );@output_buffer.safe_concat('</td>
+    <td class="span4">');@output_buffer.append= ( article.supplier.name.nil? "" : article.supplier.name );@output_buffer.safe_concat('</td>
+    <td class="label label-info span2 center">');@output_buffer.append= ( number_to_currency(article.price_total) );@output_buffer.safe_concat('</td>
+    <td class="center span2">');@output_buffer.append= ( article.quantity );@output_buffer.safe_concat('</td>
+');     if can? :show, @articles 
+@output_buffer.safe_concat('       <td class="span1">');@output_buffer.append= ( link_to 'Ver', article );@output_buffer.safe_concat('</td>
+    <td class="span1">');@output_buffer.append= ( link_to 'Editar', edit_article_path(article) );@output_buffer.safe_concat('</td>
+');  end 
+  end 
+@output_buffer.safe_concat(' </tr>
+</table>
+'); end 
+@output_buffer.safe_concat('
+<br />
+');@output_buffer.append= ( link_to 'Nuevo Articulo', new_article_path );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('</div>
+
+
+
+
+
+
+
+
+');@output_buffer.to_s
+          ensure
+            @virtual_path, @output_buffer = _old_virtual_path, _old_output_buffer
+          end
+
+Backtrace: /home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_view/template.rb:297:in `module_eval'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_view/template.rb:297:in `compile'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_view/template.rb:244:in `block in compile!'
+<internal:prelude>:10:in `synchronize'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_view/template.rb:232:in `compile!'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_view/template.rb:144:in `block in render'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/activesupport-3.2.12/lib/active_support/notifications.rb:125:in `instrument'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_view/template.rb:143:in `render'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_view/renderer/template_renderer.rb:47:in `block (2 levels) in render_template'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_view/renderer/abstract_renderer.rb:38:in `block in instrument'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/activesupport-3.2.12/lib/active_support/notifications.rb:123:in `block in instrument'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/activesupport-3.2.12/lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/activesupport-3.2.12/lib/active_support/notifications.rb:123:in `instrument'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_view/renderer/abstract_renderer.rb:38:in `instrument'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_view/renderer/template_renderer.rb:46:in `block in render_template'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_view/renderer/template_renderer.rb:54:in `render_with_layout'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_view/renderer/template_renderer.rb:45:in `render_template'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_view/renderer/template_renderer.rb:18:in `render'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_view/renderer/renderer.rb:36:in `render_template'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_view/renderer/renderer.rb:17:in `render'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/abstract_controller/rendering.rb:110:in `_render_template'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_controller/metal/streaming.rb:225:in `_render_template'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/abstract_controller/rendering.rb:103:in `render_to_body'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_controller/metal/renderers.rb:28:in `render_to_body'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_controller/metal/compatibility.rb:50:in `render_to_body'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/abstract_controller/rendering.rb:88:in `render'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_controller/metal/rendering.rb:16:in `render'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_controller/metal/instrumentation.rb:40:in `block (2 levels) in render'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/activesupport-3.2.12/lib/active_support/core_ext/benchmark.rb:5:in `block in ms'
+/home/sergio/.rvm/rubies/ruby-1.9.3-p547/lib/ruby/1.9.1/benchmark.rb:295:in `realtime'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/activesupport-3.2.12/lib/active_support/core_ext/benchmark.rb:5:in `ms'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_controller/metal/instrumentation.rb:40:in `block in render'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_controller/metal/instrumentation.rb:83:in `cleanup_view_runtime'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/activerecord-3.2.12/lib/active_record/railties/controller_runtime.rb:24:in `cleanup_view_runtime'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_controller/metal/instrumentation.rb:39:in `render'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_controller/metal/mime_responds.rb:196:in `respond_to'
+/home/sergio/base/app/controllers/articles_controller.rb:15:in `index'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/abstract_controller/base.rb:167:in `process_action'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_controller/metal/rendering.rb:10:in `process_action'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/abstract_controller/callbacks.rb:18:in `block in process_action'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:447:in `_run__652186612__process_action__819132284__callbacks'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:405:in `__run_callback'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:385:in `_run_process_action_callbacks'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:81:in `run_callbacks'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/abstract_controller/callbacks.rb:17:in `process_action'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_controller/metal/rescue.rb:29:in `process_action'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_controller/metal/instrumentation.rb:30:in `block in process_action'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/activesupport-3.2.12/lib/active_support/notifications.rb:123:in `block in instrument'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/activesupport-3.2.12/lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/activesupport-3.2.12/lib/active_support/notifications.rb:123:in `instrument'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_controller/metal/params_wrapper.rb:207:in `process_action'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/activerecord-3.2.12/lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/abstract_controller/base.rb:121:in `process'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/abstract_controller/rendering.rb:45:in `process'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_controller/metal.rb:203:in `dispatch'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_controller/metal.rb:246:in `block in action'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_dispatch/routing/route_set.rb:73:in `call'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_dispatch/routing/route_set.rb:73:in `dispatch'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_dispatch/routing/route_set.rb:36:in `call'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/journey-1.0.4/lib/journey/router.rb:68:in `block in call'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/journey-1.0.4/lib/journey/router.rb:56:in `each'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/journey-1.0.4/lib/journey/router.rb:56:in `call'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_dispatch/routing/route_set.rb:601:in `call'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/warden-1.2.3/lib/warden/manager.rb:35:in `block in call'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/warden-1.2.3/lib/warden/manager.rb:34:in `catch'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/warden-1.2.3/lib/warden/manager.rb:34:in `call'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/rack-1.4.5/lib/rack/etag.rb:23:in `call'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/rack-1.4.5/lib/rack/conditionalget.rb:25:in `call'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_dispatch/middleware/head.rb:14:in `call'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_dispatch/middleware/flash.rb:242:in `call'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/rack-1.4.5/lib/rack/session/abstract/id.rb:210:in `context'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/rack-1.4.5/lib/rack/session/abstract/id.rb:205:in `call'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_dispatch/middleware/cookies.rb:341:in `call'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/activerecord-3.2.12/lib/active_record/query_cache.rb:64:in `call'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract/connection_pool.rb:479:in `call'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:405:in `_run__1063800723__call__706577500__callbacks'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:405:in `__run_callback'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:81:in `run_callbacks'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_dispatch/middleware/reloader.rb:65:in `call'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/railties-3.2.12/lib/rails/rack/logger.rb:32:in `call_app'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/railties-3.2.12/lib/rails/rack/logger.rb:16:in `block in call'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/activesupport-3.2.12/lib/active_support/tagged_logging.rb:22:in `tagged'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/railties-3.2.12/lib/rails/rack/logger.rb:16:in `call'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_dispatch/middleware/request_id.rb:22:in `call'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/rack-1.4.5/lib/rack/methodoverride.rb:21:in `call'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/rack-1.4.5/lib/rack/runtime.rb:17:in `call'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/activesupport-3.2.12/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/rack-1.4.5/lib/rack/lock.rb:15:in `call'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_dispatch/middleware/static.rb:62:in `call'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/railties-3.2.12/lib/rails/engine.rb:479:in `call'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/railties-3.2.12/lib/rails/application.rb:223:in `call'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/rack-1.4.5/lib/rack/content_length.rb:14:in `call'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/railties-3.2.12/lib/rails/rack/log_tailer.rb:17:in `call'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/thin-1.6.1/lib/thin/connection.rb:82:in `block in pre_process'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/thin-1.6.1/lib/thin/connection.rb:80:in `catch'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/thin-1.6.1/lib/thin/connection.rb:80:in `pre_process'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/thin-1.6.1/lib/thin/connection.rb:55:in `process'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/thin-1.6.1/lib/thin/connection.rb:41:in `receive_data'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/eventmachine-1.0.3/lib/eventmachine.rb:187:in `run_machine'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/eventmachine-1.0.3/lib/eventmachine.rb:187:in `run'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/thin-1.6.1/lib/thin/backends/base.rb:73:in `start'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/thin-1.6.1/lib/thin/server.rb:162:in `start'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/rack-1.4.5/lib/rack/handler/thin.rb:13:in `run'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/rack-1.4.5/lib/rack/server.rb:268:in `start'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/railties-3.2.12/lib/rails/commands/server.rb:70:in `start'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/railties-3.2.12/lib/rails/commands.rb:55:in `block in <top (required)>'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/railties-3.2.12/lib/rails/commands.rb:50:in `tap'
+/home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/railties-3.2.12/lib/rails/commands.rb:50:in `<top (required)>'
+script/rails:6:in `require'
+script/rails:6:in `<main>'
+  Rendered articles/index.html.erb within layouts/application (1.9ms)
+Completed 500 Internal Server Error in 18ms
+
+ActionView::Template::Error (/home/sergio/base/app/views/articles/index.html.erb:68: syntax error, unexpected ':', expecting ')'
+...article.supplier.name.nil? "" : article.supplier.name );@out...
+...                               ^):
+    65:   <tr>
+    66:     <td class="span4"><%= article.barcode %></td>
+    67:     <td class="span4"><%= article.name %></td>
+    68:     <td class="span4"><%= article.supplier.name.nil? "" : article.supplier.name %></td>
+    69:     <td class="label label-info span2 center"><%= number_to_currency(article.price_total) %></td>
+    70:     <td class="center span2"><%= article.quantity %></td>
+    71:     <% if can? :show, @articles %>
+  app/controllers/articles_controller.rb:15:in `index'
+
+
+  Rendered /home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+  Rendered /home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.1ms)
+  Rendered /home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (9.5ms)
+Connecting to database specified by database.yml
+
+
+Started GET "/articles?locale=es" for 127.0.0.1 at 2014-06-19 01:12:08 -0300
+Processing by ArticlesController#index as HTML
+  Parameters: {"locale"=>"es"}
+  [1m[36mUser Load (1.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35m (0.7ms)[0m  SELECT COUNT(*) FROM "articles" 
+  [1m[36mArticle Load (0.6ms)[0m  [1mSELECT "articles".* FROM "articles" LIMIT 10 OFFSET 0[0m
+  [1m[35mSupplier Load (0.9ms)[0m  SELECT "suppliers".* FROM "suppliers" WHERE "suppliers"."id" = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "suppliers".* FROM "suppliers" WHERE "suppliers"."id" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "suppliers".* FROM "suppliers" WHERE "suppliers"."id" = 1 LIMIT 1
+  Rendered articles/index.html.erb within layouts/application (519.4ms)
+  Rendered layouts/_menu.html.erb (3.4ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 869ms (Views: 741.0ms | ActiveRecord: 26.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-19 01:12:09 -0300
+Served asset /application.css - 304 Not Modified (68ms)
+
+
+Started GET "/assets/twitter/bootstrap.css?body=1" for 127.0.0.1 at 2014-06-19 01:12:09 -0300
+Served asset /twitter/bootstrap.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap-responsive.css?body=1" for 127.0.0.1 at 2014-06-19 01:12:09 -0300
+Served asset /twitter/bootstrap-responsive.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/login.css?body=1" for 127.0.0.1 at 2014-06-19 01:12:09 -0300
+Served asset /login.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/customers.css?body=1" for 127.0.0.1 at 2014-06-19 01:12:09 -0300
+Served asset /customers.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/invoices.css?body=1" for 127.0.0.1 at 2014-06-19 01:12:09 -0300
+Served asset /invoices.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/articles.css?body=1" for 127.0.0.1 at 2014-06-19 01:12:09 -0300
+Served asset /articles.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/pagination.css?body=1" for 127.0.0.1 at 2014-06-19 01:12:09 -0300
+Served asset /pagination.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/footer.css?body=1" for 127.0.0.1 at 2014-06-19 01:12:09 -0300
+Served asset /footer.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery/ui-custom.css?body=1" for 127.0.0.1 at 2014-06-19 01:12:09 -0300
+Served asset /jquery/ui-custom.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/accounts_receivables.css?body=1" for 127.0.0.1 at 2014-06-19 01:12:09 -0300
+Served asset /accounts_receivables.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/categories.css?body=1" for 127.0.0.1 at 2014-06-19 01:12:09 -0300
+Served asset /categories.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/customers_accounts.css?body=1" for 127.0.0.1 at 2014-06-19 01:12:09 -0300
+Served asset /customers_accounts.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/equipment.css?body=1" for 127.0.0.1 at 2014-06-19 01:12:09 -0300
+Served asset /equipment.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/ips.css?body=1" for 127.0.0.1 at 2014-06-19 01:12:09 -0300
+Served asset /ips.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/loans.css?body=1" for 127.0.0.1 at 2014-06-19 01:12:09 -0300
+Served asset /loans.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/locations.css?body=1" for 127.0.0.1 at 2014-06-19 01:12:09 -0300
+Served asset /locations.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/makes.css?body=1" for 127.0.0.1 at 2014-06-19 01:12:09 -0300
+Served asset /makes.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/models.css?body=1" for 127.0.0.1 at 2014-06-19 01:12:09 -0300
+Served asset /models.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/orders.css?body=1" for 127.0.0.1 at 2014-06-19 01:12:09 -0300
+Served asset /orders.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/payments.css?body=1" for 127.0.0.1 at 2014-06-19 01:12:09 -0300
+Served asset /payments.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/permissions.css?body=1" for 127.0.0.1 at 2014-06-19 01:12:09 -0300
+Served asset /permissions.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/plans.css?body=1" for 127.0.0.1 at 2014-06-19 01:12:09 -0300
+Served asset /plans.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/registrations.css?body=1" for 127.0.0.1 at 2014-06-19 01:12:09 -0300
+Served asset /registrations.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/roles.css?body=1" for 127.0.0.1 at 2014-06-19 01:12:09 -0300
+Served asset /roles.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/roles_and_permissions.css?body=1" for 127.0.0.1 at 2014-06-19 01:12:09 -0300
+Served asset /roles_and_permissions.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-19 01:12:09 -0300
+Served asset /scaffolds.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/suppliers.css?body=1" for 127.0.0.1 at 2014-06-19 01:12:09 -0300
+Served asset /suppliers.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/tickets.css?body=1" for 127.0.0.1 at 2014-06-19 01:12:09 -0300
+Served asset /tickets.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/tickets_answers.css?body=1" for 127.0.0.1 at 2014-06-19 01:12:09 -0300
+Served asset /tickets_answers.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-06-19 01:12:09 -0300
+Served asset /users.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-19 01:12:09 -0300
+Served asset /jquery.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2014-06-19 01:12:09 -0300
+Served asset /jquery-ui.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-19 01:12:09 -0300
+Served asset /jquery_ujs.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2014-06-19 01:12:09 -0300
+Served asset /twitter/bootstrap.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/customers.js?body=1" for 127.0.0.1 at 2014-06-19 01:12:09 -0300
+Served asset /customers.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/tickets.js?body=1" for 127.0.0.1 at 2014-06-19 01:12:09 -0300
+Served asset /tickets.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/equipment.js?body=1" for 127.0.0.1 at 2014-06-19 01:12:09 -0300
+Served asset /equipment.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/orders.js?body=1" for 127.0.0.1 at 2014-06-19 01:12:09 -0300
+Served asset /orders.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/payments.js?body=1" for 127.0.0.1 at 2014-06-19 01:12:09 -0300
+Served asset /payments.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/articles.js?body=1" for 127.0.0.1 at 2014-06-19 01:12:09 -0300
+Served asset /articles.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-19 01:12:09 -0300
+Served asset /application.js - 304 Not Modified (62ms)
+
+
+Started GET "/articles?locale=es" for 127.0.0.1 at 2014-06-19 01:12:55 -0300
+Processing by ArticlesController#index as HTML
+  Parameters: {"locale"=>"es"}
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35m (0.6ms)[0m  SELECT COUNT(*) FROM "articles" 
+  [1m[36mArticle Load (0.5ms)[0m  [1mSELECT "articles".* FROM "articles" LIMIT 10 OFFSET 0[0m
+  [1m[35mSupplier Load (0.5ms)[0m  SELECT "suppliers".* FROM "suppliers" WHERE "suppliers"."id" = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "suppliers".* FROM "suppliers" WHERE "suppliers"."id" = 1 LIMIT 1[0m
+  Rendered articles/index.html.erb within layouts/application (61.4ms)
+Completed 500 Internal Server Error in 80ms
+
+ActionView::Template::Error (undefined method `name' for nil:NilClass):
+    65:   <tr>
+    66:     <td class="span4"><%= article.barcode %></td>
+    67:     <td class="span4"><%= article.name %></td>
+    68:     <td class="span4"><%= article.supplier.name.nil? ? "" : article.supplier.name %></td>
+    69:     <td class="label label-info span2 center"><%= number_to_currency(article.price_total) %></td>
+    70:     <td class="center span2"><%= article.quantity %></td>
+    71:     <% if can? :show, @articles %>
+  app/views/articles/index.html.erb:68:in `block in _app_views_articles_index_html_erb___444509232_88725520'
+  app/views/articles/index.html.erb:64:in `_app_views_articles_index_html_erb___444509232_88725520'
+  app/controllers/articles_controller.rb:15:in `index'
+
+
+  Rendered /home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.5ms)
+  Rendered /home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.2ms)
+  Rendered /home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (10.0ms)
+
+
+Started GET "/articles?locale=es" for 127.0.0.1 at 2014-06-19 01:12:56 -0300
+Processing by ArticlesController#index as HTML
+  Parameters: {"locale"=>"es"}
+  [1m[35mUser Load (0.6ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM "articles" [0m
+  [1m[35mArticle Load (0.5ms)[0m  SELECT "articles".* FROM "articles" LIMIT 10 OFFSET 0
+  [1m[36mSupplier Load (0.5ms)[0m  [1mSELECT "suppliers".* FROM "suppliers" WHERE "suppliers"."id" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "suppliers".* FROM "suppliers" WHERE "suppliers"."id" = 1 LIMIT 1
+  Rendered articles/index.html.erb within layouts/application (13.3ms)
+Completed 500 Internal Server Error in 33ms
+
+ActionView::Template::Error (undefined method `name' for nil:NilClass):
+    65:   <tr>
+    66:     <td class="span4"><%= article.barcode %></td>
+    67:     <td class="span4"><%= article.name %></td>
+    68:     <td class="span4"><%= article.supplier.name.nil? ? "" : article.supplier.name %></td>
+    69:     <td class="label label-info span2 center"><%= number_to_currency(article.price_total) %></td>
+    70:     <td class="center span2"><%= article.quantity %></td>
+    71:     <% if can? :show, @articles %>
+  app/views/articles/index.html.erb:68:in `block in _app_views_articles_index_html_erb___444509232_88725520'
+  app/views/articles/index.html.erb:64:in `_app_views_articles_index_html_erb___444509232_88725520'
+  app/controllers/articles_controller.rb:15:in `index'
+
+
+  Rendered /home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.5ms)
+  Rendered /home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.1ms)
+  Rendered /home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (10.0ms)
+
+
+Started GET "/articles?locale=es" for 127.0.0.1 at 2014-06-19 01:21:08 -0300
+Processing by ArticlesController#index as HTML
+  Parameters: {"locale"=>"es"}
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35m (0.7ms)[0m  SELECT COUNT(*) FROM "articles" 
+  [1m[36mArticle Load (0.5ms)[0m  [1mSELECT "articles".* FROM "articles" LIMIT 10 OFFSET 0[0m
+  [1m[35mSupplier Load (0.4ms)[0m  SELECT "suppliers".* FROM "suppliers" WHERE "suppliers"."id" = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "suppliers".* FROM "suppliers" WHERE "suppliers"."id" = 1 LIMIT 1[0m
+  Rendered articles/index.html.erb within layouts/application (14.3ms)
+  Rendered layouts/_menu.html.erb (2.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 55ms (Views: 39.1ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:08 -0300
+Served asset /application.css - 304 Not Modified (43ms)
+
+
+Started GET "/assets/twitter/bootstrap.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:08 -0300
+Served asset /twitter/bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap-responsive.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:08 -0300
+Served asset /twitter/bootstrap-responsive.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/login.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:08 -0300
+Served asset /login.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/customers.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:08 -0300
+Served asset /customers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/invoices.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:08 -0300
+Served asset /invoices.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/articles.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:08 -0300
+Served asset /articles.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/pagination.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:08 -0300
+Served asset /pagination.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/footer.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:08 -0300
+Served asset /footer.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery/ui-custom.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:08 -0300
+Served asset /jquery/ui-custom.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/accounts_receivables.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:08 -0300
+Served asset /accounts_receivables.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/categories.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:08 -0300
+Served asset /categories.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/customers_accounts.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:08 -0300
+Served asset /customers_accounts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/equipment.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:08 -0300
+Served asset /equipment.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/ips.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:08 -0300
+Served asset /ips.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/loans.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:08 -0300
+Served asset /loans.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/locations.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:08 -0300
+Served asset /locations.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/makes.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:08 -0300
+Served asset /makes.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/models.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:08 -0300
+Served asset /models.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/orders.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:08 -0300
+Served asset /orders.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/payments.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:08 -0300
+Served asset /payments.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/permissions.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:08 -0300
+Served asset /permissions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/plans.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:08 -0300
+Served asset /plans.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/registrations.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:08 -0300
+Served asset /registrations.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:08 -0300
+Served asset /roles.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles_and_permissions.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:08 -0300
+Served asset /roles_and_permissions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:08 -0300
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/suppliers.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:08 -0300
+Served asset /suppliers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tickets.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:08 -0300
+Served asset /tickets.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tickets_answers.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:08 -0300
+Served asset /tickets_answers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:08 -0300
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-19 01:21:08 -0300
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2014-06-19 01:21:08 -0300
+Served asset /jquery-ui.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-19 01:21:08 -0300
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2014-06-19 01:21:08 -0300
+Served asset /twitter/bootstrap.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/customers.js?body=1" for 127.0.0.1 at 2014-06-19 01:21:08 -0300
+Served asset /customers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tickets.js?body=1" for 127.0.0.1 at 2014-06-19 01:21:08 -0300
+Served asset /tickets.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/equipment.js?body=1" for 127.0.0.1 at 2014-06-19 01:21:08 -0300
+Served asset /equipment.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/orders.js?body=1" for 127.0.0.1 at 2014-06-19 01:21:08 -0300
+Served asset /orders.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/payments.js?body=1" for 127.0.0.1 at 2014-06-19 01:21:08 -0300
+Served asset /payments.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/articles.js?body=1" for 127.0.0.1 at 2014-06-19 01:21:08 -0300
+Served asset /articles.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-19 01:21:08 -0300
+Served asset /application.js - 304 Not Modified (2ms)
+
+
+Started GET "/articles/1/edit?locale=es" for 127.0.0.1 at 2014-06-19 01:21:23 -0300
+Processing by ArticlesController#edit as HTML
+  Parameters: {"locale"=>"es", "id"=>"1"}
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mArticle Load (1.3ms)[0m  [1mSELECT "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT 1[0m  [["id", "1"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT 1  [["id", "1"]]
+  [1m[36mMake Load (28.6ms)[0m  [1mSELECT "makes".* FROM "makes" ORDER BY name[0m
+  [1m[35mSupplier Load (0.7ms)[0m  SELECT "suppliers".* FROM "suppliers" ORDER BY name
+  [1m[36mCategory Load (18.9ms)[0m  [1mSELECT "categories".* FROM "categories" ORDER BY name[0m
+  Rendered articles/_form.html.erb (217.1ms)
+  Rendered articles/edit.html.erb within layouts/application (230.9ms)
+  Rendered layouts/_menu.html.erb (2.0ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 324ms (Views: 252.0ms | ActiveRecord: 58.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:23 -0300
+Served asset /application.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/twitter/bootstrap.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:23 -0300
+Served asset /twitter/bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap-responsive.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:23 -0300
+Served asset /twitter/bootstrap-responsive.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/login.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:23 -0300
+Served asset /login.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/customers.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:23 -0300
+Served asset /customers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/invoices.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:23 -0300
+Served asset /invoices.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/articles.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:23 -0300
+Served asset /articles.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/pagination.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:23 -0300
+Served asset /pagination.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/footer.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:23 -0300
+Served asset /footer.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery/ui-custom.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:23 -0300
+Served asset /jquery/ui-custom.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/accounts_receivables.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:23 -0300
+Served asset /accounts_receivables.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/categories.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:23 -0300
+Served asset /categories.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/customers_accounts.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:23 -0300
+Served asset /customers_accounts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/equipment.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:23 -0300
+Served asset /equipment.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/ips.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:23 -0300
+Served asset /ips.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/loans.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:23 -0300
+Served asset /loans.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/locations.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:23 -0300
+Served asset /locations.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/makes.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:23 -0300
+Served asset /makes.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/models.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:23 -0300
+Served asset /models.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/orders.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:23 -0300
+Served asset /orders.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/payments.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:23 -0300
+Served asset /payments.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/permissions.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:24 -0300
+Served asset /permissions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/plans.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:24 -0300
+Served asset /plans.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/registrations.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:24 -0300
+Served asset /registrations.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:24 -0300
+Served asset /roles.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles_and_permissions.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:24 -0300
+Served asset /roles_and_permissions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:24 -0300
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/suppliers.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:24 -0300
+Served asset /suppliers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tickets.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:24 -0300
+Served asset /tickets.css - 304 Not Modified (43ms)
+
+
+Started GET "/assets/tickets_answers.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:24 -0300
+Served asset /tickets_answers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:24 -0300
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-19 01:21:24 -0300
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2014-06-19 01:21:24 -0300
+Served asset /jquery-ui.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-19 01:21:24 -0300
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2014-06-19 01:21:24 -0300
+Served asset /twitter/bootstrap.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/customers.js?body=1" for 127.0.0.1 at 2014-06-19 01:21:24 -0300
+Served asset /customers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tickets.js?body=1" for 127.0.0.1 at 2014-06-19 01:21:24 -0300
+Served asset /tickets.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/equipment.js?body=1" for 127.0.0.1 at 2014-06-19 01:21:24 -0300
+Served asset /equipment.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/orders.js?body=1" for 127.0.0.1 at 2014-06-19 01:21:24 -0300
+Served asset /orders.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/payments.js?body=1" for 127.0.0.1 at 2014-06-19 01:21:24 -0300
+Served asset /payments.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/articles.js?body=1" for 127.0.0.1 at 2014-06-19 01:21:24 -0300
+Served asset /articles.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-19 01:21:24 -0300
+Served asset /application.js - 304 Not Modified (3ms)
+
+
+Started PUT "/articles/1?locale=es" for 127.0.0.1 at 2014-06-19 01:21:28 -0300
+Processing by ArticlesController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"eUQVyViseKiPVXc05uRzyPHXBfPwDUOcc1aKGxirGEQ=", "article"=>{"name"=>"Destornillador", "price_cost"=>"100.00", "percentaje"=>"0.0", "price_total"=>"100.00", "quantity"=>"2.00", "new_quantity"=>"", "barcode"=>"", "articles_code_supplier"=>"", "make_id"=>"1", "new_make"=>"", "supplier_id"=>"1", "new_supplier"=>"", "category_id"=>"1", "new_category"=>""}, "commit"=>"Actualizar Articulo", "locale"=>"es", "id"=>"1"}
+  [1m[35mUser Load (0.6ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mArticle Load (0.5ms)[0m  [1mSELECT "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT 1[0m  [["id", "1"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT 1  [["id", "1"]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.6ms)[0m  UPDATE "articles" SET "percentaje" = 0.0, "supplier_id" = 1, "updated_at" = '2014-06-19 04:21:28.955404' WHERE "articles"."id" = 1
+  [1m[36m (33.5ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/articles/1?locale=es
+Completed 302 Found in 59ms (ActiveRecord: 35.5ms)
+
+
+Started GET "/articles/1?locale=es" for 127.0.0.1 at 2014-06-19 01:21:29 -0300
+Processing by ArticlesController#show as HTML
+  Parameters: {"locale"=>"es", "id"=>"1"}
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mArticle Load (0.8ms)[0m  [1mSELECT "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT 1[0m  [["id", "1"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT 1  [["id", "1"]]
+  Rendered articles/show.html.erb within layouts/application (3.1ms)
+  Rendered layouts/_menu.html.erb (2.3ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 114ms (Views: 100.4ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:29 -0300
+Served asset /application.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:29 -0300
+Served asset /twitter/bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap-responsive.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:29 -0300
+Served asset /twitter/bootstrap-responsive.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/login.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:29 -0300
+Served asset /login.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/customers.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:29 -0300
+Served asset /customers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/invoices.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:29 -0300
+Served asset /invoices.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/articles.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:29 -0300
+Served asset /articles.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/pagination.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:29 -0300
+Served asset /pagination.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/footer.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:29 -0300
+Served asset /footer.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery/ui-custom.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:29 -0300
+Served asset /jquery/ui-custom.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/accounts_receivables.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:29 -0300
+Served asset /accounts_receivables.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/categories.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:29 -0300
+Served asset /categories.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/customers_accounts.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:29 -0300
+Served asset /customers_accounts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/equipment.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:29 -0300
+Served asset /equipment.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/ips.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:29 -0300
+Served asset /ips.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/loans.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:29 -0300
+Served asset /loans.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/locations.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:29 -0300
+Served asset /locations.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/makes.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:29 -0300
+Served asset /makes.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/models.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:29 -0300
+Served asset /models.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/orders.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:29 -0300
+Served asset /orders.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/payments.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:29 -0300
+Served asset /payments.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/permissions.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:29 -0300
+Served asset /permissions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/plans.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:29 -0300
+Served asset /plans.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/registrations.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:29 -0300
+Served asset /registrations.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:29 -0300
+Served asset /roles.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles_and_permissions.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:29 -0300
+Served asset /roles_and_permissions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:29 -0300
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/suppliers.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:29 -0300
+Served asset /suppliers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tickets.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:29 -0300
+Served asset /tickets.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tickets_answers.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:29 -0300
+Served asset /tickets_answers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:29 -0300
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-19 01:21:29 -0300
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2014-06-19 01:21:29 -0300
+Served asset /jquery-ui.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-19 01:21:29 -0300
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2014-06-19 01:21:29 -0300
+Served asset /twitter/bootstrap.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/customers.js?body=1" for 127.0.0.1 at 2014-06-19 01:21:29 -0300
+Served asset /customers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tickets.js?body=1" for 127.0.0.1 at 2014-06-19 01:21:29 -0300
+Served asset /tickets.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/equipment.js?body=1" for 127.0.0.1 at 2014-06-19 01:21:29 -0300
+Served asset /equipment.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/orders.js?body=1" for 127.0.0.1 at 2014-06-19 01:21:29 -0300
+Served asset /orders.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/payments.js?body=1" for 127.0.0.1 at 2014-06-19 01:21:29 -0300
+Served asset /payments.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/articles.js?body=1" for 127.0.0.1 at 2014-06-19 01:21:29 -0300
+Served asset /articles.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-19 01:21:29 -0300
+Served asset /application.js - 304 Not Modified (2ms)
+
+
+Started GET "/articles?locale=es" for 127.0.0.1 at 2014-06-19 01:21:30 -0300
+Processing by ArticlesController#index as HTML
+  Parameters: {"locale"=>"es"}
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35m (0.6ms)[0m  SELECT COUNT(*) FROM "articles" 
+  [1m[36mArticle Load (0.6ms)[0m  [1mSELECT "articles".* FROM "articles" LIMIT 10 OFFSET 0[0m
+  [1m[35mSupplier Load (0.6ms)[0m  SELECT "suppliers".* FROM "suppliers" WHERE "suppliers"."id" = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "suppliers".* FROM "suppliers" WHERE "suppliers"."id" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "suppliers".* FROM "suppliers" WHERE "suppliers"."id" = 1 LIMIT 1
+  Rendered articles/index.html.erb within layouts/application (14.2ms)
+  Rendered layouts/_menu.html.erb (2.3ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 102ms (Views: 85.7ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:31 -0300
+Served asset /application.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:31 -0300
+Served asset /twitter/bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap-responsive.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:31 -0300
+Served asset /twitter/bootstrap-responsive.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/login.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:31 -0300
+Served asset /login.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/customers.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:31 -0300
+Served asset /customers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/invoices.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:31 -0300
+Served asset /invoices.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/articles.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:31 -0300
+Served asset /articles.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/pagination.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:31 -0300
+Served asset /pagination.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/footer.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:31 -0300
+Served asset /footer.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery/ui-custom.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:31 -0300
+Served asset /jquery/ui-custom.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/accounts_receivables.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:31 -0300
+Served asset /accounts_receivables.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/categories.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:31 -0300
+Served asset /categories.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/customers_accounts.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:31 -0300
+Served asset /customers_accounts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/equipment.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:31 -0300
+Served asset /equipment.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/ips.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:31 -0300
+Served asset /ips.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/loans.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:31 -0300
+Served asset /loans.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/locations.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:31 -0300
+Served asset /locations.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/makes.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:31 -0300
+Served asset /makes.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/models.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:31 -0300
+Served asset /models.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/orders.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:31 -0300
+Served asset /orders.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/payments.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:31 -0300
+Served asset /payments.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/permissions.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:31 -0300
+Served asset /permissions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/plans.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:31 -0300
+Served asset /plans.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/registrations.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:31 -0300
+Served asset /registrations.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:31 -0300
+Served asset /roles.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles_and_permissions.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:31 -0300
+Served asset /roles_and_permissions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:31 -0300
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/suppliers.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:31 -0300
+Served asset /suppliers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tickets.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:31 -0300
+Served asset /tickets.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tickets_answers.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:31 -0300
+Served asset /tickets_answers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:31 -0300
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-19 01:21:31 -0300
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2014-06-19 01:21:31 -0300
+Served asset /jquery-ui.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-19 01:21:31 -0300
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2014-06-19 01:21:31 -0300
+Served asset /twitter/bootstrap.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/customers.js?body=1" for 127.0.0.1 at 2014-06-19 01:21:31 -0300
+Served asset /customers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tickets.js?body=1" for 127.0.0.1 at 2014-06-19 01:21:31 -0300
+Served asset /tickets.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/equipment.js?body=1" for 127.0.0.1 at 2014-06-19 01:21:31 -0300
+Served asset /equipment.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/orders.js?body=1" for 127.0.0.1 at 2014-06-19 01:21:31 -0300
+Served asset /orders.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/payments.js?body=1" for 127.0.0.1 at 2014-06-19 01:21:31 -0300
+Served asset /payments.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/articles.js?body=1" for 127.0.0.1 at 2014-06-19 01:21:31 -0300
+Served asset /articles.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-19 01:21:31 -0300
+Served asset /application.js - 304 Not Modified (2ms)
+
+
+Started GET "/articles/1/edit?locale=es" for 127.0.0.1 at 2014-06-19 01:21:40 -0300
+Processing by ArticlesController#edit as HTML
+  Parameters: {"locale"=>"es", "id"=>"1"}
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mArticle Load (0.9ms)[0m  SELECT "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT 1  [["id", "1"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT 1[0m  [["id", "1"]]
+  [1m[35mMake Load (0.8ms)[0m  SELECT "makes".* FROM "makes" ORDER BY name
+  [1m[36mSupplier Load (0.5ms)[0m  [1mSELECT "suppliers".* FROM "suppliers" ORDER BY name[0m
+  [1m[35mCategory Load (0.5ms)[0m  SELECT "categories".* FROM "categories" ORDER BY name
+  Rendered articles/_form.html.erb (16.0ms)
+  Rendered articles/edit.html.erb within layouts/application (17.1ms)
+  Rendered layouts/_menu.html.erb (2.3ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 104ms (Views: 88.0ms | ActiveRecord: 3.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:40 -0300
+Served asset /application.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:40 -0300
+Served asset /twitter/bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap-responsive.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:40 -0300
+Served asset /twitter/bootstrap-responsive.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/login.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:40 -0300
+Served asset /login.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/customers.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:40 -0300
+Served asset /customers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/invoices.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:40 -0300
+Served asset /invoices.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/articles.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:40 -0300
+Served asset /articles.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/pagination.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:40 -0300
+Served asset /pagination.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/footer.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:40 -0300
+Served asset /footer.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery/ui-custom.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:40 -0300
+Served asset /jquery/ui-custom.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/accounts_receivables.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:40 -0300
+Served asset /accounts_receivables.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/categories.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:40 -0300
+Served asset /categories.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/customers_accounts.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:40 -0300
+Served asset /customers_accounts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/equipment.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:40 -0300
+Served asset /equipment.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/ips.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:40 -0300
+Served asset /ips.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/loans.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:40 -0300
+Served asset /loans.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/locations.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:40 -0300
+Served asset /locations.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/makes.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:40 -0300
+Served asset /makes.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/models.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:40 -0300
+Served asset /models.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/orders.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:40 -0300
+Served asset /orders.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/payments.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:40 -0300
+Served asset /payments.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/permissions.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:40 -0300
+Served asset /permissions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/plans.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:40 -0300
+Served asset /plans.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/registrations.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:40 -0300
+Served asset /registrations.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:40 -0300
+Served asset /roles.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles_and_permissions.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:40 -0300
+Served asset /roles_and_permissions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:40 -0300
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/suppliers.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:40 -0300
+Served asset /suppliers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tickets.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:40 -0300
+Served asset /tickets.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tickets_answers.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:40 -0300
+Served asset /tickets_answers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:40 -0300
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-19 01:21:40 -0300
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2014-06-19 01:21:40 -0300
+Served asset /jquery-ui.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-19 01:21:40 -0300
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2014-06-19 01:21:40 -0300
+Served asset /twitter/bootstrap.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/customers.js?body=1" for 127.0.0.1 at 2014-06-19 01:21:40 -0300
+Served asset /customers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tickets.js?body=1" for 127.0.0.1 at 2014-06-19 01:21:40 -0300
+Served asset /tickets.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/equipment.js?body=1" for 127.0.0.1 at 2014-06-19 01:21:40 -0300
+Served asset /equipment.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/orders.js?body=1" for 127.0.0.1 at 2014-06-19 01:21:40 -0300
+Served asset /orders.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/payments.js?body=1" for 127.0.0.1 at 2014-06-19 01:21:40 -0300
+Served asset /payments.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/articles.js?body=1" for 127.0.0.1 at 2014-06-19 01:21:40 -0300
+Served asset /articles.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-19 01:21:40 -0300
+Served asset /application.js - 304 Not Modified (3ms)
+
+
+Started PUT "/articles/1?locale=es" for 127.0.0.1 at 2014-06-19 01:21:42 -0300
+Processing by ArticlesController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"eUQVyViseKiPVXc05uRzyPHXBfPwDUOcc1aKGxirGEQ=", "article"=>{"name"=>"Destornillador", "price_cost"=>"100.00", "percentaje"=>"0.0", "price_total"=>"100.00", "quantity"=>"2.00", "new_quantity"=>"", "barcode"=>"", "articles_code_supplier"=>"", "make_id"=>"1", "new_make"=>"", "supplier_id"=>"1", "new_supplier"=>"", "category_id"=>"1", "new_category"=>""}, "commit"=>"Actualizar Articulo", "locale"=>"es", "id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mArticle Load (0.5ms)[0m  SELECT "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT 1  [["id", "1"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT 1[0m  [["id", "1"]]
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (0.8ms)[0m  [1mUPDATE "articles" SET "percentaje" = 0.0, "updated_at" = '2014-06-19 04:21:42.753678' WHERE "articles"."id" = 1[0m
+  [1m[35m (19.9ms)[0m  COMMIT
+Redirected to http://localhost:3000/articles/1?locale=es
+Completed 302 Found in 42ms (ActiveRecord: 22.0ms)
+
+
+Started GET "/articles/1?locale=es" for 127.0.0.1 at 2014-06-19 01:21:42 -0300
+Processing by ArticlesController#show as HTML
+  Parameters: {"locale"=>"es", "id"=>"1"}
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mArticle Load (0.8ms)[0m  SELECT "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT 1  [["id", "1"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT 1[0m  [["id", "1"]]
+  Rendered articles/show.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_menu.html.erb (2.2ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 88ms (Views: 76.5ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:42 -0300
+Served asset /application.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/twitter/bootstrap.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:42 -0300
+Served asset /twitter/bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap-responsive.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:42 -0300
+Served asset /twitter/bootstrap-responsive.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/login.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:42 -0300
+Served asset /login.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/customers.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:42 -0300
+Served asset /customers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/invoices.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:42 -0300
+Served asset /invoices.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/articles.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:42 -0300
+Served asset /articles.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/pagination.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:42 -0300
+Served asset /pagination.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/footer.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:42 -0300
+Served asset /footer.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery/ui-custom.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:42 -0300
+Served asset /jquery/ui-custom.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/accounts_receivables.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:42 -0300
+Served asset /accounts_receivables.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/categories.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:42 -0300
+Served asset /categories.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/customers_accounts.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:42 -0300
+Served asset /customers_accounts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/equipment.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:42 -0300
+Served asset /equipment.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/ips.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:42 -0300
+Served asset /ips.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/loans.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:42 -0300
+Served asset /loans.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/locations.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:42 -0300
+Served asset /locations.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/makes.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:43 -0300
+Served asset /makes.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/models.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:43 -0300
+Served asset /models.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/orders.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:43 -0300
+Served asset /orders.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/payments.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:43 -0300
+Served asset /payments.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/permissions.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:43 -0300
+Served asset /permissions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/plans.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:43 -0300
+Served asset /plans.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/registrations.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:43 -0300
+Served asset /registrations.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:43 -0300
+Served asset /roles.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles_and_permissions.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:43 -0300
+Served asset /roles_and_permissions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:43 -0300
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/suppliers.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:43 -0300
+Served asset /suppliers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tickets.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:43 -0300
+Served asset /tickets.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tickets_answers.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:43 -0300
+Served asset /tickets_answers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-06-19 01:21:43 -0300
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-19 01:21:43 -0300
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2014-06-19 01:21:43 -0300
+Served asset /jquery-ui.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-19 01:21:43 -0300
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2014-06-19 01:21:43 -0300
+Served asset /twitter/bootstrap.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/customers.js?body=1" for 127.0.0.1 at 2014-06-19 01:21:43 -0300
+Served asset /customers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tickets.js?body=1" for 127.0.0.1 at 2014-06-19 01:21:43 -0300
+Served asset /tickets.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/equipment.js?body=1" for 127.0.0.1 at 2014-06-19 01:21:43 -0300
+Served asset /equipment.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/orders.js?body=1" for 127.0.0.1 at 2014-06-19 01:21:43 -0300
+Served asset /orders.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/payments.js?body=1" for 127.0.0.1 at 2014-06-19 01:21:43 -0300
+Served asset /payments.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/articles.js?body=1" for 127.0.0.1 at 2014-06-19 01:21:43 -0300
+Served asset /articles.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-19 01:21:43 -0300
+Served asset /application.js - 304 Not Modified (3ms)
+
+
+Started GET "/articles?locale=es" for 127.0.0.1 at 2014-06-19 01:22:34 -0300
+Processing by ArticlesController#index as HTML
+  Parameters: {"locale"=>"es"}
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "articles" [0m
+  [1m[35mArticle Load (0.5ms)[0m  SELECT "articles".* FROM "articles" LIMIT 10 OFFSET 0
+  [1m[36mSupplier Load (0.5ms)[0m  [1mSELECT "suppliers".* FROM "suppliers" WHERE "suppliers"."id" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "suppliers".* FROM "suppliers" WHERE "suppliers"."id" = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "suppliers".* FROM "suppliers" WHERE "suppliers"."id" = 1 LIMIT 1[0m
+  Rendered articles/index.html.erb within layouts/application (109.7ms)
+  Rendered layouts/_menu.html.erb (2.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 222ms (Views: 125.7ms | ActiveRecord: 15.8ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:34 -0300
+Served asset /application.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:34 -0300
+Served asset /twitter/bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap-responsive.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:34 -0300
+Served asset /twitter/bootstrap-responsive.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/login.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:34 -0300
+Served asset /login.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/customers.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:34 -0300
+Served asset /customers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/invoices.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:34 -0300
+Served asset /invoices.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/articles.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:34 -0300
+Served asset /articles.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/pagination.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:34 -0300
+Served asset /pagination.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/footer.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:34 -0300
+Served asset /footer.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery/ui-custom.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:34 -0300
+Served asset /jquery/ui-custom.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/accounts_receivables.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:34 -0300
+Served asset /accounts_receivables.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/categories.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:34 -0300
+Served asset /categories.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/customers_accounts.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:34 -0300
+Served asset /customers_accounts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/equipment.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:34 -0300
+Served asset /equipment.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/ips.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:34 -0300
+Served asset /ips.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/loans.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:34 -0300
+Served asset /loans.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/locations.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:34 -0300
+Served asset /locations.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/makes.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:34 -0300
+Served asset /makes.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/models.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:34 -0300
+Served asset /models.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/orders.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:34 -0300
+Served asset /orders.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/payments.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:34 -0300
+Served asset /payments.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/permissions.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:34 -0300
+Served asset /permissions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/plans.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:34 -0300
+Served asset /plans.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/registrations.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:34 -0300
+Served asset /registrations.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:34 -0300
+Served asset /roles.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles_and_permissions.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:34 -0300
+Served asset /roles_and_permissions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:34 -0300
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/suppliers.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:35 -0300
+Served asset /suppliers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tickets.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:35 -0300
+Served asset /tickets.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tickets_answers.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:35 -0300
+Served asset /tickets_answers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:35 -0300
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-19 01:22:35 -0300
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2014-06-19 01:22:35 -0300
+Served asset /jquery-ui.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-19 01:22:35 -0300
+Served asset /jquery_ujs.js - 304 Not Modified (43ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2014-06-19 01:22:35 -0300
+Served asset /twitter/bootstrap.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/customers.js?body=1" for 127.0.0.1 at 2014-06-19 01:22:35 -0300
+Served asset /customers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tickets.js?body=1" for 127.0.0.1 at 2014-06-19 01:22:35 -0300
+Served asset /tickets.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/equipment.js?body=1" for 127.0.0.1 at 2014-06-19 01:22:35 -0300
+Served asset /equipment.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/orders.js?body=1" for 127.0.0.1 at 2014-06-19 01:22:35 -0300
+Served asset /orders.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/payments.js?body=1" for 127.0.0.1 at 2014-06-19 01:22:35 -0300
+Served asset /payments.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/articles.js?body=1" for 127.0.0.1 at 2014-06-19 01:22:35 -0300
+Served asset /articles.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-19 01:22:35 -0300
+Served asset /application.js - 304 Not Modified (3ms)
+
+
+Started GET "/articles/1/edit?locale=es" for 127.0.0.1 at 2014-06-19 01:22:36 -0300
+Processing by ArticlesController#edit as HTML
+  Parameters: {"locale"=>"es", "id"=>"1"}
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mArticle Load (0.5ms)[0m  [1mSELECT "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT 1[0m  [["id", "1"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT 1  [["id", "1"]]
+  [1m[36mMake Load (0.6ms)[0m  [1mSELECT "makes".* FROM "makes" ORDER BY name[0m
+  [1m[35mSupplier Load (0.7ms)[0m  SELECT "suppliers".* FROM "suppliers" ORDER BY name
+  [1m[36mCategory Load (0.3ms)[0m  [1mSELECT "categories".* FROM "categories" ORDER BY name[0m
+  Rendered articles/_form.html.erb (67.9ms)
+  Rendered articles/edit.html.erb within layouts/application (69.3ms)
+  Rendered layouts/_menu.html.erb (2.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 109ms (Views: 85.6ms | ActiveRecord: 11.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:36 -0300
+Served asset /application.css - 304 Not Modified (49ms)
+
+
+Started GET "/assets/twitter/bootstrap.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:36 -0300
+Served asset /twitter/bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap-responsive.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:36 -0300
+Served asset /twitter/bootstrap-responsive.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/login.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:36 -0300
+Served asset /login.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/customers.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:36 -0300
+Served asset /customers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/invoices.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:36 -0300
+Served asset /invoices.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/articles.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:36 -0300
+Served asset /articles.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/pagination.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:36 -0300
+Served asset /pagination.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/footer.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:36 -0300
+Served asset /footer.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery/ui-custom.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:36 -0300
+Served asset /jquery/ui-custom.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/accounts_receivables.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:36 -0300
+Served asset /accounts_receivables.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/categories.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:36 -0300
+Served asset /categories.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/customers_accounts.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:36 -0300
+Served asset /customers_accounts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/equipment.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:36 -0300
+Served asset /equipment.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/ips.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:36 -0300
+Served asset /ips.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/loans.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:36 -0300
+Served asset /loans.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/locations.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:36 -0300
+Served asset /locations.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/makes.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:36 -0300
+Served asset /makes.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/models.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:36 -0300
+Served asset /models.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/orders.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:36 -0300
+Served asset /orders.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/payments.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:36 -0300
+Served asset /payments.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/permissions.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:36 -0300
+Served asset /permissions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/plans.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:36 -0300
+Served asset /plans.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/registrations.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:36 -0300
+Served asset /registrations.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:36 -0300
+Served asset /roles.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles_and_permissions.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:36 -0300
+Served asset /roles_and_permissions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:36 -0300
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/suppliers.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:36 -0300
+Served asset /suppliers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tickets.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:36 -0300
+Served asset /tickets.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tickets_answers.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:36 -0300
+Served asset /tickets_answers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:36 -0300
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-19 01:22:36 -0300
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2014-06-19 01:22:36 -0300
+Served asset /jquery-ui.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-19 01:22:36 -0300
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2014-06-19 01:22:36 -0300
+Served asset /twitter/bootstrap.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/customers.js?body=1" for 127.0.0.1 at 2014-06-19 01:22:36 -0300
+Served asset /customers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tickets.js?body=1" for 127.0.0.1 at 2014-06-19 01:22:36 -0300
+Served asset /tickets.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/equipment.js?body=1" for 127.0.0.1 at 2014-06-19 01:22:36 -0300
+Served asset /equipment.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/orders.js?body=1" for 127.0.0.1 at 2014-06-19 01:22:36 -0300
+Served asset /orders.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/payments.js?body=1" for 127.0.0.1 at 2014-06-19 01:22:36 -0300
+Served asset /payments.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/articles.js?body=1" for 127.0.0.1 at 2014-06-19 01:22:36 -0300
+Served asset /articles.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-19 01:22:36 -0300
+Served asset /application.js - 304 Not Modified (3ms)
+
+
+Started PUT "/articles/1?locale=es" for 127.0.0.1 at 2014-06-19 01:22:38 -0300
+Processing by ArticlesController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"eUQVyViseKiPVXc05uRzyPHXBfPwDUOcc1aKGxirGEQ=", "article"=>{"name"=>"Destornillador", "price_cost"=>"100.00", "percentaje"=>"0.0", "price_total"=>"100.00", "quantity"=>"2.00", "new_quantity"=>"", "barcode"=>"", "articles_code_supplier"=>"", "make_id"=>"1", "new_make"=>"", "supplier_id"=>"1", "new_supplier"=>"", "category_id"=>"1", "new_category"=>""}, "commit"=>"Actualizar Articulo", "locale"=>"es", "id"=>"1"}
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mArticle Load (0.6ms)[0m  [1mSELECT "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT 1[0m  [["id", "1"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT 1  [["id", "1"]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.6ms)[0m  UPDATE "articles" SET "percentaje" = 0.0, "updated_at" = '2014-06-19 04:22:38.027876' WHERE "articles"."id" = 1
+  [1m[36m (27.7ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/articles?locale=es
+Completed 302 Found in 47ms (ActiveRecord: 29.7ms)
+
+
+Started GET "/articles?locale=es" for 127.0.0.1 at 2014-06-19 01:22:38 -0300
+Processing by ArticlesController#index as HTML
+  Parameters: {"locale"=>"es"}
+  [1m[35mUser Load (1.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36m (0.7ms)[0m  [1mSELECT COUNT(*) FROM "articles" [0m
+  [1m[35mArticle Load (0.5ms)[0m  SELECT "articles".* FROM "articles" LIMIT 10 OFFSET 0
+  [1m[36mSupplier Load (0.5ms)[0m  [1mSELECT "suppliers".* FROM "suppliers" WHERE "suppliers"."id" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "suppliers".* FROM "suppliers" WHERE "suppliers"."id" = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "suppliers".* FROM "suppliers" WHERE "suppliers"."id" = 1 LIMIT 1[0m
+  Rendered articles/index.html.erb within layouts/application (13.8ms)
+  Rendered layouts/_menu.html.erb (2.3ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 111ms (Views: 87.9ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:38 -0300
+Served asset /application.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:38 -0300
+Served asset /twitter/bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap-responsive.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:38 -0300
+Served asset /twitter/bootstrap-responsive.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/login.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:38 -0300
+Served asset /login.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/customers.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:38 -0300
+Served asset /customers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/invoices.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:38 -0300
+Served asset /invoices.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/articles.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:38 -0300
+Served asset /articles.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/pagination.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:38 -0300
+Served asset /pagination.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/footer.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:38 -0300
+Served asset /footer.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery/ui-custom.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:38 -0300
+Served asset /jquery/ui-custom.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/accounts_receivables.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:38 -0300
+Served asset /accounts_receivables.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/categories.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:38 -0300
+Served asset /categories.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/customers_accounts.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:38 -0300
+Served asset /customers_accounts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/equipment.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:38 -0300
+Served asset /equipment.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/ips.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:38 -0300
+Served asset /ips.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/loans.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:38 -0300
+Served asset /loans.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/locations.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:38 -0300
+Served asset /locations.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/makes.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:38 -0300
+Served asset /makes.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/models.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:38 -0300
+Served asset /models.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/orders.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:38 -0300
+Served asset /orders.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/payments.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:38 -0300
+Served asset /payments.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/permissions.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:38 -0300
+Served asset /permissions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/plans.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:38 -0300
+Served asset /plans.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/registrations.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:38 -0300
+Served asset /registrations.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:38 -0300
+Served asset /roles.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles_and_permissions.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:38 -0300
+Served asset /roles_and_permissions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:38 -0300
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/suppliers.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:38 -0300
+Served asset /suppliers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tickets.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:38 -0300
+Served asset /tickets.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tickets_answers.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:38 -0300
+Served asset /tickets_answers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-06-19 01:22:38 -0300
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-19 01:22:38 -0300
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2014-06-19 01:22:38 -0300
+Served asset /jquery-ui.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-19 01:22:38 -0300
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2014-06-19 01:22:38 -0300
+Served asset /twitter/bootstrap.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/customers.js?body=1" for 127.0.0.1 at 2014-06-19 01:22:38 -0300
+Served asset /customers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tickets.js?body=1" for 127.0.0.1 at 2014-06-19 01:22:38 -0300
+Served asset /tickets.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/equipment.js?body=1" for 127.0.0.1 at 2014-06-19 01:22:38 -0300
+Served asset /equipment.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/orders.js?body=1" for 127.0.0.1 at 2014-06-19 01:22:38 -0300
+Served asset /orders.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/payments.js?body=1" for 127.0.0.1 at 2014-06-19 01:22:38 -0300
+Served asset /payments.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/articles.js?body=1" for 127.0.0.1 at 2014-06-19 01:22:38 -0300
+Served asset /articles.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-19 01:22:38 -0300
+Served asset /application.js - 304 Not Modified (2ms)
