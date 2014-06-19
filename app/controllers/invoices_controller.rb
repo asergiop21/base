@@ -3,10 +3,9 @@ class InvoicesController < ApplicationController
    # GET /invoices.json
 
    before_filter :authenticate_user!, :except => [:some_action_without_auth]
-   before_filter :load_customers
+#   before_filter :load_customers, :only => [:index]
    def index
-
-      @invoices = @customer.invoices.all
+      @invoices = Invoice.all
       @articles = Article.con_nombre_barcode(params[:q]) if params[:q].present?
       @payments = 0
       @invoices.each do |e|
@@ -15,21 +14,18 @@ class InvoicesController < ApplicationController
          end
       end
 
-      @amount = @customer.invoices.total_amount 
+      @amount = Invoice.total_amount 
       @total = @payments - @amount
-
       respond_to do |format|
-
          format.html # index.html.erb
          format.json { render json: @invoices }
       end
-
    end
 
    # GET /invoices/1
    # GET /invoices/1.json
    def show
-      @invoice = @customer.invoices.find(params[:id])
+      @invoice = Invoice.find(params[:id])
       respond_to do |format|
          format.html # show.html.erb
          ## format.json { render json: @invoice }
@@ -47,7 +43,7 @@ class InvoicesController < ApplicationController
    # GET /invoices/new.json
    def new
 
-      @invoice = @customer.invoices.new
+      @invoice = Invoice.new
       1.times {@invoice.orders.build}
       1.times {@invoice.payments.build}
 
@@ -66,14 +62,14 @@ class InvoicesController < ApplicationController
    # POST /invoices.json
    def create
       @articles = Article.con_nombre(params[:q]) if params[:q].present?
-      @invoice = @customer.invoices.new(params[:invoice])
+      @invoice = Invoice.new(params[:invoice])
       @id = @invoice.orders(params[:articles_id])
       @quantity = Article.quantity_order(@id)
 
 
       respond_to do |format|
          if @invoice.save
-            format.html { redirect_to [@customer, @invoice], notice: 'Invoice was successfully created.' }
+            format.html { redirect_to  @invoice, notice: 'Invoice was successfully created.' }
             format.json { render json: @invoice, status: :created, location: @invoice }
          else
             format.html { render action: "new" }

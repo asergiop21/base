@@ -95,7 +95,8 @@ def index
 
   def import
 	  Article.import(params[:file])
-          redirect_to root_url, notice: "productos Importados"
+          redirect_to articles_path, notice: "productos Importados"
+
   end
 
  def example
