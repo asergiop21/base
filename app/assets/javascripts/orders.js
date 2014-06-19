@@ -33,10 +33,9 @@ $(document).ready(function(){
                                 });
                         },
                         autoFocus: true,
-                        maxItemsToShow: 20,
+                        max: 2,
                         select: function(event, ui) {
                                 input.val(ui.item.label);
-                                // alert (ui.item.item.price_total);
                                 var field = this.id;
                                 var id = field.split("_");
                                 var field_article_id = '#invoice_orders_attributes_' + id[3] + '_articles_id';
