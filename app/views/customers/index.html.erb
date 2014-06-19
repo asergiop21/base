@@ -53,7 +53,6 @@
                                                 <td><%= customer.description %></td>
                                                 <td><%= link_to t('labels.show'), customer %></td>
                                                 <td><%= link_to t('labels.edit'), edit_customer_path(customer) %></td>
-                                                <td><%= link_to "Remitos", customer_invoices_path(customer) %></td>
                                                 <td><% link_to t('labels.destroy'), customer, method: :delete, data: { confirm: t('labels.are_you_sure') } %></td>
                                         </tr>
                                 <% end %>

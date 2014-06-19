@@ -68119,3 +68119,253 @@ ActionController::RoutingError (No route matches [GET] "/assets/jquery/images/ui
 
 
   Rendered /home/sergio/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
+
+
+Started GET "/articles.json?locale=es&q=ta" for 127.0.0.1 at 2014-06-19 16:38:05 -0300
+Processing by ArticlesController#index as JSON
+  Parameters: {"locale"=>"es", "q"=>"ta"}
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mArticle Load (0.8ms)[0m  [1mSELECT "articles".* FROM "articles" WHERE (LOWER(name) LIKE '%ta%' or barcode = '%ta%') LIMIT 10 OFFSET 0[0m
+Completed 200 OK in 27ms (Views: 2.3ms | ActiveRecord: 6.4ms)
+
+
+Started GET "/es/customers" for 127.0.0.1 at 2014-06-19 16:39:52 -0300
+Processing by CustomersController#index as HTML
+  Parameters: {"locale"=>"es"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mCustomer Load (0.4ms)[0m  [1mSELECT "customers".* FROM "customers" [0m
+  Rendered customers/index.html.erb within layouts/application (9.4ms)
+  Rendered layouts/_menu.html.erb (2.7ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 103ms (Views: 98.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-19 16:39:52 -0300
+Served asset /application.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/twitter/bootstrap.css?body=1" for 127.0.0.1 at 2014-06-19 16:39:52 -0300
+Served asset /twitter/bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap-responsive.css?body=1" for 127.0.0.1 at 2014-06-19 16:39:52 -0300
+Served asset /twitter/bootstrap-responsive.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/login.css?body=1" for 127.0.0.1 at 2014-06-19 16:39:52 -0300
+Served asset /login.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/customers.css?body=1" for 127.0.0.1 at 2014-06-19 16:39:52 -0300
+Served asset /customers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/invoices.css?body=1" for 127.0.0.1 at 2014-06-19 16:39:52 -0300
+Served asset /invoices.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/articles.css?body=1" for 127.0.0.1 at 2014-06-19 16:39:52 -0300
+Served asset /articles.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/pagination.css?body=1" for 127.0.0.1 at 2014-06-19 16:39:52 -0300
+Served asset /pagination.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/footer.css?body=1" for 127.0.0.1 at 2014-06-19 16:39:52 -0300
+Served asset /footer.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery/ui-custom.css?body=1" for 127.0.0.1 at 2014-06-19 16:39:52 -0300
+Served asset /jquery/ui-custom.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/accounts_receivables.css?body=1" for 127.0.0.1 at 2014-06-19 16:39:52 -0300
+Served asset /accounts_receivables.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/categories.css?body=1" for 127.0.0.1 at 2014-06-19 16:39:52 -0300
+Served asset /categories.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/customers_accounts.css?body=1" for 127.0.0.1 at 2014-06-19 16:39:52 -0300
+Served asset /customers_accounts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/equipment.css?body=1" for 127.0.0.1 at 2014-06-19 16:39:52 -0300
+Served asset /equipment.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/ips.css?body=1" for 127.0.0.1 at 2014-06-19 16:39:52 -0300
+Served asset /ips.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/loans.css?body=1" for 127.0.0.1 at 2014-06-19 16:39:52 -0300
+Served asset /loans.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/locations.css?body=1" for 127.0.0.1 at 2014-06-19 16:39:52 -0300
+Served asset /locations.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/makes.css?body=1" for 127.0.0.1 at 2014-06-19 16:39:52 -0300
+Served asset /makes.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/models.css?body=1" for 127.0.0.1 at 2014-06-19 16:39:52 -0300
+Served asset /models.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/orders.css?body=1" for 127.0.0.1 at 2014-06-19 16:39:52 -0300
+Served asset /orders.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/payments.css?body=1" for 127.0.0.1 at 2014-06-19 16:39:52 -0300
+Served asset /payments.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/permissions.css?body=1" for 127.0.0.1 at 2014-06-19 16:39:52 -0300
+Served asset /permissions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/plans.css?body=1" for 127.0.0.1 at 2014-06-19 16:39:52 -0300
+Served asset /plans.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/registrations.css?body=1" for 127.0.0.1 at 2014-06-19 16:39:52 -0300
+Served asset /registrations.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.css?body=1" for 127.0.0.1 at 2014-06-19 16:39:52 -0300
+Served asset /roles.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles_and_permissions.css?body=1" for 127.0.0.1 at 2014-06-19 16:39:52 -0300
+Served asset /roles_and_permissions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-19 16:39:52 -0300
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/suppliers.css?body=1" for 127.0.0.1 at 2014-06-19 16:39:52 -0300
+Served asset /suppliers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tickets.css?body=1" for 127.0.0.1 at 2014-06-19 16:39:52 -0300
+Served asset /tickets.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tickets_answers.css?body=1" for 127.0.0.1 at 2014-06-19 16:39:52 -0300
+Served asset /tickets_answers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-06-19 16:39:52 -0300
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-19 16:39:52 -0300
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2014-06-19 16:39:52 -0300
+Served asset /jquery-ui.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-19 16:39:52 -0300
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2014-06-19 16:39:52 -0300
+Served asset /twitter/bootstrap.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/customers.js?body=1" for 127.0.0.1 at 2014-06-19 16:39:52 -0300
+Served asset /customers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tickets.js?body=1" for 127.0.0.1 at 2014-06-19 16:39:52 -0300
+Served asset /tickets.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/equipment.js?body=1" for 127.0.0.1 at 2014-06-19 16:39:52 -0300
+Served asset /equipment.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/orders.js?body=1" for 127.0.0.1 at 2014-06-19 16:39:52 -0300
+Served asset /orders.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/payments.js?body=1" for 127.0.0.1 at 2014-06-19 16:39:52 -0300
+Served asset /payments.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/articles.js?body=1" for 127.0.0.1 at 2014-06-19 16:39:52 -0300
+Served asset /articles.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-19 16:39:52 -0300
+Served asset /application.js - 304 Not Modified (2ms)
+
+
+Started GET "/es/customers/1/invoices" for 127.0.0.1 at 2014-06-19 16:39:54 -0300
+
+
+Started GET "/es/customers%2F1%2Finvoices" for 127.0.0.1 at 2014-06-19 16:39:54 -0300
+
+
+Started GET "/es/customers%2F1%2Finvoices" for 127.0.0.1 at 2014-06-19 16:39:54 -0300
+
+
+Started GET "/es/customers%2F1%2Finvoices" for 127.0.0.1 at 2014-06-19 16:39:54 -0300
+
+
+Started GET "/es/customers%2F1%2Finvoices" for 127.0.0.1 at 2014-06-19 16:39:54 -0300
+
+
+Started GET "/es/customers%2F1%2Finvoices" for 127.0.0.1 at 2014-06-19 16:39:54 -0300
+
+
+Started GET "/es/customers%2F1%2Finvoices" for 127.0.0.1 at 2014-06-19 16:39:54 -0300
+
+
+Started GET "/es/customers%2F1%2Finvoices" for 127.0.0.1 at 2014-06-19 16:39:54 -0300
+
+
+Started GET "/es/customers%2F1%2Finvoices" for 127.0.0.1 at 2014-06-19 16:39:54 -0300
+
+
+Started GET "/es/customers%2F1%2Finvoices" for 127.0.0.1 at 2014-06-19 16:39:54 -0300
+
+
+Started GET "/es/customers%2F1%2Finvoices" for 127.0.0.1 at 2014-06-19 16:39:54 -0300
+
+
+Started GET "/es/customers%2F1%2Finvoices" for 127.0.0.1 at 2014-06-19 16:39:54 -0300
+
+
+Started GET "/es/customers%2F1%2Finvoices" for 127.0.0.1 at 2014-06-19 16:39:54 -0300
+
+
+Started GET "/es/customers%2F1%2Finvoices" for 127.0.0.1 at 2014-06-19 16:39:54 -0300
+
+
+Started GET "/es/customers%2F1%2Finvoices" for 127.0.0.1 at 2014-06-19 16:39:54 -0300
+
+
+Started GET "/es/customers%2F1%2Finvoices" for 127.0.0.1 at 2014-06-19 16:39:54 -0300
+
+
+Started GET "/es/customers%2F1%2Finvoices" for 127.0.0.1 at 2014-06-19 16:39:54 -0300
+
+
+Started GET "/es/customers%2F1%2Finvoices" for 127.0.0.1 at 2014-06-19 16:39:54 -0300
+
+
+Started GET "/es/customers%2F1%2Finvoices" for 127.0.0.1 at 2014-06-19 16:39:54 -0300
+
+
+Started GET "/es/customers%2F1%2Finvoices" for 127.0.0.1 at 2014-06-19 16:39:54 -0300
+
+
+Started GET "/es/customers%2F1%2Finvoices" for 127.0.0.1 at 2014-06-19 16:39:54 -0300
