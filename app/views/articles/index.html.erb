@@ -65,15 +65,15 @@ Descargar:
   <tr>
     <td class="span4"><%= article.barcode %></td>
     <td class="span4"><%= article.name %></td>
-    <td class="span4"><%= article.supplier.name %></td>
+    <td class="span4"><%= article.supplier.name.nil? "" : article.supplier.name %></td>
     <td class="label label-info span2 center"><%= number_to_currency(article.price_total) %></td>
     <td class="center span2"><%= article.quantity %></td>
-   <% if can? :show, @articles %>
-           <td class="span1"><%= link_to 'Ver', article %></td>
-           <td class="span1"><%= link_to 'Editar', edit_article_path(article) %></td>
-   <% end %>
-   <% end %>
-  </tr>
+    <% if can? :show, @articles %>
+       <td class="span1"><%= link_to 'Ver', article %></td>
+    <td class="span1"><%= link_to 'Editar', edit_article_path(article) %></td>
+ <% end %>
+ <% end %>
+ </tr>
 </table>
 <% end %>
 

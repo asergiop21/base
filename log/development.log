@@ -48768,3 +48768,559 @@ Served asset /articles.js - 304 Not Modified (0ms)
 
 Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-07 15:54:19 -0300
 Served asset /application.js - 304 Not Modified (3ms)
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 127.0.0.1 at 2014-06-19 00:53:05 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/sessions/new.html.erb within layouts/application (461.5ms)
+Completed 200 OK in 2259ms (Views: 1652.1ms | ActiveRecord: 565.9ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:08 -0300
+Served asset /application.css - 200 OK (32ms)
+
+
+Started GET "/assets/twitter/bootstrap.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:08 -0300
+Served asset /twitter/bootstrap.css - 200 OK (2ms)
+
+
+Started GET "/assets/articles.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:08 -0300
+Served asset /articles.css - 200 OK (2ms)
+
+
+Started GET "/assets/twitter/bootstrap-responsive.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:08 -0300
+Served asset /twitter/bootstrap-responsive.css - 200 OK (1ms)
+
+
+Started GET "/assets/login.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:08 -0300
+Served asset /login.css - 200 OK (1ms)
+
+
+Started GET "/assets/customers.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:08 -0300
+Served asset /customers.css - 200 OK (1ms)
+
+
+Started GET "/assets/invoices.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:08 -0300
+Served asset /invoices.css - 200 OK (1ms)
+
+
+Started GET "/assets/pagination.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:08 -0300
+Served asset /pagination.css - 200 OK (2ms)
+
+
+Started GET "/assets/footer.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:08 -0300
+Served asset /footer.css - 200 OK (1ms)
+
+
+Started GET "/assets/jquery/ui-custom.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:08 -0300
+Served asset /jquery/ui-custom.css - 200 OK (18ms)
+
+
+Started GET "/assets/accounts_receivables.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:08 -0300
+Served asset /accounts_receivables.css - 200 OK (42ms)
+
+
+Started GET "/assets/categories.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:08 -0300
+Served asset /categories.css - 200 OK (2ms)
+
+
+Started GET "/assets/customers_accounts.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:08 -0300
+Served asset /customers_accounts.css - 200 OK (2ms)
+
+
+Started GET "/assets/ips.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:08 -0300
+Served asset /ips.css - 200 OK (1ms)
+
+
+Started GET "/assets/equipment.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:08 -0300
+Served asset /equipment.css - 200 OK (1ms)
+
+
+Started GET "/assets/loans.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:08 -0300
+Served asset /loans.css - 200 OK (2ms)
+
+
+Started GET "/assets/orders.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:08 -0300
+Served asset /orders.css - 200 OK (2ms)
+
+
+Started GET "/assets/payments.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:08 -0300
+Served asset /payments.css - 200 OK (1ms)
+
+
+Started GET "/assets/locations.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:08 -0300
+Served asset /locations.css - 200 OK (2ms)
+
+
+Started GET "/assets/makes.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:08 -0300
+Served asset /makes.css - 200 OK (1ms)
+
+
+Started GET "/assets/models.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:08 -0300
+Served asset /models.css - 200 OK (1ms)
+
+
+Started GET "/assets/permissions.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:08 -0300
+Served asset /permissions.css - 200 OK (2ms)
+
+
+Started GET "/assets/plans.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:08 -0300
+Served asset /plans.css - 200 OK (1ms)
+
+
+Started GET "/assets/registrations.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:08 -0300
+Served asset /registrations.css - 200 OK (1ms)
+
+
+Started GET "/assets/roles.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:08 -0300
+Served asset /roles.css - 200 OK (1ms)
+
+
+Started GET "/assets/roles_and_permissions.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:08 -0300
+Served asset /roles_and_permissions.css - 200 OK (1ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:08 -0300
+Served asset /scaffolds.css - 200 OK (1ms)
+
+
+Started GET "/assets/tickets.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:08 -0300
+Served asset /tickets.css - 200 OK (1ms)
+
+
+Started GET "/assets/tickets_answers.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:08 -0300
+Served asset /tickets_answers.css - 200 OK (1ms)
+
+
+Started GET "/assets/suppliers.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:08 -0300
+Served asset /suppliers.css - 200 OK (1ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:08 -0300
+Served asset /users.css - 200 OK (2ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2014-06-19 00:53:08 -0300
+Served asset /twitter/bootstrap.js - 200 OK (1ms)
+
+
+Started GET "/assets/customers.js?body=1" for 127.0.0.1 at 2014-06-19 00:53:08 -0300
+Served asset /customers.js - 200 OK (1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-19 00:53:08 -0300
+Served asset /jquery.js - 200 OK (27ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2014-06-19 00:53:08 -0300
+Served asset /jquery-ui.js - 200 OK (4ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-19 00:53:08 -0300
+Served asset /jquery_ujs.js - 200 OK (2ms)
+
+
+Started GET "/assets/tickets.js?body=1" for 127.0.0.1 at 2014-06-19 00:53:08 -0300
+Served asset /tickets.js - 200 OK (1ms)
+
+
+Started GET "/assets/equipment.js?body=1" for 127.0.0.1 at 2014-06-19 00:53:08 -0300
+Served asset /equipment.js - 200 OK (1ms)
+
+
+Started GET "/assets/orders.js?body=1" for 127.0.0.1 at 2014-06-19 00:53:08 -0300
+Served asset /orders.js - 200 OK (1ms)
+
+
+Started GET "/assets/payments.js?body=1" for 127.0.0.1 at 2014-06-19 00:53:08 -0300
+Served asset /payments.js - 200 OK (1ms)
+
+
+Started GET "/assets/articles.js?body=1" for 127.0.0.1 at 2014-06-19 00:53:08 -0300
+Served asset /articles.js - 200 OK (1ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-19 00:53:08 -0300
+Served asset /application.js - 200 OK (14ms)
+
+
+Started GET "/assets/user-icon.jpg" for 127.0.0.1 at 2014-06-19 00:53:08 -0300
+Served asset /user-icon.jpg - 200 OK (58ms)
+
+
+Started GET "/assets/llave.png" for 127.0.0.1 at 2014-06-19 00:53:08 -0300
+Served asset /llave.png - 200 OK (180ms)
+
+
+Started POST "/es/users/sign_in" for 127.0.0.1 at 2014-06-19 00:53:12 -0300
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"21o3a9f52KJuKYkEF/slSgc5IrzbU/+Kl5VhakrOWec=", "user"=>{"username"=>"admin", "password"=>"[FILTERED]", "remember_me"=>"0"}, "locale"=>"es"}
+  [1m[36mUser Load (65.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."username" = 'admin' LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  BEGIN
+  [1m[36m (1.3ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = '2014-06-07 17:48:27.758039', "current_sign_in_at" = '2014-06-19 03:53:13.037893', "sign_in_count" = 6, "updated_at" = '2014-06-19 03:53:13.151259' WHERE "users"."id" = 1[0m
+  [1m[35m (44.9ms)[0m  COMMIT
+Redirected to http://localhost:3000/?locale=es
+Completed 302 Found in 615ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/?locale=es" for 127.0.0.1 at 2014-06-19 00:53:13 -0300
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+Processing by CustomersController#index as HTML
+  Parameters: {"locale"=>"es"}
+  [1m[35mCustomer Load (32.4ms)[0m  SELECT "customers".* FROM "customers" 
+  Rendered customers/index.html.erb within layouts/application (78.5ms)
+  Rendered layouts/_menu.html.erb (7.4ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 227ms (Views: 162.6ms | ActiveRecord: 36.8ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:13 -0300
+Served asset /application.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:13 -0300
+Served asset /twitter/bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap-responsive.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:13 -0300
+Served asset /twitter/bootstrap-responsive.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/login.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:13 -0300
+Served asset /login.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/customers.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:13 -0300
+Served asset /customers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/invoices.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:13 -0300
+Served asset /invoices.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/articles.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:13 -0300
+Served asset /articles.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/pagination.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:13 -0300
+Served asset /pagination.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/footer.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:13 -0300
+Served asset /footer.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery/ui-custom.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:13 -0300
+Served asset /jquery/ui-custom.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/accounts_receivables.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:13 -0300
+Served asset /accounts_receivables.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/categories.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:13 -0300
+Served asset /categories.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/customers_accounts.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:13 -0300
+Served asset /customers_accounts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/equipment.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:13 -0300
+Served asset /equipment.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/ips.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:13 -0300
+Served asset /ips.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/loans.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:13 -0300
+Served asset /loans.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/locations.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:13 -0300
+Served asset /locations.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/makes.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:13 -0300
+Served asset /makes.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/models.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:13 -0300
+Served asset /models.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/orders.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:13 -0300
+Served asset /orders.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/payments.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:13 -0300
+Served asset /payments.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/permissions.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:13 -0300
+Served asset /permissions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/plans.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:13 -0300
+Served asset /plans.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/registrations.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:13 -0300
+Served asset /registrations.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:13 -0300
+Served asset /roles.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles_and_permissions.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:13 -0300
+Served asset /roles_and_permissions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:13 -0300
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/suppliers.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:13 -0300
+Served asset /suppliers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tickets.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:13 -0300
+Served asset /tickets.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tickets_answers.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:13 -0300
+Served asset /tickets_answers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:13 -0300
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-19 00:53:13 -0300
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2014-06-19 00:53:13 -0300
+Served asset /jquery-ui.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-19 00:53:13 -0300
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2014-06-19 00:53:13 -0300
+Served asset /twitter/bootstrap.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/customers.js?body=1" for 127.0.0.1 at 2014-06-19 00:53:13 -0300
+Served asset /customers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tickets.js?body=1" for 127.0.0.1 at 2014-06-19 00:53:13 -0300
+Served asset /tickets.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/equipment.js?body=1" for 127.0.0.1 at 2014-06-19 00:53:13 -0300
+Served asset /equipment.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/orders.js?body=1" for 127.0.0.1 at 2014-06-19 00:53:13 -0300
+Served asset /orders.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/payments.js?body=1" for 127.0.0.1 at 2014-06-19 00:53:13 -0300
+Served asset /payments.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/articles.js?body=1" for 127.0.0.1 at 2014-06-19 00:53:13 -0300
+Served asset /articles.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-19 00:53:14 -0300
+Served asset /application.js - 304 Not Modified (3ms)
+
+
+Started GET "/articles?locale=es" for 127.0.0.1 at 2014-06-19 00:53:15 -0300
+Processing by ArticlesController#index as HTML
+  Parameters: {"locale"=>"es"}
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35m (23.7ms)[0m  SELECT COUNT(*) FROM "articles" 
+  [1m[36mArticle Load (0.6ms)[0m  [1mSELECT "articles".* FROM "articles" LIMIT 10 OFFSET 0[0m
+  [1m[35mSupplier Load (26.6ms)[0m  SELECT "suppliers".* FROM "suppliers" WHERE "suppliers"."id" = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "suppliers".* FROM "suppliers" WHERE "suppliers"."id" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "suppliers".* FROM "suppliers" WHERE "suppliers"."id" = 1 LIMIT 1
+  Rendered articles/index.html.erb within layouts/application (289.3ms)
+  Rendered layouts/_menu.html.erb (2.0ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 347ms (Views: 240.6ms | ActiveRecord: 80.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:15 -0300
+Served asset /application.css - 304 Not Modified (44ms)
+
+
+Started GET "/assets/twitter/bootstrap.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:15 -0300
+Served asset /twitter/bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap-responsive.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:15 -0300
+Served asset /twitter/bootstrap-responsive.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/login.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:15 -0300
+Served asset /login.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/customers.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:15 -0300
+Served asset /customers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/invoices.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:15 -0300
+Served asset /invoices.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/articles.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:15 -0300
+Served asset /articles.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/pagination.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:15 -0300
+Served asset /pagination.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/footer.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:15 -0300
+Served asset /footer.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery/ui-custom.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:16 -0300
+Served asset /jquery/ui-custom.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/accounts_receivables.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:16 -0300
+Served asset /accounts_receivables.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/categories.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:16 -0300
+Served asset /categories.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/customers_accounts.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:16 -0300
+Served asset /customers_accounts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/equipment.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:16 -0300
+Served asset /equipment.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/ips.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:16 -0300
+Served asset /ips.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/loans.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:16 -0300
+Served asset /loans.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/locations.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:16 -0300
+Served asset /locations.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/makes.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:16 -0300
+Served asset /makes.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/models.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:16 -0300
+Served asset /models.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/orders.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:16 -0300
+Served asset /orders.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/payments.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:16 -0300
+Served asset /payments.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/permissions.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:16 -0300
+Served asset /permissions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/plans.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:16 -0300
+Served asset /plans.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/registrations.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:16 -0300
+Served asset /registrations.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:16 -0300
+Served asset /roles.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles_and_permissions.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:16 -0300
+Served asset /roles_and_permissions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:16 -0300
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/suppliers.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:16 -0300
+Served asset /suppliers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tickets.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:16 -0300
+Served asset /tickets.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tickets_answers.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:16 -0300
+Served asset /tickets_answers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-06-19 00:53:16 -0300
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-19 00:53:16 -0300
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2014-06-19 00:53:16 -0300
+Served asset /jquery-ui.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-19 00:53:16 -0300
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2014-06-19 00:53:16 -0300
+Served asset /twitter/bootstrap.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/customers.js?body=1" for 127.0.0.1 at 2014-06-19 00:53:16 -0300
+Served asset /customers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tickets.js?body=1" for 127.0.0.1 at 2014-06-19 00:53:16 -0300
+Served asset /tickets.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/equipment.js?body=1" for 127.0.0.1 at 2014-06-19 00:53:16 -0300
+Served asset /equipment.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/orders.js?body=1" for 127.0.0.1 at 2014-06-19 00:53:16 -0300
+Served asset /orders.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/payments.js?body=1" for 127.0.0.1 at 2014-06-19 00:53:16 -0300
+Served asset /payments.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/articles.js?body=1" for 127.0.0.1 at 2014-06-19 00:53:16 -0300
+Served asset /articles.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-19 00:53:16 -0300
+Served asset /application.js - 304 Not Modified (3ms)
