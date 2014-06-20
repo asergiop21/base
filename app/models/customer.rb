@@ -20,7 +20,6 @@ before_save :create_location
   has_many :phones, :dependent => :destroy
   has_many :loans
   has_many :ips
-  has_many :invoices
   has_many :payments
   belongs_to :user
   belongs_to :location

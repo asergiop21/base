@@ -4,6 +4,14 @@ class InvoicesController < ApplicationController
 
    before_filter :authenticate_user!, :except => [:some_action_without_auth]
 #   before_filter :load_customers, :only => [:index]
+   def find
+      @invoices = Invoice.find_by_customer_id(params[:customer_id])
+      respond_to do |format|
+         format.html # index.html.erb
+         format.json { render json: @invoices }
+      end
+   end
+   
    def index
       @invoices = Invoice.all
       @articles = Article.con_nombre_barcode(params[:q]) if params[:q].present?
@@ -14,7 +22,7 @@ class InvoicesController < ApplicationController
          end
       end
 
-      @amount = Invoice.total_amount 
+      @amount = Invoice.total_amount_invoice 
       @total = @payments - @amount
       respond_to do |format|
          format.html # index.html.erb
@@ -62,10 +70,9 @@ class InvoicesController < ApplicationController
    # POST /invoices.json
    def create
       @articles = Article.con_nombre(params[:q]) if params[:q].present?
-      @invoice = Invoice.new(params[:invoice])
+      @invoice = Invoice.new(params[:invoice].merge(customer_id: params[:customer_id]))
       @id = @invoice.orders(params[:articles_id])
       @quantity = Article.quantity_order(@id)
-
 
       respond_to do |format|
          if @invoice.save
@@ -85,7 +92,7 @@ class InvoicesController < ApplicationController
 
       respond_to do |format|
          if @invoice.update_attributes(params[:invoice])
-            format.html { redirect_to  customer_invoices_path(@customer), notice: 'Invoice was successfully updated.' }
+            format.html { redirect_to  invoices_path(), notice: 'Invoice was successfully updated.' }
             format.json { head :no_content }
          else
             format.html { render action: "edit" }

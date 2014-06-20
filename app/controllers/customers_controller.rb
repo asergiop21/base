@@ -5,6 +5,28 @@ class CustomersController < ApplicationController
 		  require 'will_paginate/array'
 		  before_filter :authenticate_user!, :except => [:some_action_without_auth]
 load_and_authorize_resource :only =>[:show]
+
+def find
+
+    #@invoices = Invoice.find_by_customer_id(params[:id])
+    @invoices = Invoice.invoices(params[:id])
+
+      @payments = 0
+      @invoices.each do |e|
+         if e.cancelar_invoice == false
+            @payments  += Payment.where('invoice_id = ?', e.id).sum(&:amount)
+         end
+      end
+
+      @amount = Invoice.total_amount(params[:id]) 
+      @total = @payments - @amount
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @invoices }
+    end
+end
+
+
 def index
   @customers = Customer.all
    @customers = Customer.con_nombre(params[:q]) if params[:q].present?
@@ -18,7 +40,8 @@ def index
   end
 
 def show
-    @customer = Customer.find(params[:id])
+    #@customer = Customer.find(params[:id])
+    @customer = Invoice.find_by_customer_id(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -51,7 +74,7 @@ def show
 
     respond_to do |format|
       if @customer.save
-        format.html { redirect_to @customer, notice: 'Customer was successfully created.' }
+        format.html { redirect_to customers_path, notice: 'Customer was successfully created.' }
         format.json { render json: @customer, status: :created, location: @customer }
       else
         format.html { render action: "new" }

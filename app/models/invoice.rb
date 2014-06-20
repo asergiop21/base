@@ -1,18 +1,23 @@
 class Invoice < ActiveRecord::Base
 
-   attr_accessible :customer_id, :price_total, :orders_attributes, :payments_attributes, :current_account, :cancelar_invoice
+scope :invoices, ->(id){where("customer_id= ?", "#{id}")}
+
+attr_accessible :customer_id, :price_total, :orders_attributes, :payments_attributes, :current_account, :cancelar_invoice
 
 
    has_many  :orders
    has_many  :payments
-   belongs_to :customer
 
    accepts_nested_attributes_for :orders, :reject_if => lambda {|a| a[:articles_id].blank?}
 
    accepts_nested_attributes_for :payments, allow_destroy: true
 
-   def self.total_amount
+   def self.total_amount_invoice
       sum('price_total', :conditions => ['cancelar_invoice = ?', false])
+   end
+
+   def self.total_amount(customer)
+      sum('price_total', :conditions => ['cancelar_invoice = ? and customer_id = ?', false,  customer ])
    end
 
    def self.sum_pay(id)

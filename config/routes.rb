@@ -12,18 +12,22 @@ GestionBase::Application.routes.draw do
       resources :makes
       resources :suppliers
       resources :locations
-      resources :customers 
+      resources :customers do
+         collection do
+            match 'find/:id' => 'customers#find', as: :store
+         end
+      end
       resources :invoices do
-#         get "payments/index"
-#         match "cancelar" => "invoices#cancelar_invoice"
-#         match "update_invoice" => "invoices#update_invoice"
+
+         get "payments/index"
+         match "cancelar" => "invoices#cancelar_invoice"
+         match "update_invoice" => "invoices#update_invoice"
       end
       devise_for :users
       resources :users
       match '*path', to: redirect("/#{I18n.default_locale}/%{path}")
       match '', to: redirect("/#{I18n.default_locale}")
       match "models" => "models#index"
-
    end
    # match "users" => "users#index"
    # The priority is based upon order of creation:
