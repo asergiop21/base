@@ -10,7 +10,7 @@ def index
         @articles = Article.con_id(params[:article_id]) if params[:article_id].present?
         #@articles = Article.all if !params[:q].present? and !params[:article_id].present? and !params[:supplier_id].present?
         #          @articles = Article.all
-        @articles = @articles.paginate(page: params[:page], per_page: 10)
+        @articles_1 = @articles.paginate(page: params[:page], per_page: 20)
 
     respond_to do |format|
       format.html # index.html.erb

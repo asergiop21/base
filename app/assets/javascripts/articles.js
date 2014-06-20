@@ -7,8 +7,8 @@ $(document).ready(function(){
                                 $.ajax({
                                         url: input.data('autocomplete-url'),
                                         dataType: 'json', data: { q: request.term },
-                                        max: 10,
-                                        success: function(data) {
+
+                                       success: function(data) {
                                                 response(
                                                         $.map(data, function(item) {
                                                                 return { label:  item.name , item: item};
@@ -17,7 +17,6 @@ $(document).ready(function(){
                                         },
                                 });
                         },
-
                         select: function(event, ui) {
                                 input.val(ui.item.label);
                                 $(input.data('autocomplete-for')).val(ui.item.item.id);
