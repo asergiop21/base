@@ -119,7 +119,7 @@ class InvoicesController < ApplicationController
 
       respond_to do |format|
          if @invoice.update_attribute("cancelar_invoice",  true )
-            format.html { redirect_to  customer_invoices_path(@customer), notice: 'Invoice was successfully updated.' }
+            format.html { redirect_to  invoices_path(@customer), notice: 'Invoice was successfully updated.' }
             format.json { head :no_content }
          else
             format.html { render action: "edit" }
@@ -146,7 +146,7 @@ class InvoicesController < ApplicationController
                @invoice.update_attributes!( price_total: @price_invoice_total)
       respond_to do |format|
          if '1'=='1'
-            format.html { redirect_to  customer_invoices_path(@customer), notice: 'Invoice was successfully updated.' }
+            format.html { redirect_to  invoices_path(@customer), notice: 'Invoice was successfully updated.' }
             format.json { head :no_content }
          else
             format.html { render action: "edit" }
