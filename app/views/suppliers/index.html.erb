@@ -2,6 +2,7 @@
 
 <table class="table">
   <tr>
+    <th>ID</th>
     <th><%= Supplier.human_attribute_name(:name)%></th>
     <th><%= Supplier.human_attribute_name(:address)%></th>
     <th></th>
@@ -11,6 +12,7 @@
 
 <% @suppliers.each do |supplier| %>
   <tr>
+   <td><%= supplier.id %></td>
    <td><%= supplier.name %></td>
     <td><%= supplier.address %></td>
     <td><%= link_to t('labels.show'), supplier %></td>
