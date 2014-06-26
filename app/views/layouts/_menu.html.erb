@@ -32,11 +32,11 @@
         </ul>
   
         <ul class="nav">
-                      <li><%= link_to "Remitos",new_invoice_path%> </li>
+                      <li><%= link_to "Nuevo Remitos",new_invoice_path%> </li>
         </ul>
 
         <ul class="nav">
-                      <li><%= link_to "Remitos",invoice_path%> </li>
+                      <li><%= link_to "Historial Remitos",invoices_path%> </li>
         </ul>
           <ul class="nav pull-right">
           <li><%= link_to current_user.email, edit_user_path(current_user.id) %></li><li><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
