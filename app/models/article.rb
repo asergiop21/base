@@ -51,8 +51,8 @@ class Article < ActiveRecord::Base
       (2..spreadsheet.last_row).each do |i|
          row = Hash[[ header, spreadsheet.row(i)].transpose]
          #CSV.foreach(file.path, headers: true, :encoding => 'ISO-8859-1') do |row|
-         #article = find_by_articles_code_supplier(row["articles_code_supplier"]) || new
-         article = find_by_articles_code_supplier(row["articles_code_supplier"]) 
+         article = find_by_articles_code_supplier(row["articles_code_supplier"]) || new
+         #article = find_by_articles_code_supplier(row["articles_code_supplier"]) 
          @quantity = row["quantity"]
          if (@quantity == "  " || @quantity == nil)
             row["quantity"] = 0		
