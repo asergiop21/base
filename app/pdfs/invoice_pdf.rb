@@ -4,7 +4,7 @@ class InvoicePdf < Prawn::Document
       super(top_margin: 70, page_size: "A5")
       @invoice = invoice
       @user = user
-      text "Cliente: " + @invoice.customer.name + ", " + @invoice.customer.lastname
+      #text "Cliente: " + @invoice.customer.name + ", " + @invoice.customer.lastname
       text "Fecha: " + I18n.l(@invoice.created_at , format: :short)
       text "Presupuesto \##{@invoice.id}"
       line_items
