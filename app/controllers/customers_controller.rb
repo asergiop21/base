@@ -40,9 +40,7 @@ def index
   end
 
 def show
-    #@customer = Customer.find(params[:id])
-    @customer = Invoice.find_by_customer_id(params[:id])
-
+    @customer = Customer.find(params[:id])
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @customer }
@@ -104,7 +102,6 @@ def show
   def destroy
     @customer = Customer.find(params[:id])
     @customer.destroy
-
     respond_to do |format|
       format.html { redirect_to customers_url }
       format.json { head :no_content }

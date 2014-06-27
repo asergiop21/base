@@ -1,47 +1,56 @@
+<% if flash[:error] %>
+  <li class="alert alert-error"><%= flash[:error] %></li>
+  <% end %>
+<% if notice %>
+  <li class="alert alert-success"><%= notice %></li>
+  <% end %>
+<div class="Container span12">
+<p>
+  <b>Nombre:</b>
+  <%= @customer.name %>
+</p>
 
-<h3>Listado de Remitos</h3>
+<p>
+  <b>apellido:</b>
+  <%= @customer.try(:lastname) %>
+</p>
 
-<table class="table">
-  <tr>
-    <th>Remito</th>
-    <th>Fecha</th>
-    <th>Price total</th>
-    <th>Pagado</th>
-    <th>Total</th>
-    <th>Cuenta corriente</th>
-    <th>Estado Cta cte</th>
-    <th></th>
-  </tr>
+<p>
+  <b>Direccion</b>
+  <%= @customer.address %>
+</p>
 
-<% @customer.each do |invoice| %>
-  <tr>
-    <td><%= invoice.id %></td>
-    <td><%= invoice.created_at.strftime("%d/%m/%Y") %></td>
-    <td><%= invoice.price_total %></td>
-    <td><%=  Invoice.sum_pay(invoice.id) %></td>
-    <td></td>
-    <td><%=  invoice.current_account ? 'Si' : 'No' %> </td>
-    <td> <%= invoice.cancelar_invoice ? "  <b> 'Cancelado' </b> ": 'No Cancelado' if invoice.current_account == true %></td>
-    <td><%= link_to "Editar", edit_invoice_path(invoice) %></td>
-    <td><%= link_to "Imprimir", invoice_path( invoice, format: "pdf") %></td>
-    <td><%= link_to "Cancelar", invoice_cancelar_path(invoice) %></td>
-    <td><%= link_to "Actualizar precio",invoice_update_invoice_path( invoice) %></td>
-    </tr>
+<p>
+  <b>Localidad:</b>
+</p>
+<p>
+  <b>Email:</b>
+  <%= @customer.email %>
+</p>
+
+<p>
+  <b>Dni:</b>
+  <%= @customer.dni %>
+</p>
+
+<p>
+  <b>Descripcion:</b>
+  <%= @customer.description %>
+</p>
+
+<p>
+  <b>Cuit:</b>
+  <%= @customer.cuit %>
+</p>
+
+<p>
+  <b>Telefono</b>
+  <% @customer.phones.each do |u| %>
+<%= u.phone_number %> -
 <% end %>
+</p>
 
-        <tr>
-                  <td></td>
-                  <td></td>
-                  <td><b><%= number_to_currency(@amount) %></b></td>
-                  <td><b><%= number_to_currency(@payments) %></b></td>
-                  <% if @total < 0 %>
-                          <td class="alert alert-error"><b><%= number_to_currency(@total) %></b></td>
-                  <% else %>
-                  <td><b><%= number_to_currency(@total) %></b></td>
-                  <% end %>
-          </tr>
-  </table>
+<%= link_to 'Editar', edit_customer_path(@customer) %> |
+<%= link_to 'Volver', customers_path %>
 
-<br />
-
-<%= link_to 'Nuevo Remito', new_invoice_path() %>
+</div>

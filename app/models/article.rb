@@ -57,10 +57,13 @@ class Article < ActiveRecord::Base
          if (@quantity == "  " || @quantity == nil)
             row["quantity"] = 0		
          end
-        if article != nil
+         if (row["price_cost"] == "" || row["price_cost"] == nil)
+            row["price_cost"] = 0
+         end
+       # if article != nil
          article.attributes = row.to_hash.slice(*accessible_attributes)
          article.save!
-        end
+       # end
       end
    end
 
