@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-        $('div.articulo').on('focus', '[data-autocomplete-field]', function(){
+        $('div.articulox').on('focus', '[data-autocomplete-field]', function(){
                 var input = $(this);
                 input.autocomplete({
                         source: function(request, response) {
@@ -9,9 +9,9 @@ $(document).ready(function(){
                                         dataType: 'json', data: { q: request.term },
 
                                        success: function(data) {
-                                                response(
+                                          response(
                                                         $.map(data, function(item) {
-                                                                return { label:  item.name , item: item};
+                                                           return { label:  item.name +" - " + item.name_supplier , item: item};
                                                         })
                                                         );
                                         },

@@ -1,8 +1,8 @@
 class Article < ActiveRecord::Base
-   scope :con_nombre_barcode, ->(nombre){where("LOWER(name) LIKE ? or barcode = ?", "%#{nombre}%".downcase, "%#{nombre}%")  }
-   scope :con_nombre,   ->(nombre){where("LOWER(name) LIKE ?", "%#{nombre}%".downcase)  }
+   #scope :con_nombre_barcode, ->(nombre){where("LOWER(name) LIKE ? or barcode = ?", "%#{nombre}%".downcase, "%#{nombre}%")  }
+   #scope :con_nombre,   ->(nombre){where("LOWER(name) LIKE ?", "%#{nombre}%".downcase)  }
+   scope :con_nombre,   ->(nombre){joins(:supplier).where("LOWER(articles.name) LIKE ?", "%#{nombre}%".downcase)  }
    scope :con_id, ->(id){ where('id = ?', "#{id}")}
-   #  scope :proveedor, ->(supplier_id){where('supplier_id = ?', "#{supplier_id}")}
 
    attr_accessible :name, :percentaje, :price_cost, :price_total, :make_id, :new_category, :category_id, :quantity, :barcode, :articles_code_supplier, :supplier_id, :new_supplier, :new_quantity, :new_make
 
@@ -42,6 +42,7 @@ class Article < ActiveRecord::Base
    def update_quantity
       self.quantity += new_quantity.to_f
    end
+
 
    def self.import(file)
       #CSV.foreach('/home/sergio/Escritorio/arti.csv', headers: true, :encoding => 'ISO-8859-1') do |row|
