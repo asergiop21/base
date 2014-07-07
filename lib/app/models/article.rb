@@ -1,5 +1,5 @@
 class Article < ActiveRecord::Base
-        scope :con_nombre_barcode,   ->(nombre){where("LOWER(name) LIKE ? or barcode LIKE ?", "%#{nombre}%".downcase, "%#{nombre}%")  }
+        scope :con_nombre_barcode,  ->(nombre){where("LOWER(name) LIKE ? or barcode LIKE ?", "%#{nombre}%".downcase, "%#{nombre}%")  }
         scope :con_nombre,   ->(nombre){where("LOWER(name) LIKE ?", "%#{nombre}%".downcase)  }
         scope :con_id, ->(id){ where('id = ?', "#{id}")}
         scope :proveedor, ->(supplier_id){where('supplier_id = ?', "#{supplier_id}")}

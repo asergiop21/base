@@ -1,12 +1,10 @@
 class Article < ActiveRecord::Base
-   #scope :con_nombre_barcode, ->(nombre){where("LOWER(name) LIKE ? or barcode = ?", "%#{nombre}%".downcase, "%#{nombre}%")  }
+   scope :con_nombre_barcode, ->(nombre){where("name ILIKE ? or barcode = ?","%#{nombre}%".downcase, nombre)}
    #scope :con_nombre,   ->(nombre){where("LOWER(name) LIKE ?", "%#{nombre}%".downcase)  }
    scope :con_nombre,   ->(nombre){joins(:supplier).where("LOWER(articles.name) LIKE ?", "%#{nombre}%".downcase)  }
    scope :con_id, ->(id){ where('id = ?', "#{id}")}
 
    attr_accessible :name, :percentaje, :price_cost, :price_total, :make_id, :new_category, :category_id, :quantity, :barcode, :articles_code_supplier, :supplier_id, :new_supplier, :new_quantity, :new_make
-
-
    attr_accessor :new_category, :new_supplier, :new_quantity, :new_make
 
    belongs_to :order

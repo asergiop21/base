@@ -42,7 +42,7 @@ class InvoicesController < ApplicationController
             pdf = InvoicePdf.new(@invoice , current_user)
             send_data pdf.render, filename: "order_#{@invoice.id}.pdf",
                type: "application/pdf",
-               disposition: "inline" 
+               disposition: "outline" 
          end
       end
    end
@@ -50,7 +50,6 @@ class InvoicesController < ApplicationController
    # GET /invoices/new
    # GET /invoices/new.json
    def new
-
       @invoice = Invoice.new
       1.times {@invoice.orders.build}
       1.times {@invoice.payments.build}
@@ -69,14 +68,13 @@ class InvoicesController < ApplicationController
    # POST /invoices
    # POST /invoices.json
    def create
-      @articles = Article.con_nombre(params[:q]) if params[:q].present?
+      @articles = Article.con_nombre_barcode(params[:q]) if params[:q].present?
       @invoice = Invoice.new(params[:invoice].merge(customer_id: params[:customer_id]))
       @id = @invoice.orders(params[:articles_id])
       @quantity = Article.quantity_order(@id)
-
       respond_to do |format|
          if @invoice.save
-            format.html { redirect_to  invoice_path(@invoice, format: 'pdf'), notice: 'Invoice was successfully created.' }
+            format.html { redirect_to  invoice_path(@invoice), notice: 'Invoice was successfully created.' }
             format.json { render json: @invoice, status: :created, location: @invoice }
          else
             format.html { render action: "new" }

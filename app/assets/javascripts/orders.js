@@ -16,17 +16,17 @@ $(document).ready(function(){
                 event.preventDefault();
                 });
         
-        $('div.section ').on('keypress', '[data-autocomplete-for]', function(){
-                var input = $(this);
+        $('div.section').on('focus', '[data-autocomplete-for]', function(){
+           var input = $(this);
                 input.autocomplete({
                         source: function(request, response) {
                                 $.ajax({
                                         url: input.data('autocomplete-url'),
                                         dataType: 'json', data: { q: request.term },
                                         success: function(data) {
-                                                response(
-                                                        $.map(data, function(item) {
-                                                                return { label: item.barcode  + " " + item.name + " - " + item.name_supplier   , item: item};
+                                          response(
+                                             $.map(data, function(item) {
+                                                return {label:item.barcode + " " + item.name + " - " + item.name_supplier, item: item};
                                                         })
                                                         );
                                         },
@@ -35,7 +35,8 @@ $(document).ready(function(){
                         autoFocus: true,
                         max: 2,
                         select: function(event, ui) {
-                                input.val(ui.item.label);
+
+   input.val(ui.item.label);
                                 var field = this.id;
                                 var id = field.split("_");
                                 var field_article_id = '#invoice_orders_attributes_' + id[3] + '_articles_id';
@@ -45,7 +46,10 @@ $(document).ready(function(){
                                 $(field_unit_price).val(ui.item.item.price_total);
                                 $(quantity_stock).val(ui.item.item.quantity);
                         }
-                }).removeAttr('data-autocomplete-field'); });
+                }).removeAttr('data-autocomplete-field');
+        
+        
+      });
 
         $(document).on('blur', '.quantity , .discount', function(event){
 

@@ -26,8 +26,7 @@ class OrdersController < ApplicationController
   # GET /orders/new.json
   def new
     @order = Order.new
-    @articles = Article.con_nombre(params[:q]) if params[:q].present?
-
+    @articles = Article.con_nombre_barcode(params[:q]) if params[:q].present?
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @order }

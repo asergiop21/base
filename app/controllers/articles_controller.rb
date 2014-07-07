@@ -5,7 +5,7 @@ require 'will_paginate'
 before_filter :authenticate_user!, :except => [:some_action_without_auth]
 load_and_authorize_resource  
 def index
-        @articles = Article.con_nombre(params[:q]) if params[:q].present?
+        @articles = Article.con_nombre_barcode(params[:q]) if params[:q].present?
         @articles = Article.con_id(params[:article_id]) if params[:article_id].present?
         @articles_1 = @articles.paginate(page: params[:page], per_page: 20)
         respond_to do |format|
