@@ -42,7 +42,7 @@ class InvoicesController < ApplicationController
             pdf = InvoicePdf.new(@invoice , current_user)
             send_data pdf.render, filename: "order_#{@invoice.id}.pdf",
                type: "application/pdf",
-               disposition: "outline" 
+               disposition: "inline" 
          end
       end
    end
