@@ -19,7 +19,7 @@ $(document).ready(function(){
         $('div.section').on('focus', '[data-autocomplete-for]', function(){
            var input = $(this);
                 input.autocomplete({
-                        source: function(request, response) {
+                   source: function(request, response) {
                                 $.ajax({
                                         url: input.data('autocomplete-url'),
                                         dataType: 'json', data: { q: request.term },
@@ -32,8 +32,7 @@ $(document).ready(function(){
                                         },
                                 });
                         },
-                        autoFocus: true,
-                        max: 2,
+                        minLength: 3,
                         select: function(event, ui) {
 
    input.val(ui.item.label);

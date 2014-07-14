@@ -4,6 +4,8 @@ class InvoicesController < ApplicationController
 
    before_filter :authenticate_user!, :except => [:some_action_without_auth]
    before_filter :load_customers
+   autocomplete :article, :name, :full =>true
+   
    def index
 
       @invoices = @customer.invoices.all

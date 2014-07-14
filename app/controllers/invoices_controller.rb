@@ -4,6 +4,7 @@ class InvoicesController < ApplicationController
 
    before_filter :authenticate_user!, :except => [:some_action_without_auth]
 #   before_filter :load_customers, :only => [:index]
+
    def find
       @invoices = Invoice.find_by_customer_id(params[:customer_id])
       respond_to do |format|

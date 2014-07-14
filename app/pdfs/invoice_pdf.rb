@@ -1,5 +1,5 @@
 class InvoicePdf < Prawn::Document
-
+ require "prawn/table"
    def initialize(invoice, user)
       super(top_margin: 70, page_size: "A5")
       @invoice = invoice

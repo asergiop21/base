@@ -18,9 +18,7 @@
                               }) %>
               <%= f.input :article_id, as: :hidden%>
             </div>
-
     <% end %> 
-
 <%= form_tag import_articles_path, multipart: true do %>
   <div class="search span4">
           <%= file_field_tag :file, class: "import" %>
@@ -64,12 +62,13 @@ Descargar:
   <tr>
     <td class="span4"><%= article.barcode %></td>
     <td class="span4"><%= article.name %></td>
-    <td class="span4"><%= article.supplier_id.nil? ? "" : article.supplier.name %></td>
+    <td class="span4"><%= article.supplier_id.nil? ? "" : article.name %></td>
     <td class="label label-info span2 center"><%= number_to_currency(article.price_total) %></td>
     <td class="center span2"><%= article.quantity %></td>
+
+       <td class="span1"><%= link_to 'Ver', article_path(article, format: "pdf") %></td>
     <% if can? :show, @articles %>
-       <td class="span1"><%= link_to 'Ver', article %></td>
-      <td class="span1"><%= link_to 'Editar', edit_article_path(article) %></td>
+       <td class="span1"><%= link_to 'Editar', edit_article_path(article) %></td>
          <td><%= link_to t('labels.destroy'), article, method: :delete, data: { confirm: t('labels.are_you_sure') } %></td>
  <% end %>
  <% end %>

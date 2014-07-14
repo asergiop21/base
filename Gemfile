@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.12'
 gem 'validates_timeliness'
 gem 'jquery-rails', '~>2.1.4'
+gem 'rails3-jquery-autocomplete', '~> 1.0.14'
 gem 'roo'
 #Base de Datos
 gem 'pg'
@@ -17,6 +18,7 @@ gem 'whenever'
 gem 'ancestry'
 gem 'country_select'
 gem 'prawn'
+gem 'barby'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

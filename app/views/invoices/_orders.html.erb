@@ -1,6 +1,6 @@
 <tbody class="table">
 <tr>
-                <td class="span3"> <%= f.input( :name, label: false, input_html: { 
+   <td class="span3"> <%= f.input( :name, label: false, input_html: { 
                         data: {'autocomplete-field' => true,
                                'autocomplete-for' => '#invoice_orders_#{id}_articles_id',
                                'autocomplete-url' => articles_path(format: :json)
@@ -13,9 +13,7 @@
 
           <td class="span2"> <%= f.input :discount, label: false, :input_html => {:class => "input-small discount "}, as: :string %></td>
           <td class="span2"> <%= f.input :price_total, label: false, :input_html => {:class => "input-small price_subtotal"}, as: :string %></td>
-       <%if current_user.role == 'Admin' %>
           <td><%= f.hidden_field :_destroy %></td>
           <td><%= button_to "Eliminar", '#', class: "remove_fields_orders btn btn-danger" %></td>
-  <% end %>
   </tr>
   </tbody>

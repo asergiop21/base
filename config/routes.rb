@@ -4,7 +4,9 @@ GestionBase::Application.routes.draw do
       collection {post :import} 
       collection {get :example} 
    end
-   resources :orders
+   resources :orders do 
+         get :autocomplete_article_name, :on => :collection
+   end
    scope ":locale", locale: /#{I18n.available_locales.join("|")}/ do
       resources :categories
       resources :equipment
