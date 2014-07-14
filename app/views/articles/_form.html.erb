@@ -22,7 +22,6 @@
                 </div>       
                 <div class = "span6">
                    <%= f.input :barcode, label: "Codigo de Barra" %>
-                   <%= f.button :generate, label:"generate" %>
                     <%= f.input :articles_code_supplier, label: "Codigo Articulo Proveedor" %>
                     <%= f.label "Marca" %>
                     <%= f.collection_select :make_id, Make.order(:name), :id, :name %>
