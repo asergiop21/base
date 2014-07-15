@@ -8,13 +8,15 @@ require 'barby/outputter/prawn_outputter'
       @article = article
       barcode
       barcode_2
-      barcode_text
    end
    def barcode
    
       1.upto(10) do |i|
         x = 10 
         y = i * 70
+
+      font_size(5)
+        draw_text @article.barcode + " - " + @article.name, :at=> [x,y - 10 ]
         translate(x, y) do
          barcode = Barby::Code39.new @article.barcode
          barcode.annotate_pdf(self)
@@ -25,19 +27,13 @@ require 'barby/outputter/prawn_outputter'
      1.upto(10) do |i|
         x = 300 
         y = i * 70
+     
+         font_size(5)
+        draw_text @article.barcode + " - " + @article.name, :at=> [x,y - 10 ]
         translate(x, y) do
          barcode = Barby::Code39.new @article.barcode
          barcode.annotate_pdf(self)
       end
-   end
-   end
-
-     def barcode_text
-      1.upto(10) do |i|
-      x = 10 
-        y = (i * 70)
-         font_size(5)
-        draw_text @article.barcode + " - " + @article.name, :at=> [x,y - 10 ]
    end
    end
 end
