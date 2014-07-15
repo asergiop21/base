@@ -35,6 +35,7 @@ gem 'pry', group: [:development]
 # Deploy with Capistrano
 group :development do
    gem 'capistrano',"~>2.15.5"
+   gem 'net-ssh', "~>2.7.0"
 end
  gem 'passenger'
  gem 'i18n', "~>0.6.4"

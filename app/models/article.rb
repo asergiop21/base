@@ -48,7 +48,6 @@ class Article < ActiveRecord::Base
 
    def self.import(file)
       #CSV.foreach('/home/sergio/Escritorio/arti.csv', headers: true, :encoding => 'ISO-8859-1') do |row|
-
       spreadsheet = open_spreadsheet(file)
       header = spreadsheet.row(1)
       (2..spreadsheet.last_row).each do |i|
@@ -56,20 +55,28 @@ class Article < ActiveRecord::Base
          #CSV.foreach(file.path, headers: true, :encoding => 'ISO-8859-1') do |row|
          article = find_by_articles_code_supplier(row["articles_code_supplier"]) || new
          #article = find_by_articles_code_supplier(row["articles_code_supplier"]) 
+
+         @article = article
          @quantity = row["quantity"]
+
          if (@quantity == "  " || @quantity == nil)
             row["quantity"] = 0		
          end
+
          if (row["price_cost"] == "" || row["price_cost"] == nil)
             row["price_cost"] = 0
          end
-       # if article != nil
+         if (@article["barcode"] == "" || @article["barcode"] == nil)
+             row["barcode"] = row["articles_code_supplier"] 
+         else
+            row["barcode"] = article["barcode"]
+         end
+         # if article != nil
          article.attributes = row.to_hash.slice(*accessible_attributes)
          article.save!
        # end
       end
    end
-
 
    def self.open_spreadsheet(file)
       case File.extname(file.original_filename)
