@@ -4,7 +4,6 @@ class ApplicationController < ActionController::Base
     flash[:error] = "Access Denied!"
      redirect_to :back 
     end
-  
   protected
     before_filter :set_locale
 private

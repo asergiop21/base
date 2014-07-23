@@ -38,7 +38,6 @@ class InvoicesController < ApplicationController
       respond_to do |format|
          format.html # show.html.erb
          ## format.json { render json: @invoice }
-
          format.pdf do
             pdf = InvoicePdf.new(@invoice , current_user)
             send_data pdf.render, filename: "order_#{@invoice.id}.pdf",
