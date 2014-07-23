@@ -6,7 +6,7 @@ role :db
 
 set :application, "montecaseros.com"
 set :repository,  "git@github.com:asergiop21/base.git" #https://github.com/asergiop21/base.git"
-server "192.168.130.250", :web, :app, :db, primary: true
+server "192.168.130.254", :web, :app, :db, primary: true
 set :deploy_to, '/home/alejandro/base_gestion_prod'
 set :scm, :git # You can set :scm explicitly or Capistrano will make an intelligent guess based on known version control directory names
 set :user, 'alejandro'
