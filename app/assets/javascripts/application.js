@@ -20,4 +20,5 @@
 //= require orders
 //= require payments
 //= require articles
+//= require invoices
 

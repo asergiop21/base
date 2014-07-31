@@ -100,7 +100,7 @@ class Article < ActiveRecord::Base
    end
 
    def label
-      [barcode, name, supplier.try(:name)].compact.join ' | '
+      [barcode, name,supplier.try(:name),"$  #{price_total}"].compact.join ' | '
    end
 
    def as_json options = nil

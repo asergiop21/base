@@ -22,13 +22,13 @@
       <div class="form-group">
          <div class="row">
             <div class="form-group col-md-12 ">
-               <div class="col-md-3">Articles</div>
+               <div class="col-md-4">Articles</div>
                <div class="col-md-1">Cantidad</div>
                <div class="col-md-2">Precio Unit</div>
                <div class="col-md-1">Descuento</div>
                <div class="col-md-2">Precio Total</div>
             </div>
-            <div class="col-md-12">
+            <div class="col-md-12 line2">
                <%= f.fields_for :orders, method: 'get' do |ph| %>
                   <%=render 'orders', f: ph  %>
                <% end %>

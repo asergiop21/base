@@ -1,5 +1,5 @@
-<div class="col-md-12">
-   <div class="col-md-3 order" id="order">
+<div class="col-md-12 line">
+   <div class="col-md-4">
       <%= f.input( :name, label: false,  input_html: {
          class: 'form-control ',
          data: {'autocomplete-field' => true,
@@ -14,8 +14,7 @@
       <%= f.input :quantity, label: false, as: :string, :input_html => {:class => "form-control quantity"}  %>
    </div>
    <div class="col-md-2">
-
-      <%= f.input :unit_price, label: false, :input_html => {:class => "form-control"}  %>
+      <%= f.input :unit_price, label: false, as: :string, :input_html => {:class => "form-control"}  %>
    </div>
    <div class=" col-md-1">
       <%= f.input :discount, label: false, as: :string, :input_html => {:class => "form-control discount "} %>
