@@ -22,7 +22,7 @@
     <td><%=  invoice.current_account ? 'Si' : 'No' %> </td>
     <td> <%= invoice.cancelar_invoice ? "  <b> 'Cancelado' </b> ": 'No Cancelado' if invoice.current_account == true %></td>
     <td><%= link_to "Editar", edit_invoice_path(invoice) %></td>
-    <td><%= link_to "Imprimir", invoice_path( invoice, format: "pdf") %></td>
+    <td><%= link_to "Imprimir", invoice_path( invoice) %></td>
     <td><%= link_to "Cancelar", invoice_cancelar_path(invoice) %></td>
     <td><%= link_to "Actualizar precio",invoice_update_invoice_path( invoice) %></td>
     </tr>

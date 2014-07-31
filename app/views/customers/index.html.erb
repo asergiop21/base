@@ -13,7 +13,8 @@
    <div class="span3 side">
       <%= simple_form_for '', method: 'get' do |f| %>
          <div class="search">
-         <%= f.input( :q, label: 'Clientes', input_html: { 
+            <%= f.input( :q, label: 'Clientes', :input_html=> {
+            class: 'form-control',
             data: {'autocomplete-field' => true,
                    'autocomplete-for' => '#_customer_id',
                    'autocomplete-url' => customers_path(format: :json)

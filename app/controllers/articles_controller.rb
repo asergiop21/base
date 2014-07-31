@@ -11,7 +11,7 @@ def index
 
       respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @articles}
+      format.json { render json: @articles.limit(100)}
       format.csv { send_data  @articles_1.to_csv }
       format.xls { send_data  @articles_1.to_csv(col_sep: "\t") }
     end

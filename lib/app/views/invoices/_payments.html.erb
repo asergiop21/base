@@ -4,7 +4,7 @@
                  <%if params[:action] != 'new'  %>
                          <td><%= f.text_field :created_at, as: :date,  readonly: :true  %></td>
                          <% end %>
-                <td><%=f.text_field :amount, :label =>'Pagos'  %></td>
+                         <td><%=f.input :amount, :label =>'Pagos', :input_html=> {class: 'form-control'}  %></td>
 
        <%if current_user.role == 'Admin' %>
           <td><%= f.hidden_field :_destroy %></td>

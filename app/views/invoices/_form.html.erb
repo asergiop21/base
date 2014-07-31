@@ -1,12 +1,12 @@
-<%= simple_form_for(@invoice) do |f| %>
+<%= simple_form_for @invoice, defaults: {input_html:{class: 'form-inline'}} do |f| %>
    <%= f.error_notification %>
-<div> 
-   <div >
-
-      <div class="span3 side">
+<div class="col-md-12"> 
+   <div class="form-group">
+      <div class="col-md-2 sidebar">
          <%= simple_form_for '', method: 'get' do |f| %>
-            <div class="search">
-            <%= f.input( :q, label: 'Clientes', input_html: { 
+            <div class="search col-mod-4">
+            <%= f.input( :q, label: 'Clientes', input_html: {
+               class: 'form-control',
                data: {'autocomplete-field' => true,
                       'autocomplete-for' => '#_customer_id',
                       'autocomplete-url' => customers_path(format: :json)
@@ -17,43 +17,35 @@
       <% end %> 
          <%= f.input :current_account,  label: "Cuenta corriente"%>
       </div>
-   </div>
-   <div class="section">
-      <div class="container-fluid center ">
-         <table class="table ">
-            <tr>
-               <th class="span2">Articulos</th>
-               <th class="span2">Cantidad</th>
-               <th class="span1">Precio Unit</th>
-               <th class="span1">Descuento</th>
-               <th class="span1">Precio Total</th>
-            </tr>
-            <%= f.fields_for :orders, method: 'get' do |ph| %>
-               <%=render 'orders', f: ph  %>
-         <% end %>
-         </table>
-         <div>
-            <tr>
-               <td>     <%= link_to_add_fields 'Agregar  Item', f , :orders %></td>
-            </tr>
-         </div>
-         <div class ="total_1 pull-right h2">
-            <h2>  Total</h2>
-            <h2><%=f.input :price_total, label: false, :input_html=> {class: "input-small"}, readonly: true, as: :string %></h2>
-         </div>
-         <br>
-         <div class="span10">
-            <%= f.fields_for :payments, method: 'get' do |pay| %>
-               <%= render 'payments', f: pay %>
-         <% end %>
-            <div class="span10 pull-right">
-               <%= link_to_add_fields 'Agregar Pago', f , :payments %>
+
+      <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+      <div class="form-group">
+         <div class="row">
+            <div class="form-group col-md-12 ">
+               <div class="col-md-3">Articles</div>
+               <div class="col-md-1">Cantidad</div>
+               <div class="col-md-2">Precio Unit</div>
+               <div class="col-md-1">Descuento</div>
+               <div class="col-md-2">Precio Total</div>
             </div>
+            <div class="col-md-12">
+               <%= f.fields_for :orders, method: 'get' do |ph| %>
+                  <%=render 'orders', f: ph  %>
+               <% end %>
+               
+               <%= link_to_add_fields 'Agregar  Item', f , :orders %>
+            </div> 
          </div>
+
+         <div class ="total_1 pull-right h2">
+                        <h2> Total</h2>
+                        <h2><%=f.input :price_total, label: false, :input_html=> {class: "form-control col-md-2"}, readonly: true, as: :string %></h2>
+                     </div>
       </div>
-      <div class="form-actions">
+      <div class="form-actions col-md-8">
          <%= f.submit class: 'btn btn-primary' %>
       </div>
+   </div>
    </div>
 </div>
 <% end %>

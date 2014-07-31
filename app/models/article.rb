@@ -98,4 +98,14 @@ class Article < ActiveRecord::Base
       end
 
    end
+
+   def label
+      [barcode, name, supplier.try(:name)].compact.join ' | '
+   end
+
+   def as_json options = nil
+      default_options = { only: [:id, :price_total], methods: [:label] }
+
+      super default_options.merge(options || {})
+   end
 end

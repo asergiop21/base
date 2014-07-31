@@ -9,7 +9,7 @@ $(document).ready(function(){
                success: function(data) {
                   response(
                      $.map(data, function(item) {
-                        return { label:  item.name +" - " + item.name_supplier, item: item};
+                        return { label:  item.label, item: item};
                      })
                      );
                },
