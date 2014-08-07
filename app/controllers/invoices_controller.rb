@@ -35,6 +35,7 @@ class InvoicesController < ApplicationController
    # GET /invoices/1.json
    def show
       @invoice = Invoice.find(params[:id])
+
       respond_to do |format|
          format.html # show.html.erb
          ## format.json { render json: @invoice }
@@ -70,7 +71,7 @@ class InvoicesController < ApplicationController
    def create
       @articles = Article.con_nombre_barcode(params[:q]) if params[:q].present?
       @invoice = Invoice.new(params[:invoice].merge(customer_id: params[:customer_id]))
-      @id = @invoice.orders(params[:articles_id])
+      @id = @invoice.orders(params[:article_id])
       @quantity = Article.quantity_order(@id)
       respond_to do |format|
          if @invoice.save
@@ -133,7 +134,7 @@ class InvoicesController < ApplicationController
       @price_invoice_total = 0
          @order.each do |product|
          
-               @article = Article.find(product.articles_id) 
+               @article = Article.find(product.article_id) 
                @price_unit = @article['price_total'].to_f
                @price_total = (@price_unit  - (@price_unit * (product.discount)/100)) * product.quantity
 

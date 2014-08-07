@@ -24,7 +24,7 @@ before_save :create_location
   belongs_to :user
   belongs_to :location
   has_many :accounts_receivable
-
+  has_many :invoices
   #Validaciones
   validates :name, :lastname, :address,    presence: true
   validates :name, uniqueness: {scope: :lastname}, allow_nil: true, allow_blank: true

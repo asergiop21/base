@@ -11,7 +11,6 @@ class InvoicePdf < Prawn::Document
       print_user
       total
    end
-
    def line_items
       move_down 20
       if @invoice.current_account == false

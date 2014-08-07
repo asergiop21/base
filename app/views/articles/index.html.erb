@@ -8,7 +8,6 @@
       </button>
    </div>
 </div>
-
 <div>
    <% if flash[:error] %>
       <li class="alert alert-error"><%= flash[:error]  %></li>
@@ -30,7 +29,10 @@
             } 
             }) %>
          <%= f.input :article_id, as: :hidden%>
-         <% end %> 
+
+         </div>
+      <% end %>
+
             <%= form_tag import_articles_path, multipart: true do %>
                <div>
                <%= file_field_tag :file, class: "import" %>
@@ -44,7 +46,7 @@
                <%= link_to "CSV", articles_path(format: "csv")  %>|
                <%= link_to "XLS", articles_path(format: "xls")  %>| 
             </div>
-         </div>
+
       </div>
       <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
          <h1 class="page-header">Listado de Articulos</h1>
@@ -55,7 +57,6 @@
                <table class="table table-striped">
                <thead>
                   <tr>
-
                      <th class="center">Cod</th>
                      <th class="center">Nombre</th>
                      <th class="center">Proveedor</th>

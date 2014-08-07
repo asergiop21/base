@@ -38,7 +38,7 @@ $(document).ready(function(){
             input.val(ui.item.label);
             var field = this.id;
             var id = field.split("_");
-            var field_article_id = '#invoice_orders_attributes_' + id[3] + '_articles_id';
+            var field_article_id = '#invoice_orders_attributes_' + id[3] + '_article_id';
             var field_unit_price = '#invoice_orders_attributes_' + id[3] + '_unit_price';
             var quantity_stock = '#invoice_orders_attributes_' + id[3] + '_quantity_stock';
             $(field_article_id).val(ui.item.item.id);

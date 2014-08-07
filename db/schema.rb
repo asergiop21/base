@@ -107,7 +107,7 @@ ActiveRecord::Schema.define(:version => 20140702120734) do
   add_index "models", ["category_id"], :name => "index_models_on_category_id"
 
   create_table "orders", :force => true do |t|
-    t.integer  "articles_id"
+    t.integer  "article_id"
     t.decimal  "quantity"
     t.decimal  "unit_price"
     t.decimal  "price_total"

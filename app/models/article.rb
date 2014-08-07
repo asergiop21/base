@@ -7,11 +7,11 @@ class Article < ActiveRecord::Base
    attr_accessible :name, :percentaje, :price_cost, :price_total, :make_id, :new_category, :category_id, :quantity, :barcode, :articles_code_supplier, :supplier_id, :new_supplier, :new_quantity, :new_make, :suppliers_attributes
    attr_accessor :new_category, :new_supplier, :new_quantity, :new_make
 
-   belongs_to :order
    belongs_to :category
    belongs_to :make
    belongs_to :supplier
    has_many :invoices
+   has_many :orders 
 
    before_save :create_category
    before_save :create_supplier
@@ -24,10 +24,10 @@ class Article < ActiveRecord::Base
    
    def self.quantity_order(id)
       id.each do |b|
-         stock_current = Article.find(b.articles_id).quantity
+         stock_current = Article.find(b.article_id).quantity
          quantity = b.quantity
          stock = stock_current - quantity
-         Article.find_by_id(b.articles_id).update_attribute(:quantity, stock)
+         Article.find_by_id(b.article_id).update_attribute(:quantity, stock)
       end
    end
    def create_category
@@ -105,7 +105,6 @@ class Article < ActiveRecord::Base
 
    def as_json options = nil
       default_options = { only: [:id, :price_total], methods: [:label] }
-
       super default_options.merge(options || {})
    end
 end

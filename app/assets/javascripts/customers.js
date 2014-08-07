@@ -15,7 +15,7 @@ $(document).ready(function(){
    event.preventDefault();
    });
 
-   $('div.side').on('focus', '[data-autocomplete-field]', function(){
+   $('div.search').on('focus', '[data-autocomplete-field]', function(){
       var input = $(this);
       input.autocomplete({
          source: function(request, response) {
@@ -36,5 +36,4 @@ $(document).ready(function(){
             $(input.data('autocomplete-for')).val(ui.item.item.id);
          }
       }).removeAttr('data-autocomplete-field'); });
-
 }); 
