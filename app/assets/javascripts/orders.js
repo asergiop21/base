@@ -46,8 +46,6 @@ $(document).ready(function(){
         $(quantity_stock).val(ui.item.item.quantity);
       }
     }).removeAttr('data-autocomplete-field');
-
-
   });
 
   $(document).on('blur', '.quantity , .discount', function(event){

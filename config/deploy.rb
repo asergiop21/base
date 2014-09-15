@@ -4,12 +4,12 @@ role :web
 role :app
 role :db
 
-set :application, "base_marimar.com"
+set :application, "montecaseros.com"
 set :repository,  "git@github.com:asergiop21/base.git" #https://github.com/asergiop21/base.git"
-server "104.131.45.139", :web, :app, :db, primary: true
-set :deploy_to, '/home/deployer/base_gestion'
+server "192.168.130.254", :web, :app, :db, primary: true
+set :deploy_to, '/home/alejandro/base_gestion_prod'
 set :scm, :git # You can set :scm explicitly or Capistrano will make an intelligent guess based on known version control directory names
-set :user, 'deployer'
+set :user, 'alejandro'
 set :deploy_via, :remote_cache
 set :use_sudo, false
 set :branch, 'master'
