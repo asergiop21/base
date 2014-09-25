@@ -1,0 +1,29 @@
+<%= simple_form_for @group_label, defaults: {input_html:{class: 'form-inline'}} do |f| %>
+  <% if @group_label.errors.any? %>
+  <div id="error_explanation">
+  <h2><%= pluralize(@group_label.errors.count, "error") %> prohibited this group_label from being saved:</h2>
+
+  <ul>
+    <% @group_label.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+  <% end %>
+  </ul>
+</div>
+  <% end %>
+<div class="col-md-12">
+  <div class="col-md-8">
+    <%= f.input :name, :input_html => {:class => 'form-control'} %>
+  </div>
+  <div class="col-md-8 line3">
+    <%= f.fields_for :labels, method: 'get' do |label| %>
+      <%= render 'labels', f: label %>
+  <% end %>
+
+    <%= link_to_add_fields 'Agregar  Item', f , :labels %>
+
+  </div>
+</div>
+<div class="actions">
+  <%= f.submit class: 'btn btn-primary'  %>
+</div>
+<% end %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140702120734) do
+ActiveRecord::Schema.define(:version => 20140924232043) do
 
   create_table "articles", :force => true do |t|
     t.string   "name"
@@ -69,6 +69,12 @@ ActiveRecord::Schema.define(:version => 20140702120734) do
     t.boolean  "enabled",     :default => true
   end
 
+  create_table "group_labels", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "invoices", :force => true do |t|
     t.integer  "customer_id"
     t.decimal  "price_total"
@@ -76,6 +82,14 @@ ActiveRecord::Schema.define(:version => 20140702120734) do
     t.datetime "updated_at",                          :null => false
     t.boolean  "current_account",  :default => false
     t.boolean  "cancelar_invoice", :default => false
+  end
+
+  create_table "labels", :force => true do |t|
+    t.integer  "article_id"
+    t.integer  "quantity"
+    t.integer  "group_label_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   create_table "locations", :force => true do |t|

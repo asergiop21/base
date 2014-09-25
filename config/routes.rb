@@ -1,5 +1,11 @@
 GestionBase::Application.routes.draw do
 
+
+
+
+  resources :group_labels
+  resources :labels
+
    resources :articles do
       collection {post :import} 
       collection {get :example} 

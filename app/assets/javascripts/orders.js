@@ -34,7 +34,6 @@ $(document).ready(function(){
       },
       minLength: 3,
       select: function(event, ui) {
-
         input.val(ui.item.label);
         var field = this.id;
         var id = field.split("_");

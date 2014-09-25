@@ -21,4 +21,5 @@
 //= require payments
 //= require articles
 //= require invoices
+//= require labels
 

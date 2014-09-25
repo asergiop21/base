@@ -1,0 +1,15 @@
+<div class="col-md-12 line3">
+  <div class="col-md-4">
+    <%= f.input( :name, label: 'Articulo', as: :string,  input_html: {
+      class: 'form-control ',
+      data: {'autocomplete-field' => true,
+             'autocomplete-for' => '#group_label_labels_#{id}_article_id',
+             'autocomplete-url' => articles_path(format: :json)
+    } 
+    }) %>
+  <%= f.input :article_id, as: :hidden, :input_html => {class: 'form-control'},  label: false%>
+  </div>
+  <div class="col-md-4">
+    <%= f.input :quantity, label: 'Cantidad', input_html: {class: 'form-control'} %>
+  </div>
+</div>

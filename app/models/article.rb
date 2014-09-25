@@ -5,6 +5,7 @@ class Article < ActiveRecord::Base
    scope :con_id, ->(id){ where('id = ?', "#{id}")}
 
    attr_accessible :name, :percentaje, :price_cost, :price_total, :make_id, :new_category, :category_id, :quantity, :barcode, :articles_code_supplier, :supplier_id, :new_supplier, :new_quantity, :new_make, :suppliers_attributes
+
    attr_accessor :new_category, :new_supplier, :new_quantity, :new_make
 
    belongs_to :category
@@ -12,6 +13,7 @@ class Article < ActiveRecord::Base
    belongs_to :supplier
    has_many :invoices
    has_many :orders 
+   has_many :labels 
 
    before_save :create_category
    before_save :create_supplier
