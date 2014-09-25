@@ -14,22 +14,27 @@ class GroupLabelPdf < Prawn::Document
     y_aux = 0
     x = 0
     y = 0 
-    a = 1
+    b = 1
     y_total = 0
     @group_label.each do |g|
-        if (y >= 630 )
-          x_aux = 300
-          y_aux = 0  
-        end
       1.upto(g.quantity) do |a|
+
+       p b = b + 1
+        if (y >= 700 )
+          x_aux = 300
+          y = 0  
+        end
+
         x = x_aux 
-        y = (a * 70) + y_aux
-      p y_total = y_total +  70  
-        
+        y = (y + 70) 
+        y_total = y_total +  70 
         barcode_text(g.article.barcode, g.article.name, x , y)
-        
-        if (a == g.quantity)
-          y_aux = y
+
+       if ( b > 20)
+          start_new_page
+          y = 0
+          x_aux = 0
+          b = 0 
         end
       end
     end
