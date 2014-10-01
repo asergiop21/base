@@ -98,7 +98,6 @@ class Article < ActiveRecord::Base
             csv << article.attributes.values_at(*column_names)
          end
       end
-
    end
 
    def label
@@ -108,5 +107,12 @@ class Article < ActiveRecord::Base
    def as_json options = nil
       default_options = { only: [:id, :price_total], methods: [:label] }
       super default_options.merge(options || {})
+   end
+
+   def self.search(val)
+      @value = val.split('@')
+      @name = @value[0].strip if (!@value[0].blank?)
+      @supplier = @value[1].strip if (!@value[1].blank?)
+      where("(articles.name ilike ? or barcode = ?) and suppliers.name ilike ?", "%#{@name}%", @name,  "%#{@supplier}%").joins(:supplier)
    end
 end
