@@ -4,7 +4,7 @@ class GroupLabelPdf < Prawn::Document
   require 'barby/outputter/prawn_outputter'
 
   def initialize(group_label)
-    super(top_margin:70, page_size: "A4")
+    super(margin: 20, page_size: "A4")
     @group_label = group_label
     labels 
   end
@@ -20,17 +20,17 @@ class GroupLabelPdf < Prawn::Document
       1.upto(g.quantity) do |a|
         if !g.article.barcode.blank?
           p b = b + 1
-          if (y >= 700 )
+          if (y >= 750 )
             x_aux = 300
             y = 0  
           end
 
           x = x_aux 
-          y = (y + 70) 
-          y_total = y_total +  70 
+          y = (y + 35) 
+          y_total = y_total +  35
           barcode_text(g.article.barcode, g.article.name, x , y)
 
-          if ( b > 20)
+          if ( b > 44)
             start_new_page
             y = 0
             x_aux = 0
@@ -48,7 +48,7 @@ class GroupLabelPdf < Prawn::Document
     draw_text barcode + " - " + name, :at=> [x,y - 10 ]
     translate(x, y) do
       barcode = Barby::Code39.new barcode
-      barcode.annotate_pdf(self)
+      barcode.annotate_pdf(self, :height => 20)
     end
   end 
 end
