@@ -3,6 +3,7 @@ class SuppliersController < ApplicationController
   # GET /suppliers.json
   def index
     @suppliers = Supplier.all
+    @suppliers = Supplier.find_by_name(params[:s]) if params[:s].present?
 
     respond_to do |format|
       format.html # index.html.erb

@@ -3,6 +3,7 @@ class Article < ActiveRecord::Base
    #scope :con_nombre,   ->(nombre){where("LOWER(name) LIKE ?", "%#{nombre}%".downcase)  }
    scope :con_nombre,   ->(nombre){joins(:supplier).where("LOWER(articles.name) ILIKE ?", "#{nombre}%".downcase)  }
    scope :con_id, ->(id){ where('id = ?', "#{id}")}
+   scope :search_supplier, ->(id){ where('supplier_id = ?', "#{id}")}
 
    attr_accessible :name, :percentaje, :price_cost, :price_total, :make_id, :new_category, :category_id, :quantity, :barcode, :articles_code_supplier, :supplier_id, :new_supplier, :new_quantity, :new_make, :suppliers_attributes
 
@@ -109,10 +110,10 @@ class Article < ActiveRecord::Base
       super default_options.merge(options || {})
    end
 
-   def self.search(val)
-      @value = val.split('@')
-      @name = @value[0].strip if (!@value[0].blank?)
-      @supplier = @value[1].strip if (!@value[1].blank?)
-      where("(articles.name ilike ? or barcode = ?) and suppliers.name ilike ?", "%#{@name}%", @name,  "%#{@supplier}%").joins(:supplier)
+   def self.search(val, supplier)
+      @name = val
+      @supplier = supplier 
+      
+      where("(articles.name ilike ? or barcode = ?) or supplier_id = ?", "%#{@name}%", @name,  @supplier).joins(:supplier)
    end
 end
