@@ -110,10 +110,11 @@ class Article < ActiveRecord::Base
       super default_options.merge(options || {})
    end
 
+
    def self.search(val, supplier)
       @name = val
       @supplier = supplier 
-      
-      where("(articles.name ilike ? or barcode = ?) or supplier_id = ?", "%#{@name}%", @name,  @supplier).joins(:supplier)
+      where("(articles.name ilike ? or barcode = ?) and supplier_id = ?", "%#{@name}%", @name,  @supplier).joins(:supplier)
+
    end
 end

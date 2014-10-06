@@ -1,11 +1,16 @@
 $(document).ready(function(){
-   $('div.articulox').on('focus', '[data-autocomplete-field]', function(){
+   $(document).on('focus', 'div.articulox, [data-autocomplete-field]', function(){
+
+    var  supplier_id = $(".sup").val();
+    console.log(supplier_id);
       var input = $(this);
       input.autocomplete({
          source: function(request, response) {
             $.ajax({
                url: input.data('autocomplete-url'),
-               dataType: 'json', data: { q: request.term },
+               dataType: 'json',
+               cache: false,
+               data: { q: request.term, supplier_id: supplier_id},
                success: function(data) {
                   response(
                      $.map(data, function(item) {
@@ -20,7 +25,6 @@ $(document).ready(function(){
             $(input.data('autocomplete-for')).val(ui.item.item.id);
          }
       }).removeAttr('data-autocomplete-field'); });
-
 
    $('div.supplier').on('focus', '[data-autocomplete-field]', function(){
       var input = $(this);
@@ -43,10 +47,6 @@ $(document).ready(function(){
             $(input.data('autocomplete-for')).val(ui.item.item.id);
          }
       }).removeAttr('data-autocomplete-field'); });
-   
-   
-   
-   
    
    
    $('#article_percentaje').on('blur', function(){

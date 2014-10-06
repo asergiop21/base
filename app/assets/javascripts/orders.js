@@ -17,12 +17,14 @@ $(document).ready(function(){
   });
 
   $('div.line2').on('focus', '[data-autocomplete-for]', function(){
+    
+    var supplier_id = $(".supplier_id").val();
     var input = $(this);
     input.autocomplete({
       source: function(request, response) {
         $.ajax({
           url: input.data('autocomplete-url'),
-          dataType: 'json', data: { q: request.term },
+          dataType: 'json', data: { q: request.term, supplier_id: supplier_id },
           success: function(data) {
             response(
               $.map(data, function(item) {

@@ -1,7 +1,7 @@
 class Order < ActiveRecord::Base
-  attr_accessible :article_id, :invoice_id, :price_total, :quantity, :unit_price, :name, :quantity_stock, :discount
+  attr_accessible :article_id, :invoice_id, :price_total, :quantity, :unit_price, :name, :quantity_stock, :discount, :s, :supplier_id
 
-  attr_accessor :quantity_stock
+  attr_accessor :quantity_stock, :s, :supplier_id
 
   belongs_to :article
   belongs_to :invoice
