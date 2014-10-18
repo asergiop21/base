@@ -15,16 +15,17 @@ $(document).ready(function(){
   $(this).closest('div.line').hide()
     event.preventDefault();
   });
-
+  
+  
   $('div.line2').on('focus', '[data-autocomplete-for]', function(){
-    
-    var supplier_id = $(".supplier_id").val();
-    var input = $(this);
+
+      var input = $(this);
     input.autocomplete({
       source: function(request, response) {
-        $.ajax({
+          var sup = $('#_supplier_id').val();
+      $.ajax({
           url: input.data('autocomplete-url'),
-          dataType: 'json', data: { q: request.term, supplier_id: supplier_id },
+          dataType: 'json', data: { q: request.term, supplier_id: sup },
           success: function(data) {
             response(
               $.map(data, function(item) {

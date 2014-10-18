@@ -3,6 +3,21 @@
    <div class="col-md-12"> 
    <div class="form-group">
       <div class="col-md-2 sidebar">
+
+
+        <%= simple_form_for '', method: 'get' do |f| %>
+
+          <div class="supplier">
+            <%= f.input( :s, label: 'proveedor',  input_html: {
+               class: 'form-control',
+               data: {'autocomplete-field' => true,
+                      'autocomplete-for' => '#_supplier_id',
+                      'autocomplete-url' =>suppliers_path(format: :json)
+            } 
+            }) %>
+          <%= f.input :supplier_id,  class: "sup", as: :hidden %>
+        <% end %>
+      </div>
       </div>
       <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
@@ -34,7 +49,7 @@
                   <div class="col-md-1 text-center">Descuento</div>
                   <div class="col-md-2 text-center">Precio Total</div>
                </div>
-               <div class="col-md-12 line2 panel-body">
+               <div class="col-md-12 panel-body line2">
                   <%= f.fields_for :orders, method: 'get' do |ph| %>
                      <%=render 'orders', f: ph  %>
                <% end %>

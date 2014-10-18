@@ -1,16 +1,15 @@
 $(document).ready(function(){
-   $(document).on('focus', 'div.articulox, [data-autocomplete-field]', function(){
 
-    var  supplier_id = $(".sup").val();
-    console.log(supplier_id);
+  $(document).on('focus', 'div.articulox, [data-autocomplete-field]', function(){
+    
       var input = $(this);
       input.autocomplete({
          source: function(request, response) {
-            $.ajax({
+          var sup = $('#_supplier_id').val();
+          $.ajax({
                url: input.data('autocomplete-url'),
                dataType: 'json',
-               cache: false,
-               data: { q: request.term, supplier_id: supplier_id},
+               data: {supplier_id: sup, q: request.term },
                success: function(data) {
                   response(
                      $.map(data, function(item) {
@@ -36,7 +35,7 @@ $(document).ready(function(){
                success: function(data) {
                   response(
                      $.map(data, function(item) {
-                        return { label:  item.name, item: item};
+                        return { label: item.name, item: item};
                      })
                      );
                },

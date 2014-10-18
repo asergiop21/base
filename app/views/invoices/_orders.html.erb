@@ -1,6 +1,6 @@
 <div class="col-md-12 line">
 
-  <div class="col-md-4">
+  <div class="line2 col-md-4">
     <%= f.input( :name, label: false,  input_html: {
       class: 'form-control ',
       data: {'autocomplete-field' => true,
@@ -9,7 +9,6 @@
     } 
     }) %>
   <%= f.input :article_id, :input_html => {class: 'form-control'}, as: :hidden , label: false%>
-  <%= f.input :supplier_id, :input_html => {class: 'form-control supplier_id'}, as: :hidden , label: false%>
     <%= f.input :quantity_stock, as: :hidden , label: false%>
   </div>
   <div class=" col-md-1">
