@@ -3,6 +3,13 @@
    <div class="col-md-12"> 
    <div class="form-group">
       <div class="col-md-2 sidebar">
+        
+        <%= f.input :supplier_id, as: :hidden %>
+        <%= f.input :supplier_name, as: :autocomplete, label: "proveedor",
+            url: autocomplete_supplier_name_invoices_path,
+            input_html: {:id_element => '#invoice_supplier_id', class:"col-md-5 form-control"}
+      %>
+
 
       </div>
       </div>
@@ -15,7 +22,7 @@
          <div class="col-md-5 search">
             <%= simple_form_for '', method: 'get' do |f| %>
 
-               <%= f.input( :q, label: 'Clientes', input_html: {
+               <%= f.input( :q, label: 'Clientes',   input_html: {
                   class: 'form-control',
                   data: {'autocomplete-field' => true,
                          'autocomplete-for' => '#_customer_id',

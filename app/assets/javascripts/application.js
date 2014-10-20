@@ -14,6 +14,7 @@
 //= require jquery-ui
 //= require jquery_ujs
 //= require twitter/bootstrap
+//= require autocomplete-rails.js
 //= require customers
 //= require tickets
 //= require equipment

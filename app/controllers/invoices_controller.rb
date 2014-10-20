@@ -4,6 +4,7 @@ class InvoicesController < ApplicationController
 
    before_filter :authenticate_user!, :except => [:some_action_without_auth]
 #   before_filter :load_customers, :only => [:index]
+  autocomplete :supplier, :name, :full => true, :display_value => :supplier_name
 
    def find
       @invoices = Invoice.find_by_customer_id(params[:customer_id])

@@ -1,8 +1,6 @@
 GestionBase::Application.routes.draw do
 
 
-
-
   resources :group_labels
   resources :labels
 
@@ -30,6 +28,7 @@ GestionBase::Application.routes.draw do
          get "payments/index"
          match "cancelar" => "invoices#cancelar_invoice"
          match "update_invoice" => "invoices#update_invoice"
+         get :autocomplete_supplier_name, :on => :collection
       end
       devise_for :users
       resources :users

@@ -22,7 +22,7 @@ $(document).ready(function(){
       var input = $(this);
     input.autocomplete({
       source: function(request, response) {
-          var sup = $('#_supplier_id').val();
+          var sup = $('#invoice_supplier_id').val();
       $.ajax({
           url: input.data('autocomplete-url'),
           dataType: 'json', data: { q: request.term, supplier_id: sup },
@@ -122,4 +122,13 @@ $(document).ready(function(){
     return false;
   }
   });
+
+  $(document).on('blur','.discount_add', function(event){
+
+            $(".add_fields").click();
+
+              });
+
+
+
 })

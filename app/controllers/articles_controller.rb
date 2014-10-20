@@ -7,7 +7,7 @@ load_and_authorize_resource
 def index
 
   @articles = Article.con_nombre_barcode(params[:q]) if params[:q].present?
-  @articles = Article.search(params[:q], params[:supplier_id]) if params[:q].present? && !params[:supplier_id].nil?
+  @articles = Article.search(params[:q], params[:supplier_id]) if params[:q].present? && !params[:supplier_id].blank?
 
   @articles = Article.con_id(params[:article_id]) if params[:article_id].present?
 #  @articles = Article.search_supplier(params[:supplier_id]) if params[:supplier_id].present?

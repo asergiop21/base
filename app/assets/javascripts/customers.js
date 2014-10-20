@@ -11,8 +11,8 @@ $(document).ready(function(){
       time = new Date().getTime();
       regexp = new RegExp($(this).data('id'), 'g');
       $(this).before($(this).data('fields').replace(regexp, time))
-      $('.order').focus(); 
-   event.preventDefault();
+      $('.name').focus(); 
+      event.preventDefault();
    });
 
    $('div.search').on('focus', '[data-autocomplete-field]', function(){

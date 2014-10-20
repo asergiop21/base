@@ -6,4 +6,10 @@ class Supplier < ActiveRecord::Base
   has_many :articles 
 
 
+def  supplier_name
+
+  "#{self.name}"
+end
+
+
 end
