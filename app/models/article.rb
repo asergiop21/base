@@ -117,4 +117,8 @@ class Article < ActiveRecord::Base
       where("(articles.name ilike ? or barcode = ?) and supplier_id = ?", "%#{@name}%", @name,  @supplier).joins(:supplier)
 
    end
+  def to_s
+    name
+  end
+
 end
