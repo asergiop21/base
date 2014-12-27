@@ -7,6 +7,7 @@ gem 'rails3-jquery-autocomplete', '~> 1.0.14'
 gem 'roo'
 #Base de Datos
 gem 'pg'
+gem 'pg_search'
 #Authentication y Permisos
 gem 'devise', '~>2.1'
 gem 'cancan'

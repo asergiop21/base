@@ -1,5 +1,13 @@
 class Article < ActiveRecord::Base
-   scope :con_nombre_barcode, ->(nombre){where("articles.name ILIKE ? or barcode = ?","#{nombre}%".downcase, nombre)}
+
+  include PgSearch
+  
+  pg_search_scope :con_nombre_barcode,
+                  :against => :name,
+                  :using => {:tsearch => {:any_word => true}}
+
+
+ # scope :con_nombre_barcode, ->(nombre){where("articles.name ILIKE ? or barcode = ?","#{nombre}%".downcase, nombre)}
    #scope :con_nombre,   ->(nombre){where("LOWER(name) LIKE ?", "%#{nombre}%".downcase)  }
    scope :con_nombre,   ->(nombre){joins(:supplier).where("LOWER(articles.name) ILIKE ?", "#{nombre}%".downcase)  }
    scope :con_id, ->(id){ where('id = ?', "#{id}")}

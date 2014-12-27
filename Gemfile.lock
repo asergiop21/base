@@ -94,6 +94,10 @@ GEM
     orm_adapter (0.5.0)
     pdf-core (0.2.5)
     pg (0.17.1)
+    pg_search (0.7.8)
+      activerecord (>= 3.1)
+      activesupport (>= 3.1)
+      arel
     polyglot (0.3.5)
     prawn (1.1.0)
       pdf-core (~> 0.2.5)
@@ -196,6 +200,7 @@ DEPENDENCIES
   jquery-rails (~> 2.1.4)
   net-ssh (~> 2.7.0)
   pg
+  pg_search
   prawn
   pry
   rails (= 3.2.12)
