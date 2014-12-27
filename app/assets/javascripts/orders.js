@@ -35,7 +35,7 @@ $(document).ready(function(){
           },
         });
       },
-      minLength: 3,
+      minLength: 2,
       select: function(event, ui) {
         input.val(ui.item.label);
         var field = this.id;

@@ -126,10 +126,10 @@ ActiveRecord::Schema.define(:version => 20141227130944) do
     t.decimal  "unit_price"
     t.decimal  "price_total"
     t.integer  "invoice_id"
-    t.datetime "created_at",                                                 :null => false
-    t.datetime "updated_at",                                                 :null => false
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
     t.string   "name"
-    t.decimal  "discount",    :precision => 8, :scale => 2, :default => 0.0
+    t.decimal  "discount",    :precision => 8, :scale => 2
   end
 
   create_table "payments", :force => true do |t|

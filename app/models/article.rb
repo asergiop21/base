@@ -4,8 +4,18 @@ class Article < ActiveRecord::Base
   
   pg_search_scope :con_nombre_barcode,
                   :against => :name,
-                  :using => :trigram
+                  #:using => :trigram,
                   #:using => {:tsearch => {:any_word => true}}
+                  #:using => :dmetaphone,
+                  #:using => {
+                  #  :tsearch => {:any_word => true},
+                  #  :dmetaphone => { :any_word => true, :sort_only => true}
+                  #},
+                  :using => {
+                    :trigram => {
+                      :threshold => 0.2 
+                  }},
+                  :order_within_rank => "articles.name asc"
 
 
  # scope :con_nombre_barcode, ->(nombre){where("articles.name ILIKE ? or barcode = ?","#{nombre}%".downcase, nombre)}
