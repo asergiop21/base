@@ -3,7 +3,8 @@ class Article < ActiveRecord::Base
   include PgSearch
   
   pg_search_scope :con_nombre_barcode,
-                  :against => :name,
+                  :against => ['name'],
+                  #associated_against: { supplier: :name},
                   #:using => :trigram,
                   #:using => {:tsearch => {:any_word => true}}
                   #:using => :dmetaphone,
@@ -13,7 +14,7 @@ class Article < ActiveRecord::Base
                   #},
                   :using => {
                     :trigram => {
-                      :threshold => 0.2 
+                      :threshold => 0.05 
                   }},
                   :order_within_rank => "articles.name asc"
 

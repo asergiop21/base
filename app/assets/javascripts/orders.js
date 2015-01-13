@@ -25,7 +25,7 @@ $(document).ready(function(){
           var sup = $('#invoice_supplier_id').val();
       $.ajax({
           url: input.data('autocomplete-url'),
-          dataType: 'json', data: { q: request.term, supplier_id: sup },
+          dataType: 'json', data: { q: request.term, supplier_id: sup   },
           success: function(data) {
             response(
               $.map(data, function(item) {

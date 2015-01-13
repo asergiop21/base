@@ -5,11 +5,13 @@ require 'will_paginate'
 before_filter :authenticate_user!, :except => [:some_action_without_auth]
 load_and_authorize_resource  
 def index
+  @articles = Article.where(supplier_id: params[:supplier_id]) if params[:supplier_id].present?
 
-  @articles = Article.con_nombre_barcode(params[:q]) if params[:q].present?
-  @articles = Article.search(params[:q], params[:supplier_id]) if params[:q].present? && !params[:supplier_id].blank?
+  
+  @articles = @articles.con_nombre_barcode(params[:q] ) if params[:q].present?
+ # @articles = Article.search(params[:q], params[:supplier_id]) if params[:q].present? && !params[:supplier_id].blank?
 
-  @articles = Article.con_id(params[:article_id]) if params[:article_id].present?
+  #@articles = Article.con_id(params[:article_id]) if params[:article_id].present?
 #  @articles = Article.search_supplier(params[:supplier_id]) if params[:supplier_id].present?
   @articles_1 = @articles.paginate(page: params[:page], per_page: 20)
 

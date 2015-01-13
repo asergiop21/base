@@ -7,9 +7,7 @@ class Supplier < ActiveRecord::Base
 
 
 def  supplier_name
-
   "#{self.name}"
 end
-
 
 end

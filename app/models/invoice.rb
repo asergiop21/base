@@ -3,6 +3,9 @@ class Invoice < ActiveRecord::Base
 scope :invoices, ->(id){where("customer_id= ?", "#{id}")}
 
 attr_accessible :customer_id, :price_total, :orders_attributes, :payments_attributes, :current_account, :cancelar_invoice, :supplier_id, :supplier_name
+  delegate :name, to: :supplier, prefix: true, allow_nill: true
+
+
 attr_accessor :supplier_id, :supplier_name
 
    has_many  :orders
