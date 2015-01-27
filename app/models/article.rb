@@ -14,9 +14,10 @@ class Article < ActiveRecord::Base
                   #},
                   :using => {
                     :trigram => {
-                      :threshold => 0.05 
+                      :threshold => 0.01 
                   }},
-                  :order_within_rank => "articles.name asc"
+                  :ranked_by => ":trigram"
+                  #:order_within_rank => "articles.name asc"
 
 
  # scope :con_nombre_barcode, ->(nombre){where("articles.name ILIKE ? or barcode = ?","#{nombre}%".downcase, nombre)}
